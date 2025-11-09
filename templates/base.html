@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KaringX – Руководство по настройке</title>
+    <link rel="stylesheet" href="/static/css/core.min.css@47.css">
+    <link rel="stylesheet" href="/static/css/quill.core.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tab-content {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.4s forwards ease-out;
+        }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Анимация меню */
+        .menu-open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .menu-closed {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-100%);
+        }
+        
+        /* Стили для якорных ссылок */
+        .scroll-mt-20 {
+            scroll-margin-top: 5rem;
+        }
+        
+        /* Стили для таблиц */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+        
+        /* Стили для блоков кода */
+        pre {
+            background-color: #f1f5f9;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        code {
+            background-color: #f1f5f9;
+            border-radius: 0.25rem;
+            padding: 0.125rem 0.25rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        
+        /* Стили для изображений */
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-image figcaption {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    {% block content %}{% endblock %}
+    
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.selection.min.js"></script>
+    <script src="/static/js/autosize.min.js"></script>
+    <script src="/static/js/load-image.all.min.js@1"></script>
+    <script src="/static/js/quill.min.js@10"></script>
+    <script src="/static/js/core.min.js@67"></script>
+</body>
+</html>

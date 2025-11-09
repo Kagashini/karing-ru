@@ -1,0 +1,486 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Шапка с гамбургером -->
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="px-4 py-3 flex items-center">
+        <!-- Гамбургер-кнопка -->
+        <button id="menu-toggle"
+                class="text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-1 mr-3"
+                aria-label="Открыть меню">
+            <!-- Резервный текст + SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 24 24"
+                 width="28"
+                 height="28"
+                 fill="currentColor"
+                 class="block">
+                <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+            </svg>
+            <!-- На случай, если SVG не загрузится -->
+            <span aria-hidden="true" style="font-size: 24px; line-height: 1; display: none;">☰</span>
+        </button>
+        <h1 class="text-xl font-bold text-gray-900">Karing – Quick Start (Часть l)</h1>
+    </div>
+</header>
+<!-- Боковое меню (выдвижное) -->
+<div id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-white shadow-lg p-4 transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+    <div class="flex justify-between items-center mb-6">
+        <span class="text-lg font-semibold">Навигация</span>
+        <button id="menu-close" class="text-gray-600 hover:text-gray-900">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+    <nav class="space-y-1">
+        <a href="/"
+           class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Главная</a>
+        <!-- Навигация по текущей странице -->
+        <div class="font-bold text-gray-900 py-2">На этой странице</div>
+        <a href="#quick-start" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Быстрый старт</a>
+        <a href="#add-profile" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Создание (добавление) нового профиля</a>
+        <a href="#auto-server" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Автовыбор сервера</a>
+        <a href="#android-settings" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Дополнительные (необязательные) настройки Андроид</a>
+        
+        <!-- Остальные разделы -->
+        <div class="font-bold text-gray-900 py-2 mt-4 cursor-pointer" onclick="window.location.href='/quick_setup_windows'">KaringX - Быстрая настройка Windows</div>
+        <div class="font-bold text-gray-900 py-2 mt-2 cursor-pointer" onclick="window.location.href='/quick_setup_android'">KaringX - Быстрая настройка Android</div>
+        <div class="font-bold text-gray-900 py-2 mt-2 cursor-pointer" onclick="window.location.href='/quick_setup_ios'">KaringX - Быстрая настройка iOS</div>
+        <div class="font-bold text-gray-900 py-2 mt-2 cursor-pointer" onclick="window.location.href='/detailed_settings'">Подробнее о настройках</div>
+        <div class="font-bold text-gray-900 py-2 mt-2 cursor-pointer" onclick="window.location.href='/windows_features'">Особенности Karing в Windows</div>
+        <div class="font-bold text-gray-900 py-2 mt-2 cursor-pointer" onclick="window.location.href='/routing_rules'">Karing - маршрутизация и правила</div>
+        <div class="font-bold text-gray-900 py-2 mt-2 cursor-pointer" onclick="window.location.href='/dns_explained'">Karing - что такое DNS и как с ним бороться</div>
+    </nav>
+</div>
+
+<!-- Оверлей -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-30 z-30 hidden" onclick="closeMenu()"></div>
+
+<!-- Основной контент -->
+<main class="max-w-4xl mx-auto p-4 pt-6">
+    <article class="prose prose-lg max-w-none">
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <p class="text-gray-700"><strong>Karing</strong> - бесплатная мультиплатформенная программа, представляющая собой мощный и простой набор инструментов <strong>proxy</strong>. Официальная страница.</p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Программа в основном предназначена для работы с <strong>подписками</strong> <strong>VPN</strong> или <strong>"аэропортами"</strong> - (динамически обновляемый по специальной ссылке список серверов и правил маршрутизации). Поддерживает следующие форматы подписок и файлов конфигурации - <strong>Clash, V2ray (с пакетом поддержки), Stash, Karing, Sing-box, Shadowsocks, Sub, Github</strong>.<strong> </strong></p>
+            
+            <p class="mb-3"><strong>Karing</strong> также может работать с вашим собственным списком прокси-серверов.</p>
+            
+            <p class="mb-3">Приложение построено на <strong>модифицированном ядре sing-boх</strong>, поддерживает все современные протоколы - <strong>VMess, Vless, Trojan и Shadowsocks, ShadowsocksR, TUIC, Socks, Http, Hysteria, Hysteria2, WireGuard</strong> и др. Интерфейс английский / китайский / русский / фарси / арабский.</p>
+            
+            <p><strong>Совместимость - Android &gt;=8, Windows &gt;=10 x64, iOS &gt;=15 MacOs &gt;=12</strong></p>
+        </div>
+        
+        <figure class="mb-6 text-center">
+            <img src="/static/images/icons.png@1" alt="Логотип Karing" class="content-image mx-auto rounded-lg">
+            <figcaption class="text-center text-gray-600 mt-2">Логотип Karing</figcaption>
+        </figure>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <a href="https://github.com/KaringX/karing/releases" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded text-center transition-colors">
+                Скачать для Андроид или Windows c GitHub
+            </a>
+            <a href="https://apps.apple.com/us/app/karing/id6472431552?platform=iphone" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded text-center transition-colors">
+                Установить для iOS, MacOS или AppleTV (tvOS)
+            </a>
+        </div>
+        
+        <div class="bg-gray-100 border-l-4 border-gray-500 p-4 mb-6">
+            <p class="text-gray-700 mb-2">В разработке: для Linux</p>
+            <p class="text-gray-700"><strong><em>Стабильная версия Karing 1.1.2.606 (latest) (31.03.25) В AppStore именно она.</em></strong></p>
+            <p class="text-gray-700"><strong><em>Last-release</em> <em>Karing 1.1.2.606 (31.03.25) - Рекомендуется ставить наиболее новый пререлиз. Новая версия ядра, исправлены недочёты, доработан интерфейс.</em></strong></p>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <p class="text-gray-700"><em>Скриншоты соответствуют как минимум ver 1.1.2.600</em></p>
+        </div>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <p class="text-gray-700"><strong><em>Karing</em></strong><em> выглядит похоже на разных платформах. Наиболее функциональна она на Андроиде, поэтому описание и скриншоты будут с телефона. При существенных отличиях смотрите </em><a href="/windows_features" class="text-blue-600 hover:underline"><strong><em>Особенности Karing в Windows</em></strong></a><em>. Так сделано из-за ограничения на размер публикации в Telegram.</em></p>
+        </div>
+        
+        <h2 id="quick-start" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Быстрый старт (Quick Start)</h2>
+        
+        <div class="bg-gray-100 p-3 rounded mb-4 inline-block">
+            <a href="#quick-start" class="text-gray-700 hover:text-gray-900"><strong>(к началу)</strong></a>
+        </div>
+        
+        <p class="mb-4">Установите программу.</p>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <p class="text-gray-700"><em>Пользователи </em><strong><em>Xiaomi/MIUI</em></strong><em>: если не удается установить приложение, необходимо перед началом установки включить режим полета (без подключения к Интернету) и отключить усиленную защиту </em><strong><em>Security Guard</em></strong><em>.</em></p>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <p class="text-gray-700"><em>Пользователи </em><strong><em>Huawei (HarmonyOS)</em></strong><em> – </em><a href="https://karing.app/en/blog/case/harmonyos/" target="_blank" class="text-blue-600 hover:underline"><strong><em>инструкция (китайский)</em></strong></a></p>
+        </div>
+        
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <p class="text-gray-700"><em>Пользователи </em><strong><em>iOS</em></strong><em>: программа может быть установлена из</em><a href="https://apps.apple.com/us/app/karing/id6472431552" target="_blank" class="text-blue-600 hover:underline"><em> </em><strong><em>AppStore</em></strong></a><strong><em> </em></strong><em> (стабильная версия) или из</em><a href="https://testflight.apple.com/join/RLU59OsJ" target="_blank" class="text-blue-600 hover:underline"><strong><em> TestFlight</em></strong></a><em> (свежая бета-версия). Но установить можно только что-то одно – эти версии перезаписывают друг друга. </em></p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="text-gray-700"><em>Установка может идти как на чистую, так и поверх предыдущей версии программы. Но если вам нужно понизить версию – надо сделать бекап конфигурации в файл (копируются все настройки и ключи). Затем текущая версия удаляется, ставится более низкая, и импортируется файл бекапа. – см. </em><a href="/detailed_settings" class="text-blue-600 hover:underline"><strong><em>Подробнее о настройках в Karing (Часть II)</em></strong></a></p>
+        </div>
+        
+        <p class="mb-4">При первом запуске выводится <strong>информация о сборе данных:</strong></p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-1.png" alt="Screen 1" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 1</figcaption>
+        </figure>
+        
+        <p class="mb-4">Соглашаемся, и попадаем на второй экран - выбор <strong>Язык (Language)</strong><em> интерфейса:</em></p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-2.png" alt="Screen 2" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 2</figcaption>
+        </figure>
+        
+        <p class="mb-4">Следующий экран - <em>выбор </em><strong>Страна или регион<em> </em>(Country Or Region<em>)</em></strong><em> - страны для автоматического применения правил перенаправления. </em>Очень важно правильно выбрать свою страну, поскольку это определяет, какие соединения пойдут <strong>через прокси</strong>, а какие <strong>напрямую.</strong> В частности, если вы в России - при выборе <strong>ru</strong> - почти все заблокированные сайты и все иностранные пойдут через прокси и окажутся разблокированными, а не заблокированные пройдут напрямую, в обход прокси.</p>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <p class="text-gray-700"><em>Следовательно, для правильной работы с правилами </em><strong><em>ru,</em></strong><em> находясь в другой стране, надо выбрать страну пребывания, а не Российскую федерацию. Иначе при попытке попасть на сайт, например</em><strong><em>, gosuslugi.ru</em></strong><em> из-за границы через ключ в Рунет, ваш запрос к сайту пойдёт напрямую (в обход прокси) и не сработает&#33; </em></p>
+        </div>
+        
+        <p class="mb-4">В дальнейшем эту настройку программы можно изменить через меню <strong>Настройки - Правила</strong>, или нажав на главном экране значок <strong>Правила</strong> <strong>перенаправления</strong> при выключенном соединении.</p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-3.png" alt="Screen 3" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 3</figcaption>
+        </figure>
+        
+        <p class="mb-4">Следующий экран начальной настройки – <strong>Шаблоны личных правил (Preset [Custom Diversion Group].</strong></p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-4.png" alt="Screen 4" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 4</figcaption>
+        </figure>
+        
+        <p class="mb-4">Это не сами правила, а именно преднастроенные шаблоны. Если вы выберете переключателем какую-то строку, то соответствующее правило будет добавлено вам в ваш личный список правил. В дальнейшем вы сможете поменять у этого правила действие - блокировать, или направить напрямую, или направить в прокси. Таким образом будет создан алгоритм обработки этой категории трафика. Например, можно заблокировать часть рекламы. Или пустить весь трафик Телеграма через определенный прокси-сервер. Разумеется, к этой настройке можно вернуться позже. При первой настройке приложения используйте как можно меньше правил. Можно согласиться с выбором правил по умолчанию. Рекомендуемый пример начального выбора:</p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-5.png" alt="Screen 5" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 5</figcaption>
+        </figure>
+        
+        <p class="mb-4">Показанный на скрине выбор позволяет заблокировать часть рекламы, и отдельно перенаправить запросы к AI, например через другой прокси-сервер. <strong>Очень важным правилом, которое надо обязательно добавить</strong>, является <strong>GFW</strong>. Это правило будет содержать списки заблокированных ресурсов, как со стороны региональной цензуры, так и со стороны самих сайтов (в зависимости от указанной в настройке страны), и разблокирует их, перенаправляя трафик через установленное соединение.</p>
+        
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+            <p class="text-gray-700">C правилом <strong>GFW</strong> есть одна тонкость. Если после окончания настройки вы решите сменить страну настроек, то содержимое этого правила не изменится, и будет относиться к предыдущей стране. Вам надо <strong>удалить </strong>это правило, на странице Личные правила, и <strong>снова создать</strong> его на основе шаблонов правил. Эти шаблоны для разных стран разные, и даже правила <strong>GFW</strong> там может не быть.</p>
+        </div>
+        
+        <p class="mb-4">Подробнее использование правил описано в отдельной статье - </p>
+        
+        <p class="mb-6"><a href="/routing_rules" class="text-blue-600 hover:underline"><strong>Karing - маршрутизация и правила</strong></a><strong>.</strong></p>
+        
+        <p class="mb-4">Нажимаем кнопку Далее, и видим окно переключения режима <strong>Новичок</strong>. Это очень полезный режим, если вы первый раз столкнулись с этой программой, или чувствуете себя неуверенно. Этот режим поможет вам сделать автоматически часть настроек, скроет от вас пока вам ненужное, и вы должны получить работающую программу. Советую его пока оставить.</p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-6.png" alt="Screen 6" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 6</figcaption>
+        </figure>
+        
+        <p class="mb-4">Дальше программа попросит от вас добавить хотя бы один профиль (ключ).</p>
+        
+        <h2 id="add-profile" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Создание (добавление) нового профиля</h2>
+        
+        <div class="bg-gray-100 p-3 rounded mb-4 inline-block">
+            <a href="#add-profile" class="text-gray-700 hover:text-gray-900"><strong>(к началу)</strong></a>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3"><strong>Karing</strong> оперирует не отдельными серверами или ключами, а именованными профилями. Каждый профиль может содержать <strong>один,</strong> или <strong>много серверов,</strong> или быть <strong>подпиской</strong> или <strong>"аэропортом"</strong> (загружаемый по специальной ссылке динамически меняющийся список серверов, или ключей, а иногда и дополнительные правила маршрутизации). Внутри профиля можно отключать отдельные серверы. Профиль можно включить, а можно отключить, не удаляя. Для включенных профилей можно включить <strong>автовыбор сервера</strong>, что очень удобно. Недостаток такой системы - в готовый профиль сложно добавить сервер (ключ). Но удалить отдельный сервер можно (если это не подписка, а самостоятельно созданный локальный профиль) – длительное нажатие на имя сервера откроет дополнительное подменю с функциями редактирования и удаления сервера. <strong>Профиль желательно создавать сразу с нужными серверами. </strong>Неудачно созданный профиль можно удалить. Также можно объединить несколько профилей в один (подписок это не касается). Экспорт отдельного ключа из профиля или подписки возможен в QR-код в формате ссылки ulink://…</p>
+        </div>
+        
+        <p class="mb-4">Для добавления профиля необходимо скопировать ваш ключ или несколько ключей в буфер, и нажать на главном экране значок +. Или открыть меню <strong>Настройки</strong> (значок шестеренки) и выбрать пункты <strong>Добавить профиль – Импорт из буфера обмена</strong>.</p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-7.png" alt="Screen 7" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 7</figcaption>
+        </figure>
+        
+        <p class="mb-4">Предположим, вы получили в боте список ключей:</p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-8.png" alt="Screen 8" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 8</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Это сообщение можно копировать в буфер всё целиком, не обращая внимания на посторонний текст - <strong>Karing</strong> при импорте сам отбросит ненужное, и вставит все ключи по отдельности в единый профиль. Другой вариант - вы можете самостоятельно собрать и вставить ключи, например, в создаваемый в <strong>Телеграме</strong> пост, и, не отправляя его , скопировать всё содержимое в буфер (конечно, можно скопировать и один ключ).</p>
+        </div>
+        
+        <p class="mb-4">При нажатии <strong>"Импорт из буфера обмена"</strong> программа покажет вам, что находится в буфере обмена. Если всё выглядит правильно – обязательно дайте название профилю в окошке.</p>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <p class="text-gray-700"><strong><em>Примечание. </em></strong><em>Название лучше давать понятное, удобно с датой получения ключей</em>.</p>
+        </div>
+        
+        <p class="mb-4">  Затем нажмите <strong>галочку</strong> в правом верхнем углу - это добавит профиль в программу:</p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-9.png" alt="Screen 9" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 9</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Если всё прошло правильно – вы получаете сообщение об успехе. Если вы только начинаете работу с этой программой и добавили только один ключ – на этом можно остановиться. Но если у вас несколько профилей или несколько ключей – надо перейти на страницу <strong>Профили</strong>, и выполнить тест доступности ваших соединений. В дальнейшем <strong>Автовыбор</strong> сервера будет ориентироваться именно на результаты этого теста.</p>
+        </div>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-10.png" alt="Screen 10" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 10</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Вот пример страницы профилей. Они могут отображаться как в развернутом, так и в компактном виде. Это регулируется значками в виде одинарной или сдвоенной галочки, направленной вверх или вниз. Включение или отключение профиля в целом – переключатели слева от профиля. Если переключатель зеленый – профиль (и все ключи в нем) включен. Красный круглый значок справа – удаление соответствующего профиля.</p>
+            
+            <p class="mb-3"><strong>Три точки в правом углу</strong> – дополнительное подменю, позволяющее объединить профили, реорганизовать их порядок, настроить и т.д.</p>
+            
+            <p><strong>Тестирование профилей</strong> – значок в виде молнии ( в ранних версиях значок был в виде лежащей буквы <strong>К -</strong> выделено). На скриншоте показаны результаты такого тестирования – верхний ключ не тестировался, поскольку профиль отключен, два следующих недоступны, а нижний ключ доступен и показывает хорошее время теста (зеленые цифры). В дальнейшем <strong>автовыбор сервера</strong> выберет именно его, даже если дополнительно включить и первый профиль.</p>
+        </div>
+        
+        <hr class="my-6">
+        
+        <p class="mb-4">После успешного добавления профиля нужно войти в настройки и в пункте <strong>Правила</strong> – <strong>Правила перенаправления </strong>включить использование <strong>Личных правил</strong> (по умолчанию это отключено).</p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-11.png" alt="Screen 11" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 11</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="text-gray-700">При включении у вас заработают и правила блокировки, если вы их добавили, и правило <strong>GFW</strong> для заблокированных сайтов.</p>
+        </div>
+        
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <p class="text-gray-700"><strong>На этом базовые настройки программы закончены.</strong> Возвращаемся на главный экран.</p>
+        </div>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-12.png" alt="Screen 12" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 12</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Значки управления в верхней строчке слева направо: <strong>Настройка, Профили, Добавить профиль, DNS, Правила перенаправления, Диагностика сети, Тест скорости,</strong> <strong>Быстрая ссылка, Сканирование QR </strong><em>(только на телефонах)</em><strong>,</strong> <strong>Варианты оформления. </strong>Красная точка на значке <strong>Настройки</strong> означает, что для программы рекомендуется обновление. Автообновления нет, нужно обновлять вручную (в меню настроек есть ссылки). Отображение нежелательных значков в дальнейшем можно отключить в <strong>Настройки – Домашний экран.</strong></p>
+            
+            <p class="mb-3"><strong>Зеленый монитор – </strong>можно нажать и посмотреть текущие соединения. В дальнейшем при подключении на экране будет видно название вашего профиля и имя действующего (подключенного) ключа, а в случае подписки – и дополнительные данные по ней.</p>
+            
+            <p><strong>Слайдер в центре – запуск подключения к выбранному серверу.</strong></p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Переключатель <strong>Правила – Глобально</strong> служит для отключения всех личных правил. Тогда все соединения через <strong>Karing</strong> пойдут только через подключенный прокси-сервер. Этот режим, скорее, вспомогательный, применяется для отладки.</p>
+        </div>
+        
+        <p class="mb-4">Теперь можно сделать первое включение программы, главным переключателем (слайдером). При первом запуске программа попросит дополнительно разрешение доступа к VPN – следует разрешить:</p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-13.png" alt="Screen 13" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 13</figcaption>
+        </figure>
+        
+        <h2 id="enable-use" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Включайте и пользуйтесь&#33;</h2>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-14.png" alt="Screen 14" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 14</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Если вы видите что-то подобное, то у вас всё получилось. Под переключателем <strong>Правила-Глобально</strong> вы видите название вашего профиля (его можно переименовать). На серой полоске внизу – виден выбранный сервер. Зеленые цифры рядом – пинг до этого сервера. Раз они видны – то всё у вас соединилось и работает.</p>
+            
+            <p>Если вместо зеленых цифр отображается восклицательный знак в красном треугольнике – соединение не работает (не проходит тест). Надо использовать другой ключ или разбираться подробнее с настройками программы.</p>
+        </div>
+        
+        <h2 id="auto-server" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Автовыбор сервера</h2>
+        
+        <div class="bg-gray-100 p-3 rounded mb-4 inline-block">
+            <a href="#auto-server" class="text-gray-700 hover:text-gray-900"><strong>(к началу)</strong></a>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Если вы создали профиль (или несколько), содержащий несколько ключей (серверов), и протестировали их, то <strong>Karing</strong> будет автоматически выбирать сервер с наименьшей задержкой. Если сервер выбран, вручную или автоматически, и подключён – то нажатие на главной странице на величину задержки (53 ms на скриншоте), приведет к повторному тестированию, и вы увидите текущую величину.</p>
+            
+            <p> Однако <strong>автовыбор</strong> не всегда удобен. Тогда нужное вам поведение и нужный сервер вы настраиваете вручную. Для этого тапните на главном экране (при включенном соединении&#33;) слева на полоску с надписью <strong>Автовыбор сервера</strong>.</p>
+        </div>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-15.png" alt="Screen 15" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 15</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Здесь вы можете управлять поведением серверов и профилей. Долгий тап на строке сервера позволяет запретить его использование - он будет выделен серым после соответствующего предупреждения. А короткий тап по серверу назначит его использующимся и отключит <strong>автовыбор. </strong>Тап по звездочке напротив названия сервера сделает её желтой – это вы пометили сервер <strong>Избранным.</strong></p>
+        </div>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-16.png" alt="Screen 16" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 16</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">После выбора сервера вы немедленно вернетесь на главную страницу и <strong>Karing</strong> попробует соединиться с новыми настройками. На главном экране содержимое нижней строки изменится – пропадет надпись <strong>Автовыбор сервера</strong>:</p>
+        </div>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-17.png" alt="Screen 17" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 17</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Важно помнить, что это не страница управления ключами и профилями, а только их выбором. Здесь видны только те профили, которые у вас включены<strong>. </strong></p>
+            
+            <p class="text-red-600 font-bold"><strong>Распространенная ошибка при нескольких профилях – выбрать для работы конкретный сервер, а затем отключить этот профиль или сам сервер на странице выбора или на странице профилей (строка с сервером выделена серым).</strong> <strong>Программа, конечно, не сумеет соединиться, и сообщит вам, что время действия профиля истекло, или что сервер отключен.</strong></p>
+        </div>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-18.png" alt="Screen 18" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 18</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">В такой ситуации выключите главный переключатель, переключитесь на <strong>Автовыбор</strong>, а затем зайдите на страницу профилей (значок на главном экране) и включите нужные профили. Если вы отключили по ошибке отдельный сервер (выделен серым) – долгий тап по нему позволит его включить.</p>
+            
+            <p>Также необходимо выполнить в профиле тест задержек. <strong>Автовыбор</strong> в дальнейшем будет опираться на данные такого теста. Не прошедшие тест ключи автоматически выбираться не будут.</p>
+        </div>
+        
+        <h2 id="android-settings" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Дополнительные (необязательные) настройки (Андроид)</h2>
+        
+        <div class="bg-gray-100 p-3 rounded mb-4 inline-block">
+            <a href="#android-settings" class="text-gray-700 hover:text-gray-900"><strong>(к началу)</strong></a>
+        </div>
+        
+        <p class="mb-4"><strong> </strong></p>
+        
+        <p class="mb-4">Значок<strong> Karing </strong>можно добавить в шторку быстрого доступа: </p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-19.png" alt="Screen 19" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 19</figcaption>
+        </figure>
+        
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <p class="text-gray-700">Это даст вам возможность включать и отключать <strong>Karing</strong> в 2 движения.</p>
+        </div>
+        
+        <p class="mb-4">Полезно дать программе дополнительные разрешения:</p>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-20.png" alt="Screen 20" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 20</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Это можно сделать как с рабочего стола – клик на иконке <strong>Karing</strong> и буква i, так и через настройки в подменю системы <strong>Программы.</strong></p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Имеет смысл дать доступ к уведомлениям, а также, если на вашем телефоне <strong>Karing</strong> в фоновом режиме останавливается – снять ограничения электропитания. Но надо понимать, что энергопотребление при этом возрастет:</p>
+        </div>
+        
+        <figure class="mb-6">
+            <img src="/static/images/karing/Karing8-andr-21.png" alt="Screen 21" class="content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Screen 21</figcaption>
+        </figure>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3"><strong>Karing</strong>, несмотря на свой &quot;однокнопочный&quot; вид, представляет собой &quot;под капотом&quot; мощный комбайн с сотнями возможных настроек и их шаблонов. При реализации на разных платформах, разница может быть связана с самими платформами. </p>
+            
+            <p class="mb-3">При установке на Андроид - есть возможность пускать через VPN соединения отдельные приложения, просто пометив их в подменю режима TUN. В <strong>iOS</strong>, <strong>Macos</strong> или <strong>Windows</strong> это требует ручного создания правил.</p>
+            
+            <p>Тем не менее, большинство настроек на разных платформах похожи.</p>
+        </div>
+        
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <p class="text-gray-700">Сразу перенастраивать под себя программу необязательно - она хорошо работает и при настройках по умолчанию. Тем не менее, есть большие возможности оптимизации именно под свои задачи - это <strong>повышает скорость, удобство и экономит расход батареи и трафик.</strong></p>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <p class="mb-3">Для получения подробных инструкций по настройке Karing на других платформах смотрите:</p>
+            <ul class="list-disc list-inside space-y-1">
+                <li><a href="/quick_setup_windows" class="text-blue-600 hover:underline">KaringX - Быстрая настройка Windows</a></li>
+                <li><a href="/quick_setup_android" class="text-blue-600 hover:underline">KaringX - Быстрая настройка Android</a></li>
+                <li><a href="/quick_setup_ios" class="text-blue-600 hover:underline">KaringX - Быстрая настройка iOS</a></li>
+            </ul>
+        </div>
+        
+        <div class="text-center my-8">
+            <a href="/detailed_settings" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded inline-block transition-colors">
+                Подробнее о настройках Karing (Часть ll)
+            </a>
+        </div>
+        
+        <div class="bg-gray-100 p-3 rounded mb-6 text-center">
+            <a href="#quick-start" class="text-gray-700 hover:text-gray-900"><strong>(к началу)</strong></a>
+        </div>
+        
+        <figure class="mb-6 text-center">
+            <img src="/static/images/karing/mascot-3.jpg" alt="Mascot Karing" class="content-image mx-auto rounded-lg">
+            <figcaption class="text-center text-gray-600 mt-2">Mascot Karing</figcaption>
+        </figure>
+        
+        <div class="text-center">
+            <a href="/" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded inline-block transition-colors">
+                (В меню выбора клиентов)
+            </a>
+        </div>
+    </article>
+</main>
+
+<script>
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    function openMenu() {
+        sidebar.classList.remove('-translate-x-full');
+        sidebar.classList.add('translate-x-0');
+        overlay.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden'); // предотвращает скролл при открытом меню
+    }
+
+    function closeMenu() {
+        sidebar.classList.remove('translate-x-0');
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    document.getElementById('menu-toggle').addEventListener('click', openMenu);
+    document.getElementById('menu-close').addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    // Закрытие по Esc
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
+            closeMenu();
+        }
+    });
+    
+    // Плавная прокрутка при переходе по якорям
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
+                    behavior: 'smooth'
+                });
+                
+                // Закрываем меню после перехода
+                closeMenu();
+            }
+        });
+    });
+</script>
+{% endblock %}
