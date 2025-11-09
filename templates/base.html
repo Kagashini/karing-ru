@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KaringX – Руководство по настройке</title>
-    <link rel="stylesheet" href="/static/css/core.min.css@47.css">
-    <link rel="stylesheet" href="/static/css/quill.core.min.css">
+    <title>Karing – Руководство по настройке</title>
+    <link rel="stylesheet" href="/static/css/images.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .tab-content {
@@ -14,7 +13,7 @@
             animation: fadeInUp 0.4s forwards ease-out;
         }
         @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
+           to { opacity: 1; transform: translateY(0); }
         }
 
         /* Анимация меню */
@@ -25,13 +24,13 @@
         }
         .menu-closed {
             opacity: 0;
-            visibility: hidden;
+            visibility:hidden;
             transform: translateX(-100%);
         }
         
         /* Стили для якорных ссылок */
         .scroll-mt-20 {
-            scroll-margin-top: 5rem;
+           scroll-margin-top: 5rem;
         }
         
         /* Стили для таблиц */
@@ -66,32 +65,20 @@
             padding: 0.125rem 0.25rem;
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         }
-        
-        /* Стили для изображений */
-        .content-image {
-            max-width: 100%;
-            height: auto;
-            margin: 1rem 0;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .content-image figcaption {
-            text-align: center;
-            font-size: 0.875rem;
-            color: #64748b;
-            margin-top: 0.5rem;
-        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
     {% block content %}{% endblock %}
     
-    <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/jquery.selection.min.js"></script>
-    <script src="/static/js/autosize.min.js"></script>
-    <script src="/static/js/load-image.all.min.js@1"></script>
-    <script src="/static/js/quill.min.js@10"></script>
-    <script src="/static/js/core.min.js@67"></script>
+    <!-- Lightbox контейнер -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-nav lightbox-prev">&#10094;</button>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+        <button class="lightbox-nav lightbox-next">&#10095;</button>
+    </div>
+    
+    <script src="/static/js/image-gallery.js"></script>
 </body>
 </html>
