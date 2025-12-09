@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request, HTTPException
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 import os
@@ -29,7 +29,7 @@ def get_last_commit_date():
     try:
         # Выполняем команду git для получения даты последнего коммита
         result = subprocess.run(
-            ['git', 'log', '-1', '--format=%cd', '--date=short'],
+            ['git', 'log', '-1', '--format=%cd', '--date=format:%d.%m.%Y'],
             capture_output=True,
             text=True,
             check=True
@@ -47,6 +47,10 @@ def get_template_context(request: Request):
         "current_year": datetime.now().year,
         "last_updated": get_last_commit_date()
     }
+
+@app.get('static/images/favicon.ico', include_in_schema=False)
+async def favicon():
+    return FileResponse("static/images/favicon.ico")
 
 @app.get("/{page_name}", response_class=HTMLResponse)
 async def show_page(request: Request, page_name: str):

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block header_title %}KaringX – Быстрая настройка iOS{% endblock %}
+{% block header_title %}Karing – Быстрая настройка iOS{% endblock %}
 
 {% block sidebar_nav %}
     <!-- Навигация по текущей странице -->
@@ -17,28 +17,40 @@
 <main class="max-w-4xl mx-auto p-4 pt-6">
     <article class="prose prose-lg max-w-none">
 
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-            <p class="text-gray-700"><strong>Karing</strong> для iOS - мощный инструмент для обхода ограничений и обеспечения безопасного интернет-соединения. В этом руководстве вы найдете пошаговую инструкцию по быстрой настройке Karing на устройствах с операционной системой iOS.</p>
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="text-gray-700"><em>Установка может идти как на чистую, так и поверх предыдущей версии программы. Но если вам нужно понизить версию – надо сделать бекап конфигурации в файл (копируются все настройки и ключи). Затем текущая версия удаляется, ставится более низкая, и импортируется файл бекапа. – см. </em><a href="/detailed_settings" class="text-blue-600 hover:underline"><strong><em>Подробнее о настройках в Karing (Часть II)</em></strong></a></p>
         </div>
         
         <h2 id="installation" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Установка Karing на iOS</h2>
-        
+
         <p class="mb-4">Для установки Karing на iOS у вас есть два варианта:</p>
         
         <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
             <h3 class="text-lg font-semibold text-gray-900 mb-2">Вариант 1: Установка из App Store (стабильная версия)</h3>
             <ol class="list-decimal list-inside space-y-2">
                 <li>Откройте App Store на вашем устройстве</li>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <a href="https://apps.apple.com/us/app/karing/id6472431552?platform=iphone" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Установить из App Store
+                    </a>
+                </div>
                 <li>Найдите приложение "Karing"</li>
                 <li>Нажмите "Получить" и дождитесь установки</li>
                 <li>Откройте приложение Karing</li>
             </ol>
         </div>
-        
+
+
+
         <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
             <h3 class="text-lg font-semibold text-gray-900 mb-2">Вариант 2: Установка из TestFlight (бета-версия)</h3>
             <ol class="list-decimal list-inside space-y-2">
-                <li>Перейдите по ссылке: <a href="https://testflight.apple.com/join/RLU59OsJ" target="_blank" class="text-blue-600 hover:underline">https://testflight.apple.com/join/RLU59OsJ</a></li>
+                <li>Откройте TestFlight на вашем устройстве</li>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <a href="https://testflight.apple.com/join/RLU59OsJ" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Установить из TestFlight
+                    </a>
+                </div>
                 <li>Установите TestFlight, если он еще не установлен</li>
                 <li>Установите Karing через TestFlight</li>
                 <li>Откройте приложение Karing</li>
@@ -54,21 +66,21 @@
         <p class="mb-4">При первом запуске Karing на iOS вы увидите экран с информацией о сборе данных. Ознакомьтесь с информацией и нажмите "Принять":</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-ios-1.png" alt="Первый запуск Karing на iOS" class="content-image">
+            <img src="/static/images/karing/ios/Karing8-ios-1.png" alt="Первый запуск Karing на iOS" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Первый запуск Karing на iOS</figcaption>
         </figure>
         
         <p class="mb-4">Далее вам будет предложено выбрать язык интерфейса:</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-ios-2.png" alt="Выбор языка интерфейса" class="content-image">
+            <img src="/static/images/karing/ios/Karing8-ios-2.png" alt="Выбор языка интерфейса" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Выбор языка интерфейса</figcaption>
         </figure>
         
         <p class="mb-4">Затем выберите страну или регион для автоматического применения правил перенаправления:</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-ios-3.png" alt="Выбор страны или региона" class="content-image">
+            <img src="/static/images/karing/ios/Karing8-ios-3.png" alt="Выбор страны или региона" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Выбор страны или региона</figcaption>
         </figure>
         
@@ -112,7 +124,7 @@
         </div>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-ios-4.png" alt="Подключение к VPN" class="content-image">
+            <img src="/static/images/karing/ios/Karing8-ios-4.png" alt="Подключение к VPN" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Подключение к VPN</figcaption>
         </figure>
         

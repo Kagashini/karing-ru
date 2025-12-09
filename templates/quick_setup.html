@@ -16,48 +16,6 @@
 <main class="max-w-4xl mx-auto p-4 pt-6">
     <article class="prose prose-lg max-w-none">
 
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-            <p class="text-gray-700"><strong>Karing</strong> - бесплатная мультиплатформенная программа, представляющая собой мощный и простой набор инструментов <strong>proxy</strong>. Официальная страница.</p>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">Программа в основном предназначена для работы с <strong>подписками</strong> <strong>VPN</strong> или <strong>"аэропортами"</strong> - (динамически обновляемый по специальной ссылке список серверов и правил маршрутизации). Поддерживает следующие форматы подписок и файлов конфигурации - <strong>Clash, V2ray (с пакетом поддержки), Stash, Karing, Sing-box, Shadowsocks, Sub, Github</strong>.<strong> </strong></p>
-            
-            <p class="mb-3"><strong>Karing</strong> также может работать с вашим собственным списком прокси-серверов.</p>
-            
-            <p class="mb-3">Приложение построено на <strong>модифицированном ядре sing-boх</strong>, поддерживает все современные протоколы - <strong>VMess, Vless, Trojan и Shadowsocks, ShadowsocksR, TUIC, Socks, Http, Hysteria, Hysteria2, WireGuard</strong> и др. Интерфейс английский / китайский / русский / фарси / арабский.</p>
-            
-            <p><strong>Совместимость - Android &gt;=8, Windows &gt;=10 x64, iOS &gt;=15 MacOs &gt;=12</strong></p>
-        </div>
-        
-        <figure class="mb-6 text-center">
-            <img src="/static/images/karing/logo.png" alt="Логотип Karing" class="content-image mx-auto rounded-lg">
-            <figcaption class="text-center text-gray-600 mt-2">Логотип Karing</figcaption>
-        </figure>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <a href="https://github.com/KaringX/karing/releases" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded text-center transition-colors">
-                Скачать для Андроид или Windows c GitHub
-            </a>
-            <a href="https://apps.apple.com/us/app/karing/id6472431552?platform=iphone" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded text-center transition-colors">
-                Установить для iOS, MacOS или AppleTV (tvOS)
-            </a>
-        </div>
-        
-        <div class="bg-gray-100 border-l-4 border-gray-500 p-4 mb-6">
-            <p class="text-gray-700 mb-2">В разработке: для Linux</p>
-            <p class="text-gray-700"><strong><em>Стабильная версия Karing 1.1.2.606 (latest) (31.03.25) В AppStore именно она.</em></strong></p>
-            <p class="text-gray-700"><strong><em>Last-release</em> <em>Karing 1.1.2.606 (31.03.25) - Рекомендуется ставить наиболее новый пререлиз. Новая версия ядра, исправлены недочёты, доработан интерфейс.</em></strong></p>
-        </div>
-        
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-            <p class="text-gray-700"><em>Скриншоты соответствуют как минимум ver 1.1.2.600</em></p>
-        </div>
-        
-        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
-            <p class="text-gray-700"><strong><em>Karing</em></strong><em> выглядит похоже на разных платформах. Наиболее функциональна она на Андроиде, поэтому описание и скриншоты будут с телефона. При существенных отличиях смотрите </em><a href="/windows_features" class="text-blue-600 hover:underline"><strong><em>Особенности Karing в Windows</em></strong></a><em>. Так сделано из-за ограничения на размер публикации в Telegram.</em></p>
-        </div>
-        
         <h2 id="quick-start" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Быстрый старт (Quick Start)</h2>
         
         <div class="bg-gray-100 p-3 rounded mb-4 inline-block">
@@ -78,21 +36,19 @@
             <p class="text-gray-700"><em>Пользователи </em><strong><em>iOS</em></strong><em>: программа может быть установлена из</em><a href="https://apps.apple.com/us/app/karing/id6472431552" target="_blank" class="text-blue-600 hover:underline"><em> </em><strong><em>AppStore</em></strong></a><strong><em> </em></strong><em> (стабильная версия) или из</em><a href="https://testflight.apple.com/join/RLU59OsJ" target="_blank" class="text-blue-600 hover:underline"><strong><em> TestFlight</em></strong></a><em> (свежая бета-версия). Но установить можно только что-то одно – эти версии перезаписывают друг друга. </em></p>
         </div>
         
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="text-gray-700"><em>Установка может идти как на чистую, так и поверх предыдущей версии программы. Но если вам нужно понизить версию – надо сделать бекап конфигурации в файл (копируются все настройки и ключи). Затем текущая версия удаляется, ставится более низкая, и импортируется файл бекапа. – см. </em><a href="/detailed_settings" class="text-blue-600 hover:underline"><strong><em>Подробнее о настройках в Karing (Часть II)</em></strong></a></p>
-        </div>
+
         
         <p class="mb-4">При первом запуске выводится <strong>информация о сборе данных:</strong></p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-1.png" alt="Screen 1" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-1.png" alt="Screen 1" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 1</figcaption>
         </figure>
         
         <p class="mb-4">Соглашаемся, и попадаем на второй экран - выбор <strong>Язык (Language)</strong><em> интерфейса:</em></p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-2.png" alt="Screen 2" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-2.png" alt="Screen 2" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 2</figcaption>
         </figure>
         
@@ -105,21 +61,21 @@
         <p class="mb-4">В дальнейшем эту настройку программы можно изменить через меню <strong>Настройки - Правила</strong>, или нажав на главном экране значок <strong>Правила</strong> <strong>перенаправления</strong> при выключенном соединении.</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-3.png" alt="Screen 3" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-3.png" alt="Screen 3" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 3</figcaption>
         </figure>
         
         <p class="mb-4">Следующий экран начальной настройки – <strong>Шаблоны личных правил (Preset [Custom Diversion Group].</strong></p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-4.png" alt="Screen 4" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-4.png" alt="Screen 4" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 4</figcaption>
         </figure>
         
         <p class="mb-4">Это не сами правила, а именно преднастроенные шаблоны. Если вы выберете переключателем какую-то строку, то соответствующее правило будет добавлено вам в ваш личный список правил. В дальнейшем вы сможете поменять у этого правила действие - блокировать, или направить напрямую, или направить в прокси. Таким образом будет создан алгоритм обработки этой категории трафика. Например, можно заблокировать часть рекламы. Или пустить весь трафик Телеграма через определенный прокси-сервер. Разумеется, к этой настройке можно вернуться позже. При первой настройке приложения используйте как можно меньше правил. Можно согласиться с выбором правил по умолчанию. Рекомендуемый пример начального выбора:</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-5.png" alt="Screen 5" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-5.png" alt="Screen 5" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 5</figcaption>
         </figure>
         
@@ -136,7 +92,7 @@
         <p class="mb-4">Нажимаем кнопку Далее, и видим окно переключения режима <strong>Новичок</strong>. Это очень полезный режим, если вы первый раз столкнулись с этой программой, или чувствуете себя неуверенно. Этот режим поможет вам сделать автоматически часть настроек, скроет от вас пока вам ненужное, и вы должны получить работающую программу. Советую его пока оставить.</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-6.png" alt="Screen 6" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-6.png" alt="Screen 6" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 6</figcaption>
         </figure>
         
@@ -155,14 +111,14 @@
         <p class="mb-4">Для добавления профиля необходимо скопировать ваш ключ или несколько ключей в буфер, и нажать на главном экране значок +. Или открыть меню <strong>Настройки</strong> (значок шестеренки) и выбрать пункты <strong>Добавить профиль – Импорт из буфера обмена</strong>.</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-7.png" alt="Screen 7" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-7.png" alt="Screen 7" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 7</figcaption>
         </figure>
         
         <p class="mb-4">Предположим, вы получили в боте список ключей:</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-8.png" alt="Screen 8" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-8.png" alt="Screen 8" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 8</figcaption>
         </figure>
         
@@ -179,7 +135,7 @@
         <p class="mb-4">  Затем нажмите <strong>галочку</strong> в правом верхнем углу - это добавит профиль в программу:</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-9.png" alt="Screen 9" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-9.png" alt="Screen 9" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 9</figcaption>
         </figure>
         
@@ -188,7 +144,7 @@
         </div>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-10.png" alt="Screen 10" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-10.png" alt="Screen 10" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 10</figcaption>
         </figure>
         
@@ -205,7 +161,7 @@
         <p class="mb-4">После успешного добавления профиля нужно войти в настройки и в пункте <strong>Правила</strong> – <strong>Правила перенаправления </strong>включить использование <strong>Личных правил</strong> (по умолчанию это отключено).</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-11.png" alt="Screen 11" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-11.png" alt="Screen 11" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 11</figcaption>
         </figure>
         
@@ -218,7 +174,7 @@
         </div>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-12.png" alt="Screen 12" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-12.png" alt="Screen 12" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 12</figcaption>
         </figure>
         
@@ -237,14 +193,14 @@
         <p class="mb-4">Теперь можно сделать первое включение программы, главным переключателем (слайдером). При первом запуске программа попросит дополнительно разрешение доступа к VPN – следует разрешить:</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-13.png" alt="Screen 13" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-13.png" alt="Screen 13" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 13</figcaption>
         </figure>
         
         <h2 id="enable-use" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Включайте и пользуйтесь&#33;</h2>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-14.png" alt="Screen 14" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-14.png" alt="Screen 14" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 14</figcaption>
         </figure>
         
@@ -267,7 +223,7 @@
         </div>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-15.png" alt="Screen 15" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-15.png" alt="Screen 15" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 15</figcaption>
         </figure>
         
@@ -276,7 +232,7 @@
         </div>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-16.png" alt="Screen 16" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-16.png" alt="Screen 16" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 16</figcaption>
         </figure>
         
@@ -285,7 +241,7 @@
         </div>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-17.png" alt="Screen 17" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-17.png" alt="Screen 17" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 17</figcaption>
         </figure>
         
@@ -296,7 +252,7 @@
         </div>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-18.png" alt="Screen 18" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-18.png" alt="Screen 18" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 18</figcaption>
         </figure>
         
@@ -317,7 +273,7 @@
         <p class="mb-4">Значок<strong> Karing </strong>можно добавить в шторку быстрого доступа: </p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-19.png" alt="Screen 19" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-19.png" alt="Screen 19" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 19</figcaption>
         </figure>
         
@@ -328,7 +284,7 @@
         <p class="mb-4">Полезно дать программе дополнительные разрешения:</p>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-20.png" alt="Screen 20" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-20.png" alt="Screen 20" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 20</figcaption>
         </figure>
         
@@ -341,7 +297,7 @@
         </div>
         
         <figure class="mb-6">
-            <img src="/static/images/karing/Karing8-andr-21.png" alt="Screen 21" class="content-image">
+            <img src="/static/images/karing/Karing8-andr-21.png" alt="Screen 21" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Screen 21</figcaption>
         </figure>
         
@@ -377,7 +333,7 @@
         </div>
         
         <figure class="mb-6 text-center">
-            <img src="/static/images/karing/mascot-3.jpg" alt="Mascot Karing" class="content-image mx-auto rounded-lg">
+            <img src="/static/images/karing/mascot-3.jpg" alt="Mascot Karing" class="w-3/5 mx-auto content-image rounded-lg">
             <figcaption class="text-center text-gray-600 mt-2">Mascot Karing</figcaption>
         </figure>
         
