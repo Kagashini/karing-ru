@@ -38,7 +38,17 @@
                 <li>После завершения установки запустите Karing</li>
             </ol>
         </div>
-        
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+            <p class="text-gray-700">В отличие от Android и iOS Karing позволяет масштабировать окно для удобства использования.</p>
+        </div>
+
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+            <p class="mb-3">Для корректной работы Karing необходимо скачивать и устанавливать последний релиз. Во избежание проблем с работой программы рекомендуется запускать от имени администратора. Клиент обновляется очень часто, после установки вся информация по обновлению доступна в самом приложении.</p>
+            <p class="mb-3">Минимальная версия <strong>Windows 10 х64</strong>. Предыдущие версии ОС не поддерживаются и не будут поддерживаться. Установить на них программу можно, но она не заработает.</p>
+            <p class="mb-3">При установке на Windows процесс установки блокируется <strong>Защитником Windows</strong>, так как программа не имеет цифровой подписи (как и большинство программ на GitHub). Нажмите <strong>"Подробнее" - "Выполнить в любом случае"</strong> для установки программы. Какой-либо риск для компьютера при запуске и работе отсутствует.</p>
+        </div>
+
         <h2 id="first-run" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Первый запуск программы</h2>
         
         <p class="mb-4">При первом запуске Karing на Windows вы увидите экран с информацией о сборе данных. Ознакомьтесь с информацией и нажмите "Принять" (Accept & Continue):</p>
@@ -68,24 +78,17 @@
             <figcaption class="text-center text-gray-600 mt-2">Выбор страны или региона</figcaption>
         </figure>
 
-        <p class="mb-4">Далее TV настройки, необходимые меню следует выбрать, если приложение будет использоваться на телевизоре.</p>
-
-        <figure class="mb-6">
-            <img src="/static/images/karing/windows/Karing-tv.png" alt="Выбор страны или региона" class="w-3/5 mx-auto content-image">
-            <figcaption class="text-center text-gray-600 mt-2">Выбор страны или региона</figcaption>
-        </figure>
-
         <p class="mb-4">Следующий экран начальной настройки – <strong>Шаблоны личных правил (Preset [Custom Diversion Group]).</strong></p>
 
         <figure class="mb-6">
-            <img src="/static/images/karing/windows/Karing-rules1.png" alt="Шаблоны для личных правил" class="w-3/5 mx-auto content-image">
+            <img src="/static/images/karing/windows/Karing-ruletemplates1.png" alt="Шаблоны для личных правил" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Шаблоны для личных правил</figcaption>
         </figure>
 
         <p class="mb-4">Это не сами правила, а именно преднастроенные шаблоны. Если вы выберете переключателем какую-то строку, то соответствующее правило будет добавлено вам в ваш личный список правил. В дальнейшем вы сможете поменять у этого правила действие - блокировать, или направить напрямую, или направить в прокси. Таким образом будет создан алгоритм обработки этой категории трафика. Например, можно заблокировать часть рекламы. Или пустить весь трафик Телеграма через определенный прокси-сервер. Разумеется, к этой настройке можно вернуться позже. При первой настройке приложения используйте как можно меньше правил. Можно согласиться с выбором правил по умолчанию. Рекомендуемый пример начального выбора:</p>
 
         <figure class="mb-6">
-            <img src="/static/images/karing/windows/Karing-rules2.png" alt="Шаблоны для личных правил" class="w-3/5 mx-auto content-image">
+            <img src="/static/images/karing/windows/Karing-ruletemplates2.png" alt="Шаблоны для личных правил" class="w-3/5 mx-auto content-image">
             <figcaption class="text-center text-gray-600 mt-2">Шаблоны для личных правил</figcaption>
         </figure>
 
@@ -151,7 +154,7 @@
         <p class="mb-4">После появления ключа (ссылки) обязательно дайте название профилю в строке <strong>"Примечание"</strong>.</p>
 
         <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-            <p class="text-gray-700"><strong><em>Примечание. </em></strong><em>Название лучше давать понятное, удобно с датой получения ключей</em>.</p>
+            <p class="text-gray-700"><strong><em>Важно. </em></strong><em>Название лучше давать понятное, удобно с датой получения ключей</em>.</p>
         </div>
 
         <p class="mb-4">  Затем нажмите <strong>галочку</strong> в правом верхнем углу - это добавит профиль в программу:</p>
@@ -161,7 +164,7 @@
             <figcaption class="text-center text-gray-600 mt-2">Добавление подписки</figcaption>
         </figure>
 
-        <p class="mb-4">После успешного добавления профиля нужно войти в настройки и в пункте <strong>Правила</strong> – <strong>Правила перенаправления </strong>включить использование <strong>Личных правил</strong> (по умолчанию это отключено).</p>
+        <p class="mb-4">После успешного добавления профиля нужно войти в настройки и в пункте <strong>Правила</strong> – <strong>Правила перенаправления </strong>включить использование <strong>Личных правил</strong> (если не включили ранее).</p>
 
         <figure class="mb-6">
             <img src="/static/images/karing/windows/Karing-rules3.png" alt="Правила перенаправления" class="w-3/5 mx-auto content-image">
