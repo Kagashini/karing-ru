@@ -1,4 +1,4 @@
-# ManualProxySite
+# Karing Manual RUS
 
 Это руководство по настройке и использованию Karing - многофункционального VPN-клиента.
 
