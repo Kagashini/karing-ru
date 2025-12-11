@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karing – Руководство по настройке</title>
+    <link rel="icon" href="./static/images/favicon.ico">
+    <link rel="stylesheet" href="./static/css/images.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tab-content {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.4s forwards ease-out;
+        }
+        @keyframes fadeInUp {
+           to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Анимация меню */
+        .menu-open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .menu-closed {
+            opacity: 0;
+            visibility:hidden;
+            transform: translateX(-100%);
+        }
+        
+        /* Стили для якорных ссылок */
+        .scroll-mt-20 {
+           scroll-margin-top: 5rem;
+        }
+        
+        /* Стили для таблиц */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+        
+        /* Стили для блоков кода */
+        pre {
+            background-color: #f1f5f9;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Перенос длинных строк */
+            word-wrap: break-word; /* Для старых браузеров */
+        }
+        
+        code {
+            background-color: #f1f5f9;
+            border-radius: 0.25rem;
+            padding: 0.125rem 0.25rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Шапка с гамбургером -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="px-4 py-3 flex items-center">
+            <!-- Гамбургер-кнопка -->
+            <button id="menu-toggle"
+                    class="text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-1 mr-3"
+                    aria-label="Открыть меню">
+                <!-- Резервный текст + SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     width="28"
+                     height="28"
+                     fill="currentColor"
+                     class="block">
+                    <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+                </svg>
+                <!-- На случай, если SVG не загрузится -->
+                <span aria-hidden="true" style="font-size: 24px; line-height: 1; display: none;">☰</span>
+            </button>
+            <h1 class="text-xl font-bold text-gray-900">Karing – Быстрая настройка Android</h1>
+        </div>
+    </header>
+
+    <!-- Боковое меню (выдвижное) -->
+    <div id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-white shadow-lg p-4 transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-lg font-semibold">Навигация</span>
+            <button id="menu-close" class="text-gray-600 hover:text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="space-y-1">
+            
+                <a href="./quick_setup_windows.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - Быстрая настройка Windows
+                </a>
+                
+            
+                <a href="./quick_setup_android.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           bg-blue-100 text-blue-700 ">
+                    Karing - Быстрая настройка Android
+                </a>
+                
+                    <div class="ml-4">
+                        
+    <a href="./index.html"
+       class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Главная</a>
+    <!-- Навигация по текущей странице -->
+    <div class="font-bold text-gray-900 py-2">На этой странице</div>
+    <a href="#installation" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Установка</a>
+    <a href="#first-run" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Первый запуск</a>
+    <a href="#adding-profile" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Добавление профиля</a>
+    <a href="#connection" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Подключение</a>
+    <a href="#settings" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Настройки Android</a>
+
+                    </div>
+                
+            
+                <a href="./quick_setup_ios.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - Быстрая настройка iOS
+                </a>
+                
+            
+                <a href="./detailed_settings.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Подробнее о настройках
+                </a>
+                
+            
+                <a href="./windows_features.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Особенности Karing в Windows
+                </a>
+                
+            
+                <a href="./routing_rules.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - маршрутизация и правила
+                </a>
+                
+            
+                <a href="./dns_explained.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - что такое DNS и как с ним бороться
+                </a>
+                
+            
+        </nav>
+    </div>
+
+    <!-- Оверлей -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-30 z-30 hidden" onclick="closeMenu()"></div>
+
+    <div class="flex-grow">
+        
+<!-- Основной контент -->
+<main class="max-w-4xl mx-auto p-4 pt-6">
+    <article class="prose prose-lg max-w-none">
+
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="text-gray-700"><em>Установка может идти как на чистую, так и поверх предыдущей версии программы. Но если вам нужно понизить версию – надо сделать бекап конфигурации в файл (копируются все настройки и ключи). Затем текущая версия удаляется, ставится более низкая, и импортируется файл бекапа. – см. </em><a href="./detailed_settings.html" class="text-blue-600 hover:underline"><strong><em>Подробнее о настройках в Karing (Часть II)</em></strong></a></p>
+        </div>
+        
+        <h2 id="installation" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Установка Karing на Android</h2>
+        
+        <p class="mb-4">Для установки Karing на Android выполните следующие шаги:</p>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-4">
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Перейдите в Google Play Store или на официальную страницу загрузки Karing: </li>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Установить с официальной страницы
+                    </a>
+                </div>
+                <li>Скачайте приложение Karing</li>
+                <li>Установите приложение, следуя инструкциям на экране</li>
+                <li>Откройте приложение Karing</li>
+            </ol>
+        </div>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <p class="text-gray-700"><strong>Для пользователей Xiaomi/MIUI:</strong> Если установка не удается, включите режим полета (без подключения к Интернету) перед установкой и отключите усиленную защиту Security Guard.</p>
+        </div>
+        
+        <h2 id="first-run" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Первый запуск программы</h2>
+        
+        <p class="mb-4">При первом запуске Karing на Android вы увидите экран с информацией о сборе данных. Ознакомьтесь с информацией и нажмите "Принять" (Accept & Continue):</p>
+        
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-terms.jpg" alt="Первый запуск Karing на Android" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Первый запуск Karing на Android</figcaption>
+        </figure>
+        
+        <p class="mb-4">Далее вам будет предложено выбрать <strong>Язык (Language)</strong><em> интерфейса:</em>:</p>
+        
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-language.jpg" alt="Выбор языка интерфейса" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Выбор языка интерфейса</figcaption>
+        </figure>
+        
+         <p class="mb-4">Следующий экран - <em>выбор </em><strong>Страна или регион<em> </em>(Country Or Region<em>)</em></strong><em> - страны для автоматического применения правил перенаправления. </em>Очень важно правильно выбрать свою страну, поскольку это определяет, какие соединения пойдут <strong>через прокси</strong>, а какие <strong>напрямую.</strong> В частности, если вы в России - при выборе <strong>ru</strong> - почти все заблокированные сайты и все иностранные пойдут через прокси и окажутся разблокированными, а не заблокированные пройдут напрямую, в обход прокси.</p>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <p class="text-gray-700"><em>Следовательно, для правильной работы с правилами </em><strong><em>ru,</em></strong><em> находясь в другой стране, надо выбрать страну пребывания, а не Российскую федерацию. Иначе при попытке попасть на сайт, например</em><strong><em>, gosuslugi.ru</em></strong><em> из-за границы через ключ в Рунет, ваш запрос к сайту пойдёт напрямую (в обход прокси) и не сработает&#33; </em></p>
+        </div>
+
+        <p class="mb-4">В дальнейшем эту настройку программы можно изменить через меню <strong>Настройки - Правила</strong>, или нажав на главном экране значок <strong>Правила</strong> <strong>перенаправления</strong> при выключенном соединении.</p>
+        
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-country.jpg" alt="Выбор страны или региона" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Выбор страны или региона</figcaption>
+        </figure>
+
+        <p class="mb-4">Далее TV настройки, необходимые меню следует выбрать, если приложение будет использоваться на телевизоре.</p>
+
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-tv.jpg" alt="TV настройки" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">TV настройки</figcaption>
+        </figure>
+
+        <p class="mb-4">Следующий экран начальной настройки – <strong>Шаблоны личных правил (Preset [Custom Diversion Group]).</strong></p>
+
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-rules1.jpg" alt="Шаблоны для личных правил" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Шаблоны для личных правил</figcaption>
+        </figure>
+
+        <p class="mb-4">Это не сами правила, а именно преднастроенные шаблоны. Если вы выберете переключателем какую-то строку, то соответствующее правило будет добавлено вам в ваш личный список правил. В дальнейшем вы сможете поменять у этого правила действие - блокировать, или направить напрямую, или направить в прокси. Таким образом будет создан алгоритм обработки этой категории трафика. Например, можно заблокировать часть рекламы. Или пустить весь трафик Телеграма через определенный прокси-сервер. Разумеется, к этой настройке можно вернуться позже. При первой настройке приложения используйте как можно меньше правил. Можно согласиться с выбором правил по умолчанию. Рекомендуемый пример начального выбора:</p>
+
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-rules2.jpg" alt="Шаблоны для личных правил" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Шаблоны для личных правил</figcaption>
+        </figure>
+
+        <p class="mb-4">Показанный на скрине выбор позволяет заблокировать часть рекламы, и отдельно перенаправить запросы к AI, например через другой прокси-сервер. <strong>Очень важным правилом, которое надо обязательно добавить</strong>, является <strong>GFW</strong>. Это правило будет содержать списки заблокированных ресурсов, как со стороны региональной цензуры, так и со стороны самих сайтов (в зависимости от указанной в настройке страны), и разблокирует их, перенаправляя трафик через установленное соединение.</p>
+
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+            <p class="text-gray-700">C правилом <strong>GFW</strong> есть одна тонкость. Если после окончания настройки вы решите сменить страну настроек, то содержимое этого правила не изменится, и будет относиться к предыдущей стране. Вам надо <strong>удалить </strong>это правило, на странице Личные правила, и <strong>снова создать</strong> его на основе шаблонов правил. Эти шаблоны для разных стран разные, и даже правила <strong>GFW</strong> там может не быть.</p>
+        </div>
+
+        <p class="mb-4">Подробнее использование правил описано в отдельной статье - </p>
+
+        <p class="mb-6"><a href="./routing_rules.html" class="text-blue-600 hover:underline"><strong>Karing - маршрутизация и правила</strong></a><strong>.</strong></p>
+
+        <p class="mb-4">Нажимаем кнопку Далее, и видим окно переключения режима <strong>Новичок</strong>. Это очень полезный режим, если вы первый раз столкнулись с этой программой, или чувствуете себя неуверенно. Этот режим поможет вам сделать автоматически часть настроек, скроет от вас пока вам ненужное, и вы должны получить работающую программу. Советую его пока оставить.</p>
+
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-novice.jpg" alt="Настройки" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Настройки новичка</figcaption>
+        </figure>
+
+        <h2 id="adding-profile" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Добавление профиля</h2>
+
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+            <p class="mb-3"><strong>Karing</strong> оперирует не отдельными серверами или ключами, а именованными профилями. Каждый профиль может содержать <strong>один,</strong> или <strong>много серверов,</strong> или быть <strong>подпиской</strong> или <strong>"аэропортом"</strong> (загружаемый по специальной ссылке динамически меняющийся список серверов, или ключей, а иногда и дополнительные правила маршрутизации). Внутри профиля можно отключать отдельные серверы. Профиль можно включить, а можно отключить, не удаляя. Для включенных профилей можно включить <strong>автовыбор сервера</strong>, что очень удобно. Недостаток такой системы - в готовый профиль сложно добавить сервер (ключ). Но удалить отдельный сервер можно (если это не подписка, а самостоятельно созданный локальный профиль) – длительное нажатие на имя сервера откроет дополнительное подменю с функциями редактирования и удаления сервера. <strong>Профиль желательно создавать сразу с нужными серверами. </strong>Неудачно созданный профиль можно удалить. Также можно объединить несколько профилей в один (подписок это не касается). Экспорт отдельного ключа из профиля или подписки возможен в QR-код в формате ссылки ulink://…</p>
+        </div>
+
+        <p class="mb-4">Для добавления профиля необходимо скопировать ваш ключ или несколько ключей в буфер, после этого если вы остались в меню <strong>Настройки</strong>, то необходимо выбрать пункты <strong>Добавить профиль</strong>.</p>
+
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-settings.jpg" alt="Настройки" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Настройки</figcaption>
+        </figure>
+
+        <p class="mb-4">В другом случае, если вы уже находитесь на главном экране, то нажать кнопку <strong>+ Добавить профиль</strong>.</p>
+
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-mainscreenprofile.jpg" alt="Добавить профиль" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Добавить профиль</figcaption>
+        </figure>
+
+        <p class="mb-4">Теперь мы можем добавить профиль 2 способами.</p>
+
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Способ 1: Импорт из буфера обмена</h3>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Убедитесь, что ваш ключ (ссылка) скопированы в буфер обмена</li>
+                <li>Выберите "Импорт из буфера обмена"</li>
+                <li>Введите название профиля</li>
+                <li>Нажмите "Сохранить" (галочка в правом верхнем углу)</li>
+            </ol>
+        </div>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Способ 2: Сканирование QR-кода</h3>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Выберите "Сканировать QR-код"</li>
+                <li>Наведите камеру на QR-код с ключом</li>
+                <li>Введите название профиля</li>
+                <li>Нажмите "Сохранить"</li>
+            </ol>
+        </div>
+
+        <p class="mb-4">После появления ключа (ссылки) обязательно дайте название профилю в строке <strong>"Примечание"</strong>.</p>
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <p class="text-gray-700"><strong><em>Важно. </em></strong><em>Название лучше давать понятное, удобно с датой получения ключей</em>.</p>
+        </div>
+
+        <p class="mb-4">  Затем нажмите <strong>галочку</strong> в правом верхнем углу - это добавит профиль в программу:</p>
+
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-addsubscription.jpg" alt="Добавление подписки" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Добавление подписки</figcaption>
+        </figure>
+
+        <p class="mb-4">После успешного добавления профиля нужно войти в настройки и в пункте <strong>Правила</strong> – <strong>Правила перенаправления </strong>включить использование <strong>Личных правил</strong> (если не включили ранее).</p>
+
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-rules3.jpg" alt="Правила перенаправления" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Правила перенаправления</figcaption>
+        </figure>
+
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="text-gray-700">При включении у вас заработают и правила блокировки, если вы их добавили, и правило <strong>GFW</strong> для заблокированных сайтов.</p>
+        </div>
+
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <p class="text-gray-700"><strong>На этом базовые настройки программы закончены.</strong> Возвращаемся на главный экран.</p>
+        </div>
+
+        <h2 id="connection" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Подключение к VPN</h2>
+        
+        <p class="mb-4">После добавления профиля вы можете подключиться к VPN:</p>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-4">
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Убедитесь, что профиль активен (переключатель включен)</li>
+                <li>Нажмите на кнопку подключения внизу экрана</li>
+            </ol>
+        </div>
+        
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-mainscreen.jpg" alt="Подключение к VPN" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Подключение к VPN</figcaption>
+        </figure>
+
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-4">
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Убедитесь, что профиль активен (переключатель включен)</li>
+                <li>Нажмите на кнопку подключения внизу экрана</li>
+                <li>При первом подключении разрешите использование VPN в системе</li>
+                <li>Дождитесь установления соединения</li>
+            </ol>
+        </div>
+
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-mainscreenenable.jpg" alt="Подключение к VPN" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Подключение к VPN</figcaption>
+        </figure>
+
+        <p class="mb-4">После успешного подключения вы увидите информацию о выбранном сервере и задержке.</p>
+        
+        <h2 id="settings" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Дополнительные настройки Android</h2>
+        
+        <p class="mb-4">На Android Karing может дополнительно настраиваться для оптимальной работы:</p>
+        
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Разрешения приложения</h3>
+        
+        <p class="mb-4">Для корректной работы рекомендуется предоставить приложению следующие разрешения:</p>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-4">
+            <ul class="list-disc list-inside space-y-2">
+                <li><strong>Уведомления:</strong> Позволяет получать уведомления о состоянии подключения</li>
+                <li><strong>Игнорирование оптимизации батареи:</strong> Предотвращает остановку приложения в фоновом режиме</li>
+            </ul>
+        </div>
+        
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing8-andr-20.png" alt="Настройки разрешений" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Настройки разрешений</figcaption>
+        </figure>
+        
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Виджет в шторке уведомлений</h3>
+        
+        <p class="mb-4">Вы можете добавить виджет Karing в шторку уведомлений для быстрого управления подключением:</p>
+        
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing8-andr-19.png" alt="Виджет в шторке уведомлений" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Виджет в шторке уведомлений</figcaption>
+        </figure>
+        
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Выбор приложений для проксирования</h3>
+        
+        <p class="mb-4">Вы можете выбрать отдельные приложения для проксирования. Для этого переходим в <strong>Настройки - TUN:</strong></p>
+
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-settingstun.jpg" alt="Настройки - TUN" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Настройки - TUN</figcaption>
+        </figure>
+
+        <p class="mb-4">После выбора появится переключатель самого <strong>TUN</strong> и <strong>Проксируемые приложения</strong></p>
+
+        <figure class="mb-6">
+            <img src="./static/images/karing/android/Karing-TUN.jpg" alt="TUN" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">TUN</figcaption>
+        </figure>
+
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-4">
+            <p class="mb-4">Далее выбираем режим белого списка с помощью включения переключателя или чёрного, оставляя его выключенным.</p>
+            <ul class="list-disc list-inside space-y-2">
+                <li><strong>Режим белого списка:</strong> Только выбранные приложения будут использовать VPN</li>
+                <li><strong>Режим черного списка:</strong> Все приложения, кроме выбранных, будут использовать VPN</li>
+            </ul>
+            <figure class="mb-6">
+                <img src="./static/images/karing/android/Karing-proxyapps.jpg" alt="Проксируемые приложения" class="w-3/5 mx-auto content-image">
+                <figcaption class="text-center text-gray-600 mt-2">Проксируемые приложения</figcaption>
+            </figure>
+        </div>
+    </article>
+</main>
+
+<script>
+    // Плавная прокрутка при переходе по якорям
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
+                    behavior: 'smooth'
+                });
+                
+                // Закрываем меню после перехода
+                closeMenu();
+            }
+        });
+    });
+</script>
+
+    </div>
+
+    <!-- Футер -->
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-4xl mx-auto py-6 px-4 text-center text-gray-600">
+            <p>© 2025 Karing. Все права защищены.</p>
+            <p class="mt-2 text-sm">Последнее редактирование: 11.12.2025</p>
+        </div>
+    </footer>
+    
+    <!-- Lightbox контейнер -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-nav lightbox-prev">&#10094;</button>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+        <button class="lightbox-nav lightbox-next">&#10095;</button>
+    </div>
+    
+    <script src="./static/js/image-gallery.js"></script>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // предотвращает скролл при открытом меню
+        }
+
+        function closeMenu() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.getElementById('menu-toggle').addEventListener('click', openMenu);
+        document.getElementById('menu-close').addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Закрытие по Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>

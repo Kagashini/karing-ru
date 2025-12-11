@@ -13,7 +13,7 @@
         <h1 class="text-3xl font-bold text-gray-900 mb-6">Добро пожаловать в руководство по Karing</h1>
         
         <figure class="mb-4 text-center">
-            <img src="/static/images/karing/logo.png" alt="Логотип Karing" class="block mx-auto">
+            <img src="./static/images/karing/logo.png" alt="Логотип Karing" class="block mx-auto">
         </figure>
 
         <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r">
@@ -38,7 +38,7 @@
                 {% for link in nav_links %}
                 <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                        <a href="{{ link.path }}" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        <a href="{{ link.path }}.html" class="text-blue-600 hover:text-blue-800 hover:underline">
                             {{ link.title }}
                         </a>
                     </h3>

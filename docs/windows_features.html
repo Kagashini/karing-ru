@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karing – Руководство по настройке</title>
+    <link rel="icon" href="./static/images/favicon.ico">
+    <link rel="stylesheet" href="./static/css/images.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tab-content {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.4s forwards ease-out;
+        }
+        @keyframes fadeInUp {
+           to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Анимация меню */
+        .menu-open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .menu-closed {
+            opacity: 0;
+            visibility:hidden;
+            transform: translateX(-100%);
+        }
+        
+        /* Стили для якорных ссылок */
+        .scroll-mt-20 {
+           scroll-margin-top: 5rem;
+        }
+        
+        /* Стили для таблиц */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+        
+        /* Стили для блоков кода */
+        pre {
+            background-color: #f1f5f9;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Перенос длинных строк */
+            word-wrap: break-word; /* Для старых браузеров */
+        }
+        
+        code {
+            background-color: #f1f5f9;
+            border-radius: 0.25rem;
+            padding: 0.125rem 0.25rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Шапка с гамбургером -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="px-4 py-3 flex items-center">
+            <!-- Гамбургер-кнопка -->
+            <button id="menu-toggle"
+                    class="text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-1 mr-3"
+                    aria-label="Открыть меню">
+                <!-- Резервный текст + SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     width="28"
+                     height="28"
+                     fill="currentColor"
+                     class="block">
+                    <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+                </svg>
+                <!-- На случай, если SVG не загрузится -->
+                <span aria-hidden="true" style="font-size: 24px; line-height: 1; display: none;">☰</span>
+            </button>
+            <h1 class="text-xl font-bold text-gray-900">Особенности Karing в Windows</h1>
+        </div>
+    </header>
+
+    <!-- Боковое меню (выдвижное) -->
+    <div id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-white shadow-lg p-4 transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-lg font-semibold">Навигация</span>
+            <button id="menu-close" class="text-gray-600 hover:text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="space-y-1">
+            
+                <a href="./quick_setup_windows.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - Быстрая настройка Windows
+                </a>
+                
+            
+                <a href="./quick_setup_android.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - Быстрая настройка Android
+                </a>
+                
+            
+                <a href="./quick_setup_ios.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - Быстрая настройка iOS
+                </a>
+                
+            
+                <a href="./detailed_settings.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Подробнее о настройках
+                </a>
+                
+            
+                <a href="./windows_features.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           bg-blue-100 text-blue-700 ">
+                    Особенности Karing в Windows
+                </a>
+                
+                    <div class="ml-4">
+                        
+    <!-- Навигация по текущей странице -->
+    <div class="font-bold text-gray-900 py-2">На этой странице</div>
+    <a href="#system-proxy" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Системный прокси</a>
+    <a href="#tun-mode" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Режим TUN</a>
+    <a href="#app-proxy" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Проксирование приложений</a>
+    <a href="#system-tray" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Интеграция с системным треем</a>
+    <a href="#autostart" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Автозапуск</a>
+
+                    </div>
+                
+            
+                <a href="./routing_rules.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - маршрутизация и правила
+                </a>
+                
+            
+                <a href="./dns_explained.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - что такое DNS и как с ним бороться
+                </a>
+                
+            
+        </nav>
+    </div>
+
+    <!-- Оверлей -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-30 z-30 hidden" onclick="closeMenu()"></div>
+
+    <div class="flex-grow">
+        
+<!-- Основной контент -->
+<main class="max-w-4xl mx-auto p-4 pt-6">
+    <article class="prose prose-lg max-w-none">
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <p class="text-gray-700">Karing для Windows имеет ряд особенностей по сравнению с мобильными версиями. В этой статье рассмотрены основные отличия и специфические настройки для операционной системы Windows.</p>
+        </div>
+        
+        <h2 id="system-proxy" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Системный прокси</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">В Windows Karing по умолчанию работает в режиме системного прокси. Это означает, что программа автоматически настраивает системные параметры прокси в Windows, и все приложения, поддерживающие системные настройки прокси, будут использовать Karing для доступа в интернет.</p>
+            
+            <p>Этот режим имеет как преимущества, так и недостатки:</p>
+        </div>
+        
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Преимущества системного прокси:</h3>
+            <ul class="list-disc list-inside space-y-2">
+                <li>Простота настройки - не требует дополнительных действий от пользователя</li>
+                <li>Автоматическая настройка для большинства приложений</li>
+                <li>Низкое энергопотребление</li>
+                <li>Минимальная нагрузка на систему</li>
+            </ul>
+        </div>
+        
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Недостатки системного прокси:</h3>
+            <ul class="list-disc list-inside space-y-2">
+                <li>Не все приложения используют системные настройки прокси</li>
+                <li>Невозможность тонкой настройки маршрутизации для отдельных приложений</li>
+                <li>Ограниченные возможности по сравнению с режимом TUN</li>
+            </ul>
+        </div>
+        
+        <h2 id="tun-mode" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Режим TUN</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Для более полного контроля над трафиком в Karing для Windows доступен режим TUN (Tunnel). Этот режим работает аналогично мобильным версиям Karing и перехватывает весь трафик системы через виртуальный сетевой адаптер.</p>
+            
+            <p>Чтобы включить режим TUN:</p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Откройте настройки Karing</li>
+                <li>Перейдите в раздел "Основные настройки"</li>
+                <li>Найдите параметр "Режим TUN" и включите его</li>
+                <li>При первом включении может потребоваться установка драйвера TUN</li>
+            </ol>
+        </div>
+        
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Преимущества режима TUN:</h3>
+            <ul class="list-disc list-inside space-y-2">
+                <li>Перехват всего трафика системы без исключений</li>
+                <li>Возможность тонкой настройки маршрутизации</li>
+                <li>Полная совместимость с мобильными версиями</li>
+                <li>Работа с приложениями, игнорирующими системные настройки прокси</li>
+            </ul>
+        </div>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Особенности режима TUN:</h3>
+            <ul class="list-disc list-inside space-y-2">
+                <li>Требует установки драйвера виртуального адаптера</li>
+                <li>Повышенное энергопотребление</li>
+                <li>Более высокая нагрузка на систему</li>
+                <li>Может конфликтовать с антивирусами и брандмауэрами</li>
+            </ul>
+        </div>
+        
+        <h2 id="app-proxy" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Проксирование приложений</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">В отличие от мобильных версий Karing, в Windows нет встроенной функции выбора приложений для проксирования. Однако эту задачу можно решить с помощью правил маршрутизации.</p>
+            
+            <p>Для настройки проксирования отдельных приложений:</p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Откройте настройки Karing</li>
+                <li>Перейдите в раздел "Правила" → "Личные правила"</li>
+                <li>Создайте новое правило</li>
+                <li>Выберите тип правила "Процесс"</li>
+                <li>Укажите имя процесса (например, chrome.exe)</li>
+                <li>Настройте действие (прокси/напрямую/блокировать)</li>
+            </ol>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <p class="text-gray-700">Более подробную информацию о настройке правил маршрутизации вы можете найти в статье <a href="./routing_rules.html" class="text-blue-600 hover:underline">Karing - маршрутизация и правила</a>.</p>
+        </div>
+        
+        <h2 id="system-tray" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Интеграция с системным треем</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Karing для Windows полностью интегрирован с системным треем Windows. При сворачивании окно программы исчезает, а значок появляется в системном трее.</p>
+            
+            <p>Через контекстное меню системного трея можно:</p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <ul class="list-disc list-inside space-y-2">
+                <li>Быстро включать/отключать подключение</li>
+                <li>Переключаться между профилями</li>
+                <li>Открывать главное окно программы</li>
+                <li>Переходить к настройкам</li>
+                <li>Выходить из программы</li>
+            </ul>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p>Для настройки поведения в системном трее:</p>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Откройте настройки Karing</li>
+                <li>Перейдите в раздел "Основные настройки"</li>
+                <li>Найдите параметры "Сворачивать в трей" и "Закрывать в трей"</li>
+                <li>Настройте по своему усмотрению</li>
+            </ol>
+        </div>
+        
+        <h2 id="autostart" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Автозапуск</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Karing может автоматически запускаться при старте системы Windows. Это удобно, если вы постоянно используете программу и хотите, чтобы она была готова к работе сразу после включения компьютера.</p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p>Для настройки автозапуска:</p>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Откройте настройки Karing</li>
+                <li>Перейдите в раздел "Основные настройки"</li>
+                <li>Найдите параметр "Автозапуск" и включите его</li>
+            </ol>
+        </div>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <p class="text-gray-700"><strong>Важно:</strong> При включении автозапуска Karing будет запускаться в свернутом виде в системном трее. Если вы хотите, чтобы программа автоматически подключалась при запуске, включите соответствующую опцию в настройках подключения.</p>
+        </div>
+        
+        <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Дополнительные возможности Windows</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Работа с несколькими мониторами</h3>
+            <p class="mb-3">Karing корректно работает с конфигурациями с несколькими мониторами. Все всплывающие окна и уведомления отображаются на основном мониторе.</p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Поддержка высокого DPI</h3>
+            <p class="mb-3">Интерфейс Karing корректно масштабируется на экранах с высоким DPI, обеспечивая четкое отображение элементов управления.</p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Интеграция с Windows Defender</h3>
+            <p>В некоторых случаях Windows Defender может блокировать установку драйвера TUN. Если это произошло, добавьте папку установки Karing в исключения антивируса.</p>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+            <p class="text-gray-700">Более подробную информацию о настройках Karing вы можете найти в статье <a href="./detailed_settings.html" class="text-blue-600 hover:underline">Karing – подробнее о настройках (Часть II)</a>.</p>
+        </div>
+    </article>
+</main>
+
+<script>
+    // Плавная прокрутка при переходе по якорям
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
+                    behavior: 'smooth'
+                });
+                
+                // Закрываем меню после перехода
+                closeMenu();
+            }
+        });
+    });
+</script>
+
+    </div>
+
+    <!-- Футер -->
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-4xl mx-auto py-6 px-4 text-center text-gray-600">
+            <p>© 2025 Karing. Все права защищены.</p>
+            <p class="mt-2 text-sm">Последнее редактирование: 11.12.2025</p>
+        </div>
+    </footer>
+    
+    <!-- Lightbox контейнер -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-nav lightbox-prev">&#10094;</button>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+        <button class="lightbox-nav lightbox-next">&#10095;</button>
+    </div>
+    
+    <script src="./static/js/image-gallery.js"></script>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // предотвращает скролл при открытом меню
+        }
+
+        function closeMenu() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.getElementById('menu-toggle').addEventListener('click', openMenu);
+        document.getElementById('menu-close').addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Закрытие по Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>

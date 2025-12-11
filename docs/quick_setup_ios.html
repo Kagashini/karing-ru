@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karing – Руководство по настройке</title>
+    <link rel="icon" href="./static/images/favicon.ico">
+    <link rel="stylesheet" href="./static/css/images.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tab-content {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.4s forwards ease-out;
+        }
+        @keyframes fadeInUp {
+           to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Анимация меню */
+        .menu-open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .menu-closed {
+            opacity: 0;
+            visibility:hidden;
+            transform: translateX(-100%);
+        }
+        
+        /* Стили для якорных ссылок */
+        .scroll-mt-20 {
+           scroll-margin-top: 5rem;
+        }
+        
+        /* Стили для таблиц */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+        
+        /* Стили для блоков кода */
+        pre {
+            background-color: #f1f5f9;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Перенос длинных строк */
+            word-wrap: break-word; /* Для старых браузеров */
+        }
+        
+        code {
+            background-color: #f1f5f9;
+            border-radius: 0.25rem;
+            padding: 0.125rem 0.25rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Шапка с гамбургером -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="px-4 py-3 flex items-center">
+            <!-- Гамбургер-кнопка -->
+            <button id="menu-toggle"
+                    class="text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-1 mr-3"
+                    aria-label="Открыть меню">
+                <!-- Резервный текст + SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     width="28"
+                     height="28"
+                     fill="currentColor"
+                     class="block">
+                    <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+                </svg>
+                <!-- На случай, если SVG не загрузится -->
+                <span aria-hidden="true" style="font-size: 24px; line-height: 1; display: none;">☰</span>
+            </button>
+            <h1 class="text-xl font-bold text-gray-900">Karing – Быстрая настройка iOS</h1>
+        </div>
+    </header>
+
+    <!-- Боковое меню (выдвижное) -->
+    <div id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-white shadow-lg p-4 transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-lg font-semibold">Навигация</span>
+            <button id="menu-close" class="text-gray-600 hover:text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="space-y-1">
+            
+                <a href="./quick_setup_windows.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - Быстрая настройка Windows
+                </a>
+                
+            
+                <a href="./quick_setup_android.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - Быстрая настройка Android
+                </a>
+                
+            
+                <a href="./quick_setup_ios.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           bg-blue-100 text-blue-700 ">
+                    Karing - Быстрая настройка iOS
+                </a>
+                
+                    <div class="ml-4">
+                        
+    <!-- Навигация по текущей странице -->
+    <div class="font-bold text-gray-900 py-2">На этой странице</div>
+    <a href="#installation" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Установка</a>
+    <a href="#first-run" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Первый запуск</a>
+    <a href="#adding-profile" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Добавление профиля</a>
+    <a href="#connection" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Подключение</a>
+    <a href="#settings" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Настройки iOS</a>
+
+                    </div>
+                
+            
+                <a href="./detailed_settings.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Подробнее о настройках
+                </a>
+                
+            
+                <a href="./windows_features.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Особенности Karing в Windows
+                </a>
+                
+            
+                <a href="./routing_rules.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - маршрутизация и правила
+                </a>
+                
+            
+                <a href="./dns_explained.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - что такое DNS и как с ним бороться
+                </a>
+                
+            
+        </nav>
+    </div>
+
+    <!-- Оверлей -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-30 z-30 hidden" onclick="closeMenu()"></div>
+
+    <div class="flex-grow">
+        
+<!-- Основной контент -->
+<main class="max-w-4xl mx-auto p-4 pt-6">
+    <article class="prose prose-lg max-w-none">
+
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="text-gray-700"><em>Установка может идти как на чистую, так и поверх предыдущей версии программы. Но если вам нужно понизить версию – надо сделать бекап конфигурации в файл (копируются все настройки и ключи). Затем текущая версия удаляется, ставится более низкая, и импортируется файл бекапа. – см. </em><a href="./detailed_settings.html" class="text-blue-600 hover:underline"><strong><em>Подробнее о настройках в Karing (Часть II)</em></strong></a></p>
+        </div>
+        
+        <h2 id="installation" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Установка Karing на iOS</h2>
+
+        <p class="mb-4">Для установки Karing на iOS у вас есть два варианта:</p>
+        
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Вариант 1: Установка из App Store (стабильная версия)</h3>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Откройте App Store на вашем устройстве</li>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <a href="https://apps.apple.com/us/app/karing/id6472431552?platform=iphone" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Установить из App Store
+                    </a>
+                </div>
+                <li>Найдите приложение "Karing"</li>
+                <li>Нажмите "Получить" и дождитесь установки</li>
+                <li>Откройте приложение Karing</li>
+            </ol>
+        </div>
+
+
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Вариант 2: Установка из TestFlight (бета-версия)</h3>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Откройте TestFlight на вашем устройстве</li>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <a href="https://testflight.apple.com/join/RLU59OsJ" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Установить из TestFlight
+                    </a>
+                </div>
+                <li>Установите TestFlight, если он еще не установлен</li>
+                <li>Установите Karing через TestFlight</li>
+                <li>Откройте приложение Karing</li>
+            </ol>
+        </div>
+        
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+            <p class="text-gray-700"><strong>Важно:</strong> Вы можете установить только одну версию - либо из App Store, либо из TestFlight. При установке одной версии другая будет автоматически удалена.</p>
+        </div>
+        
+        <h2 id="first-run" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Первый запуск программы</h2>
+        
+        <p class="mb-4">При первом запуске Karing на iOS вы увидите экран с информацией о сборе данных. Ознакомьтесь с информацией и нажмите "Принять":</p>
+        
+        <figure class="mb-6">
+            <img src="./static/images/karing/ios/Karing8-ios-1.png" alt="Первый запуск Karing на iOS" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Первый запуск Karing на iOS</figcaption>
+        </figure>
+        
+        <p class="mb-4">Далее вам будет предложено выбрать язык интерфейса:</p>
+        
+        <figure class="mb-6">
+            <img src="./static/images/karing/ios/Karing8-ios-2.png" alt="Выбор языка интерфейса" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Выбор языка интерфейса</figcaption>
+        </figure>
+        
+        <p class="mb-4">Затем выберите страну или регион для автоматического применения правил перенаправления:</p>
+        
+        <figure class="mb-6">
+            <img src="./static/images/karing/ios/Karing8-ios-3.png" alt="Выбор страны или региона" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Выбор страны или региона</figcaption>
+        </figure>
+        
+        <h2 id="adding-profile" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Добавление профиля</h2>
+        
+        <p class="mb-4">Для подключения к VPN вам нужно добавить профиль. Профиль содержит информацию о серверах и настройках подключения. Вы можете добавить профиль несколькими способами:</p>
+        
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Способ 1: Импорт из буфера обмена</h3>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Скопируйте ключ (ссылку) в буфер обмена</li>
+                <li>В Karing нажмите кнопку "+" в правом верхнем углу</li>
+                <li>Выберите "Импорт из буфера обмена"</li>
+                <li>Введите название профиля</li>
+                <li>Нажмите "Сохранить" (галочка в правом верхнем углу)</li>
+            </ol>
+        </div>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Способ 2: Сканирование QR-кода</h3>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Нажмите кнопку "+" в правом верхнем углу</li>
+                <li>Выберите "Сканировать QR-код"</li>
+                <li>Наведите камеру на QR-код с ключом</li>
+                <li>Введите название профиля</li>
+                <li>Нажмите "Сохранить"</li>
+            </ol>
+        </div>
+        
+        <h2 id="connection" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Подключение к VPN</h2>
+        
+        <p class="mb-4">После добавления профиля вы можете подключиться к VPN:</p>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-4">
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Убедитесь, что профиль активен (переключатель включен)</li>
+                <li>Нажмите на кнопку подключения в центре экрана</li>
+                <li>При первом подключении разрешите использование VPN в системе</li>
+                <li>Дождитесь установления соединения</li>
+            </ol>
+        </div>
+        
+        <figure class="mb-6">
+            <img src="./static/images/karing/ios/Karing8-ios-4.png" alt="Подключение к VPN" class="w-3/5 mx-auto content-image">
+            <figcaption class="text-center text-gray-600 mt-2">Подключение к VPN</figcaption>
+        </figure>
+        
+        <p class="mb-4">После успешного подключения вы увидите информацию о выбранном сервере и задержке.</p>
+        
+        <h2 id="settings" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Дополнительные настройки iOS</h2>
+        
+        <p class="mb-4">На iOS Karing может дополнительно настраиваться для оптимальной работы:</p>
+        
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Настройки в системе</h3>
+        
+        <p class="mb-4">Для корректной работы рекомендуется настроить следующие параметры в системе iOS:</p>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-4">
+            <ul class="list-disc list-inside space-y-2">
+                <li><strong>Разрешения:</strong> Убедитесь, что приложению разрешен доступ к камере (для сканирования QR-кодов)</li>
+                <li><strong>Фоновая активность:</strong> В настройках батареи отключите оптимизацию для Karing</li>
+                <li><strong>Уведомления:</strong> Разрешите уведомления для получения информации о состоянии подключения</li>
+            </ul>
+        </div>
+        
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Виджеты</h3>
+        
+        <p class="mb-4">Вы можете добавить виджет Karing на экран для быстрого управления подключением:</p>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-4">
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Нажмите и удерживайте пустое место на рабочем экране</li>
+                <li>Выберите "Виджеты"</li>
+                <li>Найдите виджет Karing</li>
+                <li>Добавьте его на экран</li>
+            </ol>
+        </div>
+        
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">3D Touch/Force Touch</h3>
+        
+        <p class="mb-4">На устройствах с поддержкой 3D Touch вы можете получить быстрый доступ к функциям Karing:</p>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-4">
+            <ul class="list-disc list-inside space-y-2">
+                <li>Нажмите и удерживайте иконку Karing на рабочем экране</li>
+                <li>Выберите нужное действие (подключение/отключение)</li>
+            </ul>
+        </div>
+    </article>
+</main>
+
+<script>
+    // Плавная прокрутка при переходе по якорям
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
+                    behavior: 'smooth'
+                });
+                
+                // Закрываем меню после перехода
+                closeMenu();
+            }
+        });
+    });
+</script>
+
+    </div>
+
+    <!-- Футер -->
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-4xl mx-auto py-6 px-4 text-center text-gray-600">
+            <p>© 2025 Karing. Все права защищены.</p>
+            <p class="mt-2 text-sm">Последнее редактирование: 11.12.2025</p>
+        </div>
+    </footer>
+    
+    <!-- Lightbox контейнер -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-nav lightbox-prev">&#10094;</button>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+        <button class="lightbox-nav lightbox-next">&#10095;</button>
+    </div>
+    
+    <script src="./static/js/image-gallery.js"></script>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // предотвращает скролл при открытом меню
+        }
+
+        function closeMenu() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.getElementById('menu-toggle').addEventListener('click', openMenu);
+        document.getElementById('menu-close').addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Закрытие по Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karing – Руководство по настройке</title>
+    <link rel="icon" href="./static/images/favicon.ico">
+    <link rel="stylesheet" href="./static/css/images.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tab-content {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.4s forwards ease-out;
+        }
+        @keyframes fadeInUp {
+           to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Анимация меню */
+        .menu-open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .menu-closed {
+            opacity: 0;
+            visibility:hidden;
+            transform: translateX(-100%);
+        }
+        
+        /* Стили для якорных ссылок */
+        .scroll-mt-20 {
+           scroll-margin-top: 5rem;
+        }
+        
+        /* Стили для таблиц */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+        
+        /* Стили для блоков кода */
+        pre {
+            background-color: #f1f5f9;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Перенос длинных строк */
+            word-wrap: break-word; /* Для старых браузеров */
+        }
+        
+        code {
+            background-color: #f1f5f9;
+            border-radius: 0.25rem;
+            padding: 0.125rem 0.25rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Шапка с гамбургером -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="px-4 py-3 flex items-center">
+            <!-- Гамбургер-кнопка -->
+            <button id="menu-toggle"
+                    class="text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-1 mr-3"
+                    aria-label="Открыть меню">
+                <!-- Резервный текст + SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     width="28"
+                     height="28"
+                     fill="currentColor"
+                     class="block">
+                    <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+                </svg>
+                <!-- На случай, если SVG не загрузится -->
+                <span aria-hidden="true" style="font-size: 24px; line-height: 1; display: none;">☰</span>
+            </button>
+            <h1 class="text-xl font-bold text-gray-900">Karing - маршрутизация и правила</h1>
+        </div>
+    </header>
+
+    <!-- Боковое меню (выдвижное) -->
+    <div id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-white shadow-lg p-4 transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-lg font-semibold">Навигация</span>
+            <button id="menu-close" class="text-gray-600 hover:text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="space-y-1">
+            
+                <a href="./quick_setup_windows.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - Быстрая настройка Windows
+                </a>
+                
+            
+                <a href="./quick_setup_android.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - Быстрая настройка Android
+                </a>
+                
+            
+                <a href="./quick_setup_ios.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - Быстрая настройка iOS
+                </a>
+                
+            
+                <a href="./detailed_settings.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Подробнее о настройках
+                </a>
+                
+            
+                <a href="./windows_features.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Особенности Karing в Windows
+                </a>
+                
+            
+                <a href="./routing_rules.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           bg-blue-100 text-blue-700 ">
+                    Karing - маршрутизация и правила
+                </a>
+                
+                    <div class="ml-4">
+                        
+    <!-- Навигация по текущей странице -->
+    <div class="font-bold text-gray-900 py-2">На этой странице</div>
+    <a href="#introduction" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Введение в маршрутизацию</a>
+    <a href="#rule-types" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Типы правил</a>
+    <a href="#creating-rules" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Создание правил</a>
+    <a href="#rule-priority" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Приоритет правил</a>
+    <a href="#predefined-rules" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Предопределенные правила</a>
+    <a href="#advanced-features" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Расширенные возможности</a>
+
+                    </div>
+                
+            
+                <a href="./dns_explained.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Karing - что такое DNS и как с ним бороться
+                </a>
+                
+            
+        </nav>
+    </div>
+
+    <!-- Оверлей -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-30 z-30 hidden" onclick="closeMenu()"></div>
+
+    <div class="flex-grow">
+        
+<!-- Основной контент -->
+<main class="max-w-4xl mx-auto p-4 pt-6">
+    <article class="prose prose-lg max-w-none">
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <p class="text-gray-700">Маршрутизация трафика - одна из самых мощных возможностей Karing. С помощью правил маршрутизации вы можете точно определить, какой трафик должен идти через VPN, какой напрямую, а какой блокировать. Эта статья подробно расскажет о принципах работы маршрутизации и настройке правил.</p>
+        </div>
+        
+        <h2 id="introduction" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Введение в маршрутизацию</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Маршрутизация в Karing позволяет гибко управлять направлением сетевого трафика. Вместо того чтобы направлять весь трафик через VPN (как в режиме "Глобально"), вы можете создать правила, которые определяют, как обрабатывать трафик к определенным сайтам, приложениям или сетям.</p>
+            
+            <p>Основные преимущества маршрутизации:</p>
+        </div>
+        
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <ul class="list-disc list-inside space-y-2">
+                <li>Экономия трафика VPN - только нужный трафик идет через прокси</li>
+                <li>Повышение скорости - локальный трафик идет напрямую</li>
+                <li>Обход ограничений - заблокированные сайты идут через VPN</li>
+                <li>Безопасность - нежелательный трафик можно блокировать</li>
+                <li>Гибкость - точная настройка под свои нужды</li>
+            </ul>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p>Для включения маршрутизации:</p>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Откройте главное окно Karing</li>
+                <li>Убедитесь, что у вас есть активный профиль</li>
+                <li>Включите переключатель "Правила" (рядом с переключателем "Глобально")</li>
+            </ol>
+        </div>
+        
+        <h2 id="rule-types" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Типы правил</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">В Karing доступны различные типы правил маршрутизации. Каждое правило имеет тип, параметры и действие. Рассмотрим основные типы:</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Domain (Домен)</h3>
+                <p class="text-gray-700">Правило применяется к определенным доменам и их поддоменам. Например, google.com или *.google.com</p>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">IP</h3>
+                <p class="text-gray-700">Правило применяется к определенным IP-адресам или диапазонам. Например, 8.8.8.8 или 192.168.1.0/24</p>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Process (Процесс)</h3>
+                <p class="text-gray-700">Правило применяется к трафику от определенных процессов/приложений. Например, chrome.exe или firefox</p>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Port (Порт)</h3>
+                <p class="text-gray-700">Правило применяется к трафику на определенных портах. Например, 80 (HTTP) или 443 (HTTPS)</p>
+            </div>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Действия правил</h3>
+            <p class="mb-3">Каждое правило может выполнять одно из следующих действий:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 p-3 rounded">
+                    <h4 class="font-semibold text-gray-900">Proxy (Прокси)</h4>
+                    <p class="text-gray-700 text-sm">Трафик идет через VPN</p>
+                </div>
+                
+                <div class="bg-green-50 p-3 rounded">
+                    <h4 class="font-semibold text-gray-900">Direct (Напрямую)</h4>
+                    <p class="text-gray-700 text-sm">Трафик идет напрямую</p>
+                </div>
+                
+                <div class="bg-red-50 p-3 rounded">
+                    <h4 class="font-semibold text-gray-900">Block (Блокировать)</h4>
+                    <p class="text-gray-700 text-sm">Трафик блокируется</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2 id="creating-rules" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Создание правил</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Чтобы создать новое правило:</p>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Откройте настройки Karing</li>
+                <li>Перейдите в раздел "Правила" → "Личные правила"</li>
+                <li>Нажмите кнопку "+" или "Добавить правило"</li>
+                <li>Выберите тип правила</li>
+                <li>Введите параметры правила</li>
+                <li>Выберите действие (Proxy/Direct/Block)</li>
+                <li>Сохраните правило</li>
+            </ol>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Примеры правил</h3>
+            
+            <div class="space-y-4">
+                <div class="bg-white border border-gray-200 rounded p-3">
+                    <p class="font-semibold">Блокировка рекламы:</p>
+                    <p>Тип: Domain</p>
+                    <p>Параметр: ads.google.com</p>
+                    <p>Действие: Block</p>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded p-3">
+                    <p class="font-semibold">Обход блокировки YouTube:</p>
+                    <p>Тип: Domain</p>
+                    <p>Параметр: youtube.com</p>
+                    <p>Действие: Proxy</p>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded p-3">
+                    <p class="font-semibold">Локальный трафик напрямую:</p>
+                    <p>Тип: IP</p>
+                    <p>Параметр: 192.168.0.0/16</p>
+                    <p>Действие: Direct</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2 id="rule-priority" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Приоритет правил</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Правила в Karing обрабатываются в порядке их следования в списке. Первое правило, которое подходит для данного трафика, будет применено. Поэтому порядок правил очень важен.</p>
+            
+            <p>Рекомендуемый порядок правил (сверху вниз):</p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Правила блокировки (самые специфичные)</li>
+                <li>Правила для конкретных доменов/приложений</li>
+                <li>Правила для категорий трафика</li>
+                <li>Общие правила (например, GFW)</li>
+                <li>Правило по умолчанию (обычно Direct)</li>
+            </ol>
+        </div>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <p class="text-gray-700"><strong>Совет:</strong> Вы можете перетаскивать правила в списке, чтобы изменить их порядок. Правила с более высоким приоритетом должны находиться выше.</p>
+        </div>
+        
+        <h2 id="predefined-rules" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Предопределенные правила</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p class="mb-3">Karing предоставляет набор предопределенных правил, которые можно легко добавить в свои настройки. Эти правила содержат списки доменов и IP-адресов для различных категорий:</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">GFW</h3>
+                <p class="text-gray-700">Список заблокированных ресурсов в Китае. Содержит тысячи доменов и IP-адресов.</p>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Private Network</h3>
+                <p class="text-gray-700">Правила для локальных сетей (192.168.x.x, 10.x.x.x и т.д.)</p>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Advertising</h3>
+                <p class="text-gray-700">Списки рекламных доменов для блокировки</p>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">GeoIP</h3>
+                <p class="text-gray-700">Правила на основе географического положения IP-адресов</p>
+            </div>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <p>Чтобы добавить предопределенное правило:</p>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Откройте настройки Karing</li>
+                <li>Перейдите в раздел "Правила" → "Шаблоны личных правил"</li>
+                <li>Выберите нужное правило из списка</li>
+                <li>Нажмите "Добавить" или переключатель</li>
+                <li>Настройте действие по умолчанию (Proxy/Direct/Block)</li>
+            </ol>
+        </div>
+        
+        <h2 id="advanced-features" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Расширенные возможности</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Группы правил</h3>
+            <p class="mb-3">Вы можете объединять правила в группы для удобного управления. Это особенно полезно при большом количестве правил.</p>
+            
+            <p>Чтобы создать группу правил:</p>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>В разделе "Личные правила" нажмите "Добавить группу"</li>
+                <li>Введите название группы</li>
+                <li>Добавьте правила в группу</li>
+                <li>Группу можно включать/отключать целиком</li>
+            </ol>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Импорт/экспорт правил</h3>
+            <p class="mb-3">Вы можете импортировать и экспортировать правила в формате JSON. Это удобно для резервного копирования или переноса настроек между устройствами.</p>
+            
+            <p>Для экспорта правил:</p>
+            <ol class="list-decimal list-inside space-y-2 mb-3">
+                <li>Откройте настройки Karing</li>
+                <li>Перейдите в раздел "Резервное копирование и синхронизация"</li>
+                <li>Выберите экспорт только правил</li>
+            </ol>
+            
+            <p>Для импорта правил:</p>
+            <ol class="list-decimal list-inside space-y-2">
+                <li>Откройте настройки Karing</li>
+                <li>Перейдите в раздел "Резервное копирование и синхронизация"</li>
+                <li>Выберите импорт из файла</li>
+                <li>Выберите нужные компоненты для импорта</li>
+            </ol>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+            <p class="text-gray-700">Более подробную информацию о настройках Karing вы можете найти в статье <a href="./detailed_settings.html" class="text-blue-600 hover:underline">Karing – подробнее о настройках (Часть II)</a>.</p>
+        </div>
+    </article>
+</main>
+
+<script>
+    // Плавная прокрутка при переходе по якорям
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
+                    behavior: 'smooth'
+                });
+                
+                // Закрываем меню после перехода
+                closeMenu();
+            }
+        });
+    });
+</script>
+
+    </div>
+
+    <!-- Футер -->
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-4xl mx-auto py-6 px-4 text-center text-gray-600">
+            <p>© 2025 Karing. Все права защищены.</p>
+            <p class="mt-2 text-sm">Последнее редактирование: 11.12.2025</p>
+        </div>
+    </footer>
+    
+    <!-- Lightbox контейнер -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-nav lightbox-prev">&#10094;</button>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+        <button class="lightbox-nav lightbox-next">&#10095;</button>
+    </div>
+    
+    <script src="./static/js/image-gallery.js"></script>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // предотвращает скролл при открытом меню
+        }
+
+        function closeMenu() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.getElementById('menu-toggle').addEventListener('click', openMenu);
+        document.getElementById('menu-close').addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Закрытие по Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
