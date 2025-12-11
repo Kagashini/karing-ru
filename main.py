@@ -46,22 +46,84 @@ def get_template_context(request: Request):
         "last_updated": get_last_commit_date()
     }
 
-@app.get('static/images/favicon.ico', include_in_schema=False)
+@app.get('/favicon.ico', include_in_schema=False)
 async def favicon():
     return FileResponse("static/images/favicon.ico")
 
-@app.get("/{page_name}", response_class=HTMLResponse)
-async def show_page(request: Request, page_name: str):
-    template_path = f"{page_name}.html"
-    
-    # Проверка существования файла шаблона
-    if not os.path.exists(os.path.join("templates", template_path)):
-        raise HTTPException(status_code=404, detail="Page not found")
-        
-    context = get_template_context(request)
-    return templates.TemplateResponse(template_path, context)
-
+# Individual routes for each page to ensure FastAPI works correctly
+# Routes without .html extension (for direct access)
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     context = get_template_context(request)
     return templates.TemplateResponse("index.html", context)
+
+@app.get("/quick_setup_windows", response_class=HTMLResponse)
+async def quick_setup_windows(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("quick_setup_windows.html", context)
+
+@app.get("/quick_setup_android", response_class=HTMLResponse)
+async def quick_setup_android(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("quick_setup_android.html", context)
+
+@app.get("/quick_setup_ios", response_class=HTMLResponse)
+async def quick_setup_ios(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("quick_setup_ios.html", context)
+
+@app.get("/detailed_settings", response_class=HTMLResponse)
+async def detailed_settings(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("detailed_settings.html", context)
+
+@app.get("/windows_features", response_class=HTMLResponse)
+async def windows_features(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("windows_features.html", context)
+
+@app.get("/routing_rules", response_class=HTMLResponse)
+async def routing_rules(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("routing_rules.html", context)
+
+@app.get("/dns_explained", response_class=HTMLResponse)
+async def dns_explained(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("dns_explained.html", context)
+
+# Routes with .html extension (for compatibility with static site links)
+@app.get("/quick_setup_windows.html", response_class=HTMLResponse)
+async def quick_setup_windows_html(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("quick_setup_windows.html", context)
+
+@app.get("/quick_setup_android.html", response_class=HTMLResponse)
+async def quick_setup_android_html(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("quick_setup_android.html", context)
+
+@app.get("/quick_setup_ios.html", response_class=HTMLResponse)
+async def quick_setup_ios_html(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("quick_setup_ios.html", context)
+
+@app.get("/detailed_settings.html", response_class=HTMLResponse)
+async def detailed_settings_html(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("detailed_settings.html", context)
+
+@app.get("/windows_features.html", response_class=HTMLResponse)
+async def windows_features_html(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("windows_features.html", context)
+
+@app.get("/routing_rules.html", response_class=HTMLResponse)
+async def routing_rules_html(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("routing_rules.html", context)
+
+@app.get("/dns_explained.html", response_class=HTMLResponse)
+async def dns_explained_html(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("dns_explained.html", context)

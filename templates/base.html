@@ -106,6 +106,12 @@
             </button>
         </div>
         <nav class="space-y-1">
+            <!-- Link to homepage -->
+            <a href="./index.html"
+               class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                      {% if request.url.path == '/' %} bg-blue-100 text-blue-700 {% else %} hover:bg-gray-100 {% endif %}">
+                Главная страница
+            </a>
             {% for link in nav_links %}
                 <a href="{{ link.path }}.html"
                    class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
