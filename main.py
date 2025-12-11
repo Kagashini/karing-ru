@@ -93,6 +93,11 @@ async def dns_explained(request: Request):
     return templates.TemplateResponse("dns_explained.html", context)
 
 # Routes with .html extension (for compatibility with static site links)
+@app.get("/index.html", response_class=HTMLResponse)
+async def index_html(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("index.html", context)
+
 @app.get("/quick_setup_windows.html", response_class=HTMLResponse)
 async def quick_setup_windows_html(request: Request):
     context = get_template_context(request)
