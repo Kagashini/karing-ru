@@ -14,8 +14,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Централизованный список навигационных ссылок с описаниями
 navigation_links = [
-    {"path": "/", "title": "Главная", "description": "Добро пожаловать в руководство по Karing"},
-    {"path": "/quick_setup", "title": "Karing - Быстрая настройка", "description": "Первичная настройка и запуск KaringX"},
     {"path": "/quick_setup_windows", "title": "Karing - Быстрая настройка Windows", "description": "Пошаговая инструкция по настройке Karing на Windows"},
     {"path": "/quick_setup_android", "title": "Karing - Быстрая настройка Android", "description": "Пошаговая инструкция по настройке Karing на Android"},
     {"path": "/quick_setup_ios", "title": "Karing - Быстрая настройка iOS", "description": "Пошаговая инструкция по настройке Karing на iOS"},
