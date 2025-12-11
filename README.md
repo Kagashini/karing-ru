@@ -47,8 +47,6 @@ uvicorn main:app --reload
 
 1. Создайте новый HTML-шаблон в папке `templates/`
 2. Добавьте маршрут в `main.py`
-3. Добавьте информацию о странице в функцию `get_navigation_links()` в `generate_static_site.py`
-4. Добавьте страницу в словарь `page_templates` в функции `generate_static_pages()` в `generate_static_site.py`
 
 ## Лицензия
 
