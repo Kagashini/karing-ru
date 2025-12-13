@@ -5,314 +5,576 @@
 {% block sidebar_nav %}
     <!-- Навигация по текущей странице -->
     <div class="font-bold text-gray-900 py-2">На этой странице</div>
+    <a href="#intro" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Введение</a>
     <a href="#what-is-dns" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Что такое DNS</a>
     <a href="#dns-blocking" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">DNS-блокировка</a>
     <a href="#dns-leak" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">DNS-утечка</a>
-    <a href="#dns-settings" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Настройка DNS в Karing</a>
-    <a href="#dns-providers" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Популярные DNS-провайдеры</a>
+    <a href="#dns-settings-karing" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Настройка
+        DNS в Karing</a>
+    <a href="#dns-providers" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Популярные
+        DNS-провайдеры</a>
     <a href="#dns-test" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Тестирование DNS</a>
 {% endblock %}
 
 {% block content %}
-<!-- Основной контент -->
-<main class="max-w-4xl mx-auto p-4 pt-6">
-    <article class="prose prose-lg max-w-none">
+    <!-- Основной контент -->
+    <main class="max-w-4xl mx-auto p-4 pt-6">
+        <article class="prose prose-lg max-w-none">
 
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-            <p class="text-gray-700">DNS (Domain Name System) - одна из ключевых технологий интернета, которая часто становится объектом цензуры и слежки. В этой статье мы подробно рассмотрим, что такое DNS, как его используют для блокировки сайтов, и как правильно настроить DNS в Karing для обеспечения безопасности и обхода ограничений.</p>
-        </div>
-        
-        <h2 id="what-is-dns" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Что такое DNS</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">DNS (Domain Name System - система доменных имен) - это интернет-справочник, который преобразует удобочитаемые доменные имена (например, google.com) в IP-адреса (например, 142.250.180.78), которые используются компьютерами для соединения между собой.</p>
-            
-            <p>Процесс работы DNS выглядит следующим образом:</p>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Вы вводите в браузере адрес сайта (например, youtube.com)</li>
-                <li>Ваш компьютер отправляет запрос DNS-серверу</li>
-                <li>DNS-сервер возвращает IP-адрес сайта</li>
-                <li>Ваш браузер подключается к этому IP-адресу</li>
-                <li>Сайт загружается в вашем браузере</li>
-            </ol>
-        </div>
-        
-        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
-            <p class="text-gray-700"><strong>Важно понимать:</strong> Без DNS вы не сможете получить доступ к сайтам по их обычным адресам. Вы можете подключиться к VPN, но если DNS-запросы блокируются или перехватываются, сайты все равно будут недоступны.</p>
-        </div>
-        
-        <h2 id="dns-blocking" class="text-2xl font-bold text-gray-900 mt-8 mb-4">DNS-блокировка</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">DNS-блокировка - один из самых распространенных методов цензуры в интернете. При этом способе блокировки интернет-провайдеры или государственные органы перехватывают DNS-запросы и возвращают либо ошибку, либо IP-адрес заглушки вместо реального адреса заблокированного сайта.</p>
-        </div>
-        
-        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Как работает DNS-блокировка:</h3>
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Вы пытаетесь открыть заблокированный сайт (например, telegram.org)</li>
-                <li>Ваш запрос уходит к DNS-серверу провайдера</li>
-                <li>Вместо реального IP-адреса сервер возвращает ошибку или IP-адрес заглушки</li>
-                <li>Сайт не загружается или открывается страница-заглушка</li>
-            </ol>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Признаки DNS-блокировки:</h3>
-            <ul class="list-disc list-inside space-y-2">
-                <li>Сайт не открывается, но при этом другие сайты работают</li>
-                <li>Открывается страница с сообщением о блокировке</li>
-                <li>Браузер показывает ошибку "Сервер не найден" или "ERR_NAME_NOT_RESOLVED"</li>
-                <li>Сайт открывается через VPN, но не напрямую</li>
-            </ul>
-        </div>
-        
-        <h2 id="dns-leak" class="text-2xl font-bold text-gray-900 mt-8 mb-4">DNS-утечка</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">DNS-утечка - это ситуация, когда DNS-запросы обходят VPN-туннель и отправляются напрямую провайдеру. Это может произойти даже при правильно настроенном VPN, если DNS не сконфигурирован должным образом.</p>
-            
-            <p>Последствия DNS-утечки:</p>
-        </div>
-        
-        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
-            <ul class="list-disc list-inside space-y-2">
-                <li>Провайдер видит, какие сайты вы пытаетесь посетить</li>
-                <li>Может применять DNS-блокировку к вашим запросам</li>
-                <li>Снижается эффективность обхода цензуры</li>
-                <li>Угроза приватности и безопасности</li>
-            </ul>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p>Чтобы проверить наличие DNS-утечки:</p>
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Подключитесь к VPN</li>
-                <li>Посетите сайт для проверки DNS, например, browserleaks.com</li>
-                <li>Проверьте, какой DNS-сервер отображается в результатах</li>
-                <li>Если это DNS-сервер вашего провайдера - у вас утечка</li>
-            </ol>
-        </div>
-        
-        <h2 id="dns-settings" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Настройка DNS в Karing</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">Karing предоставляет несколько способов настройки DNS для обеспечения безопасности и обхода ограничений:</p>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Системный DNS</h3>
-            <p class="mb-3">По умолчанию Karing использует системные настройки DNS. Это означает, что DNS-запросы будут обрабатываться теми серверами, которые настроены в вашей операционной системе.</p>
-            
-            <p>Преимущества:</p>
-            <ul class="list-disc list-inside space-y-1 mb-3">
-                <li>Простота настройки</li>
-                <li>Автоматическое использование DNS провайдера</li>
-            </ul>
-            
-            <p>Недостатки:</p>
-            <ul class="list-disc list-inside space-y-1">
-                <li>Риск DNS-утечки</li>
-                <li>Возможность блокировки со стороны провайдера</li>
-            </ul>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Пользовательский DNS</h3>
-            <p class="mb-3">Вы можете указать собственные DNS-серверы, которые будут использоваться вместо системных:</p>
-            
-            <p>Как настроить пользовательский DNS:</p>
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Откройте настройки Karing</li>
-                <li>Перейдите в раздел "DNS"</li>
-                <li>Выберите "Пользовательский DNS"</li>
-                <li>Введите адреса DNS-серверов</li>
-                <li>Сохраните настройки</li>
-            </ol>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Зашифрованный DNS</h3>
-            <p class="mb-3">Для максимальной безопасности Karing поддерживает зашифрованные DNS-протоколы:</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-3">
-                <div class="bg-blue-50 p-3 rounded">
-                    <h4 class="font-semibold">DNS over HTTPS (DoH)</h4>
-                    <p class="text-sm">DNS-запросы передаются через HTTPS</p>
-                </div>
-                
-                <div class="bg-blue-50 p-3 rounded">
-                    <h4 class="font-semibold">DNS over TLS (DoT)</h4>
-                    <p class="text-sm">DNS-запросы передаются через TLS</p>
-                </div>
-                
-                <div class="bg-blue-50 p-3 rounded">
-                    <h4 class="font-semibold">DNS over QUIC (DoQ)</h4>
-                    <p class="text-sm">DNS-запросы передаются через QUIC</p>
-                </div>
-            </div>
-            
-            <p>Преимущества зашифрованного DNS:</p>
-            <ul class="list-disc list-inside space-y-1">
-                <li>Защита от перехвата DNS-запросов</li>
-                <li>Предотвращение DNS-утечек</li>
-                <li>Обход DNS-блокировок</li>
-            </ul>
-        </div>
-        
-        <h2 id="dns-providers" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Популярные DNS-провайдеры</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">Выбор DNS-провайдера может существенно повлиять на скорость, безопасность и возможность обхода ограничений. Вот список популярных DNS-сервисов:</p>
-        </div>
-        
-        <div class="grid grid-cols-1 gap-6 mb-6">
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Cloudflare (1.1.1.1)</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <p class="font-medium mb-1">Обычный DNS:</p>
-                        <p>1.1.1.1</p>
-                        <p>1.0.0.1</p>
-                    </div>
-                    <div>
-                        <p class="font-medium mb-1">Зашифрованный DNS:</p>
-                        <p>https://cloudflare-dns.com/dns-query</p>
-                        <p>tls://1.1.1.1</p>
-                    </div>
-                </div>
-                <p class="mt-2 text-gray-700">Высокая скорость, хорошая приватность. Не блокирует контент.</p>
-            </div>
-            
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Google Public DNS</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <p class="font-medium mb-1">Обычный DNS:</p>
-                        <p>8.8.8.8</p>
-                        <p>8.8.4.4</p>
-                    </div>
-                    <div>
-                        <p class="font-medium mb-1">Зашифрованный DNS:</p>
-                        <p>https://dns.google/dns-query</p>
-                        <p>tls://dns.google</p>
-                    </div>
-                </div>
-                <p class="mt-2 text-gray-700">Высокая надежность, но Google может собирать данные.</p>
-            </div>
-            
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">AdGuard DNS</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <p class="font-medium mb-1">Обычный DNS (с блокировкой рекламы):</p>
-                        <p>94.140.14.14</p>
-                        <p>94.140.15.15</p>
-                    </div>
-                    <div>
-                        <p class="font-medium mb-1">Зашифрованный DNS:</p>
-                        <p>https://dns.adguard.com/dns-query</p>
-                        <p>tls://dns.adguard.com</p>
-                    </div>
-                </div>
-                <p class="mt-2 text-gray-700">Блокирует рекламу и вредоносные домены.</p>
-            </div>
-            
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">OpenDNS</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <p class="font-medium mb-1">Обычный DNS:</p>
-                        <p>208.67.222.222</p>
-                        <p>208.67.220.220</p>
-                    </div>
-                    <div>
-                        <p class="font-medium mb-1">Зашифрованный DNS:</p>
-                        <p>https://doh.opendns.com/dns-query</p>
-                    </div>
-                </div>
-                <p class="mt-2 text-gray-700">Хорошая фильтрация контента, но собирает данные.</p>
-            </div>
-        </div>
-        
-        <h2 id="dns-test" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Тестирование DNS</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">Karing предоставляет встроенные инструменты для тестирования DNS-настроек:</p>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Тест утечки DNS</h3>
-            <p class="mb-3">Этот тест проверяет, правильно ли настроен DNS и нет ли утечек:</p>
-            
-            <p>Как выполнить тест:</p>
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Откройте настройки Karing</li>
-                <li>Перейдите в раздел "Инструменты" или "Диагностика"</li>
-                <li>Выберите "Тест утечки DNS"</li>
-                <li>Дождитесь завершения теста</li>
-                <li>Проверьте результаты</li>
-            </ol>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Ручное тестирование</h3>
-            <p class="mb-3">Вы также можете вручную проверить DNS-настройки:</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-gray-50 p-3 rounded">
-                    <h4 class="font-semibold mb-2">Windows (командная строка):</h4>
-                    <p>nslookup google.com</p>
-                </div>
-                
-                <div class="bg-gray-50 p-3 rounded">
-                    <h4 class="font-semibold mb-2">Linux/macOS (терминал):</h4>
-                    <p>dig google.com</p>
-                    <p>или</p>
-                    <p>nslookup google.com</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Рекомендации по настройке DNS:</h3>
-            <ul class="list-disc list-inside space-y-2">
-                <li>Используйте зашифрованный DNS (DoH или DoT) для максимальной безопасности</li>
-                <li>Выбирайте DNS-провайдера с хорошей репутацией и прозрачной политикой конфиденциальности</li>
-                <li>Регулярно проверяйте наличие DNS-утечек</li>
-                <li>Для обхода цензуры используйте DNS через VPN-туннель</li>
-                <li>Рассмотрите использование DNS с фильтрацией рекламы для повышения безопасности</li>
-            </ul>
-        </div>
-        
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
-            <p class="text-gray-700">Более подробную информацию о настройках Karing вы можете найти в статье <a href="/detailed_settings" class="text-blue-600 hover:underline">Karing – подробнее о настройках (Часть II)</a>.</p>
-        </div>
-    </article>
-</main>
+            <h2 id="intro" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Введение</h2>
 
-<script>
-    // Плавная прокрутка при переходе по якорям
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
-                    behavior: 'smooth'
-                });
-                
-                // Закрываем меню после перехода
-                closeMenu();
-            }
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>Неоптимальная настройка серверов DNS в программе – самая частая причина
+                    невозможности соединиться с VPN-серверами или какими-либо сайтами. Если у вас что-то не хочет
+                    грузиться – вам в первую очередь сюда.</strong></p>
+
+                <p class="mb-3"><em>Сначала немного теории для понимания.</em></p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">DNS – это службы и международная иерархическая система серверов, позволяющая cопоставить
+                    (разрешить) по запросу доменное символьное имя, например <strong>google.com</strong>, с его текущим
+                    IP-адресом, например <strong>108.177.14.138</strong>, который дальше и используется программами для
+                    доступа к сетевому ресурсу.</p>
+
+                <p class="mb-3"><strong>Нет разрешения имени – нет доступа.</strong></p>
+
+                <p class="mb-3">Исходно, все запросы от клиентов к DNS-серверам отправлялись в нешифрованном виде. Это,
+                    к сожалению, использовалось на первых порах для цензуры запросов, а также слежки. Так что, если вы
+                    используете обычные нешифрованные UDP DNS-серверы, любезно предоставленные вам провайдером -
+                    провайдер по этим обращениям видит, к каким сайтам вы подключаетесь. Более того, часть запросов
+                    будет заблокирована уже на этом этапе.</p>
+
+                <p class="mb-3">К счастью, есть публичные (общедоступные) сервера DNS, поддерживающие шифрованные
+                    запросы по технологиям <strong>DoH, DoT</strong> и др. В этом случае информация о посещаемых вами
+                    сайтах становится недоступна провайдеру. Следовательно, блокировка запроса о разрешении имени
+                    невозможна. Используйте подобные серверы везде, где это возможно. В частности, на входном домашнем
+                    роутере и на телефонах (частный DNS-сервер).</p>
+            </div>
+
+            <h2 id="what-is-dns" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Что такое DNS</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">DNS (Domain Name System - система доменных имен) - это интернет-справочник, который
+                    преобразует удобочитаемые доменные имена (например, google.com) в IP-адреса (например,
+                    142.250.180.78), которые используются компьютерами для соединения между собой.</p>
+
+                <p>Процесс работы DNS выглядит следующим образом:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>Вы вводите в браузере адрес сайта (например, youtube.com)</li>
+                    <li>Ваш компьютер отправляет запрос DNS-серверу</li>
+                    <li>DNS-сервер возвращает IP-адрес сайта</li>
+                    <li>Ваш браузер подключается к этому IP-адресу</li>
+                    <li>Сайт загружается в вашем браузере</li>
+                </ol>
+            </div>
+
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+                <p class="text-gray-700"><strong>Важно понимать:</strong> Без DNS вы не сможете получить доступ к сайтам
+                    по их обычным адресам. Вы можете подключиться к VPN, но если DNS-запросы блокируются или
+                    перехватываются, сайты все равно будут недоступны.</p>
+            </div>
+
+            <h2 id="dns-blocking" class="text-2xl font-bold text-gray-900 mt-8 mb-4">DNS-блокировка</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">DNS-блокировка - один из самых распространенных методов цензуры в интернете. При этом
+                    способе блокировки интернет-провайдеры или государственные органы перехватывают DNS-запросы и
+                    возвращают либо ошибку, либо IP-адрес заглушки вместо реального адреса заблокированного сайта.</p>
+            </div>
+
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Как работает DNS-блокировка:</h3>
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>Вы пытаетесь открыть заблокированный сайт (например, telegram.org)</li>
+                    <li>Ваш запрос уходит к DNS-серверу провайдера</li>
+                    <li>Вместо реального IP-адреса сервер возвращает ошибку или IP-адрес заглушки</li>
+                    <li>Сайт не загружается или открывается страница-заглушка</li>
+                </ol>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Признаки DNS-блокировки:</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Сайт не открывается, но при этом другие сайты работают</li>
+                    <li>Открывается страница с сообщением о блокировке</li>
+                    <li>Браузер показывает ошибку "Сервер не найден" или "ERR_NAME_NOT_RESOLVED"</li>
+                    <li>Сайт открывается через VPN, но не напрямую</li>
+                </ul>
+            </div>
+
+            <h2 id="dns-leak" class="text-2xl font-bold text-gray-900 mt-8 mb-4">DNS-утечка</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">DNS-утечка - это ситуация, когда DNS-запросы обходят VPN-туннель и отправляются напрямую
+                    провайдеру. Это может произойти даже при правильно настроенном VPN, если DNS не сконфигурирован
+                    должным образом.</p>
+
+                <p>Последствия DNS-утечки:</p>
+            </div>
+
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Провайдер видит, какие сайты вы пытаетесь посетить</li>
+                    <li>Может применять DNS-блокировку к вашим запросам</li>
+                    <li>Снижается эффективность обхода цензуры</li>
+                    <li>Угроза приватности и безопасности</li>
+                </ul>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p>Чтобы проверить наличие DNS-утечки:</p>
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>Подключитесь к VPN</li>
+                    <li>Посетите сайт для проверки DNS, например, browserleaks.com</li>
+                    <li>Проверьте, какой DNS-сервер отображается в результатах</li>
+                    <li>Если это DNS-сервер вашего провайдера - у вас утечка</li>
+                </ol>
+            </div>
+
+            <h2 id="dns-settings-karing" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Настройка DNS в Karing</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Изначально, при запуске программы в режиме <strong>Новичок,</strong> используется
+                    простейший (неоптимальный) вариант настройки DNS, задача которого – обеспечение минимальной
+                    функциональности сразу, при включении. <strong>Минус</strong> режима <strong>Новичок</strong> –
+                    низкий уровень безопасности и надежности. Чтобы обратиться к настройкам DNS, можно нажать значок в
+                    виде двух коробочек на главном экране программы, или нажать стрелку у надписи <strong>DNS в меню
+                        настроек.</strong></p>
+
+                <p class="mb-3">Выглядит это в режиме Новичок так:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/android/Karing-DNS1.png" alt="DNS"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">DNS</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><em>Пояснения:</em> <strong>local</strong> – это серверы, известные вашей системе. Как
+                    правило, это нешифрованные udp-серверы, предоставленные вашим провайдером автоматически. И
+                    встроенные в Андроид запросы к серверу <strong>8.8.8.8</strong>.</p>
+
+                <p class="mb-3">В результате, поскольку запросы нешифрованы – провайдеру доступна информация о
+                    посещаемых вами сайтах. Также может быть подменен результат вашего обращения, например: этот сайт не
+                    обнаружен или заблокирован. При текущей настройке – это касается лишь <strong>прямого
+                        потока</strong>, то есть потока, идущего в обход прокси-сервера. А в случае прокси-сервера – это
+                    в данном случае пункт <strong>Трафик через Proxy</strong> – используется шифрованный по технологии
+                    <strong>DoH (DNS over HTTPS)</strong> публичный сервер. Эти обращения перехватить и расшифровать
+                    невозможно.</p>
+
+                <p class="mb-3"><strong>Минусом</strong> упрощённой настройки является отсутствие резервирования – DNS
+                    сервер может оказаться недоступен, или долго отвечать – поэтому желательно в настройках указывать
+                    несколько серверов. От надёжности и правильности настроек в этом месте сильно зависит работа
+                    программы в целом, и работа сервисов, использующих это соединение.</p>
+
+                <p class="mb-3"><strong>Karing</strong> снабжен достаточно мощными инструментами для настроек DNS в
+                    сложных ситуациях, а также базой из 50 известных серверов. Кроме того, можно добавить и собственный
+                    любимый сервер. Это важное отличие от большинства других программ, в которых такие настройки бедны,
+                    и нет средств тестирования серверов DNS.</p>
+
+                <p class="mb-3"><strong>Для получения доступа к расширенным настройкам DNS, отключите в главном меню
+                    настроек режим Новичок.</strong></p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/android/Karing-DNS2.png" alt="Расширенные настройки DNS"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Расширенные настройки DNS</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">В верхней части скриншота вы видите один из возможных вариантов настройки. Советую
+                    начать с неё – это гарантированно рабочий вариант.</p>
+
+                <p class="mb-3"><strong>Включить правила для DNS</strong> – это значит, мы разрешаем направить запросы
+                    согласно выбранной вами ниже стратегии. Без этого переключателя маршрутизация DNS-запросов работать
+                    не будет, все запросы будут отправляться одним путем, как в более примитивных программах. Если
+                    простой вариант работает – хорошо, но так бывает далеко не всегда.</p>
+
+                <p class="mb-3"><strong>[Прямой поток] включить ECS</strong> – технология, исключающая "дрейф" DNS из-за
+                    использования запросов к нескольким серверам. При этом в запросе к DNS-серверам учитывается
+                    местоположение вашего устройства (по IP-адресу), что позволяет подобрать для вас наиболее близкие
+                    CDN-серверы, что увеличит скорость доставки контента. Технология включается только для <strong>Прямого
+                        потока</strong>, то есть для трафика, передаваемого напрямую, минуя прокси-сервер. Однако
+                    встречались случаи, когда включение этой технологии мешало работе системы DNS в целом. Временное
+                    выключение данной настройки может помочь локализации проблемы.</p>
+
+                <p class="mb-3"><strong>[Трафик через Proxy] Способ разрешения в DNS.</strong></p>
+
+                <p class="mb-3"><strong><em>Karing</em></strong><em> предлагает три варианта, у каждого свои плюсы и
+                    минусы.</em></p>
+
+                <p class="mb-3"><strong>Прямой поток</strong> <strong>(Direct)</strong> – все запросы отправляются
+                    напрямую, минуя прокси-сервер. Это быстрее, но не всегда выбранные вами DNS-сервера окажутся
+                    доступны. В условиях различных блокировок и плохой связности сети – <strong>это плохой
+                        способ</strong>.</p>
+
+                <p class="mb-3"><strong>Текущий сервер (Current selected)</strong> – запросы к серверам DNS отправляются
+                    внутри вашего установленного соединения. Если вы используете шифрованные серверы, например, <a
+                            href="https://8.8.8.8/dns-query" target="_blank">https://8.8.8.8/dns-query</a>, то вы
+                    получите даже двухслойное шифрование. Технологию DoH пытаются блокировать. В частности, в Иране
+                    очень многие подобные серверы заблокированы. При правильном подборе серверов такой вариант очень
+                    устойчив.</p>
+
+                <p class="mb-3"><strong>Минусы</strong> – такой запрос несколько медленнее прямого запроса к udp
+                    DNS-серверу. На скорость соединения это не влияет, но может увеличить время первого открытия сайта.
+                    Кроме того, <strong>если у вас нет работающего VPN – соединения,</strong> то и разрешения имён не
+                    будет.</p>
+
+                <p class="mb-3"><strong>FakeIP</strong> – запрос идёт тоже через соединение с прокси-сервером, но
+                    прокси-сервер меняет в запросе к DNS-серверу ваш IP-адрес на свой. Этот режим иногда ускоряет
+                    "отзывчивость" запросов, и особенно рекомендуется для режима <strong>TUN</strong> (В телефонах
+                    <strong>Karing</strong> всегда работает только в режиме TUN).</p>
+
+                <p class="mb-3"><strong>Минусы</strong> – если у вас работает некая программа через VPN, и соединение с
+                    прокси разрывается, возможно, придется перезапустить эту программу для восстановления связи. Кроме
+                    того, не все доступные прокси-серверы полноценно поддерживают данную технологию – возможно, вам
+                    придётся подбирать нужный прокси-сервер (соединение, ключ).</p>
+
+                <p class="mb-3"><strong>Статический IP</strong> – это некоторый аналог файла hosts.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
+                    <p>hosts – это текстовый файл на вашем компьютере или телефоне, который содержит информацию о
+                        некоторых именах хостов, сопоставленных IP-адресам. Для разрешения имен он используется в первую
+                        очередь, раньше любых DNS.</p>
+                </blockquote>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">В этом разделе можно добавить статические DNS-записи. Скажем, вашего собственного
+                    сервера в Инете.</p>
+
+                <p class="mb-3">Заполняется запись здесь очень легко – в одной форме вы вводите имя и сохраняете. А
+                    открыв это имя, вводите его ip-адрес. Это имя будет разрешаться даже оффлайн и использоваться до
+                    любых обращений к DNS.</p>
+
+                <p class="mb-3"><strong>Тестовое доменное имя</strong> – используется для тестирования DNS-серверов.
+                    Можете его поменять, но зачем?</p>
+
+                <p class="mb-3"><strong>TTL</strong> – время жизни записи о разрешении адреса в кэше DNS. По умолчанию
+                    12 часов. Смысла менять нет: при уменьшении времени DNS-запросы будут выполняться чаще, а при
+                    увеличении – возрастёт как объем кэшируемых данных, так и риск получения устаревшей (и неверной)
+                    записи.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
+                    <p>При нажатии на выделенную стрелку вы увидите нижнюю часть скриншота. Это текущие настройки,
+                        которые мы и будем тестировать и менять.</p>
+                </blockquote>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Первая строка – <strong>DNS-сервер</strong>. Это сервер, с помощью которого определяются
+                    ip-адреса других DNS-серверов, которые также могут иметь символьное имя. В дальнейшей работе он не
+                    участвует. Поэтому для него допустимо значение <strong>local</strong> и нешифрованные
+                    <strong>udp</strong>. Нажмите стрелку вправо у первой строки. Раскроется список на несколько экранов
+                    с рекомендуемыми публичными DNS-серверами. Разумеется, при желании можно добавить и свой сервер –
+                    это три точки в углу и плюс в раскрывшемся подменю.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/android/Karing-DNSserver1.png" alt="DNS-сервер"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">DNS-сервер</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Запустим тестирование, нажав значок молнии вверху. Получим результат:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/android/Karing-DNSserver2.png"
+                         alt="Результат тестирования DNS-серверов"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Результат тестирования DNS-серверов</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Каждая строка содержит результат проверки соответствующего сервера: первое число –
+                    длительность "пинга" сервера, второе – время его ответа на запрос. Красный треугольник означает, что
+                    тест неуспешен (сервер недоступен). Серверы с меньшими временами – лучше. Серым выделены серверы,
+                    выбор которых в этой таблице запрещён.</p>
+
+                <p class="mb-3">Поскольку в качестве способа разрешения запросов к DNS выше выбран <strong>FakeIP (или
+                    Текущий сервер)</strong> – то тесты будут работать только при рабочем и <strong>установленном
+                    соединении с VPN-сервером</strong>. Если у вас его пока нет, или оно нерабочее – вы во всех строках
+                    получите отказы, в виде восклицательного знака в треугольнике.</p>
+
+                <p class="mb-3">Тем не менее, проанализировать доступность серверов можно. Временно на странице <strong>автовыбор</strong>
+                    сервера (клик по левой половине серой полоски на Главном экране) смените авто или конкретный сервер
+                    на <strong>Напрямую (Direct)</strong>, а на странице DNS - способ разрешения поставьте <strong>Напрямую.</strong>
+                    Выполните <strong>тест DNS.</strong></p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
+                    <p><strong><em>После тестирования, не забудьте вернуть эти настройки обратно, и способ разрешения, и
+                        выбор на авто или на конкретный сервер!</em></strong></p>
+                </blockquote>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
+                    <p>Если у вас на компьютере DNS по непонятным причинам "не строится", что-то не открывается, а ключи
+                        при тестировании выдают отрицательный результат:<br>
+                        1. Может помочь отключение на компьютере ipv6.<br>
+                        2. Сброс кэша DNS - на компьютере с <strong>Windows</strong> выполните из консоли с
+                        административными правами<br>
+                        <strong>ipconfig /flushdns</strong><br>
+                        На <strong>Mac</strong> из Терминала<br>
+                        <strong>sudo dscacheutil -flushcache<br>
+                            sudo killall -HUP mDNSResponder</strong></p>
+                </blockquote>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>DNS-сервер</strong> – выберите в таблице тестирования <strong>local</strong> и
+                    <strong>2-3</strong> <strong>udp-сервера,<em> </em>ориентируясь на меньшие значения времени</strong>.
+                    Затемненные серым строки выбрать нельзя.</p>
+
+                <p class="mb-3">Для каждой строки со <em>Screen 3.2</em> можно выбрать не более 4 серверов (но уже и 2-х
+                    вполне достаточно). При назначении 4 сервера все остальные строки станут серыми.</p>
+
+                <p class="mb-3">В остальных строках, начиная с <strong>Прокси-сервер</strong>, тоже надо провести
+                    настройку. Здесь везде рекомендуется использовать только шифрованные серверы. Необходимо снять
+                    галочки с <strong>local</strong> и <strong>udp-серверов</strong>, а выбрать серверы, начинающиеся с
+                    <strong>https</strong> или <strong>tls. </strong>Это позволит использовать шифрованные запросы,
+                    недоступные вашему провайдеру для анализа. Настройки в остальных строках можно сделать такими же,
+                    как в пункте <strong>Прокси-сервер</strong>. Но можно использовать и другие DNS-серверы. В
+                    результате вы должны получить что-то вроде:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/android/Karing-server.png" alt="Выбранные серверы"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Выбранные серверы</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">(в строках сетевых потоков виден только первый выбранный DNS-сервер).</p>
+
+                <p class="mb-3"><strong>Пример настройки:</strong></p>
+
+                <p class="mb-3"><strong>DNS-сервер</strong>: local, Cloudflare DNS udp://1.0.0.1, Google DNS
+                    udp://8.8.4.4</p>
+                <p class="mb-3"><strong>Прокси-сервер</strong>: Cloudflare DNS <a href="https://1.0.0.1/dns-query"
+                                                                                  target="_blank">https://1.0.0.1/dns-query</a>,
+                    Google DNS <a href="https://8.8.8.8/dns-query" target="_blank">https://8.8.8.8/dns-query</a>, Ali
+                    DNS tls://223.6.6.6</p>
+                <p class="mb-3"><strong>Прямой поток:</strong> Cloudflare DNS <a href="https://1.0.0.1/dns-query"
+                                                                                 target="_blank">https://1.0.0.1/dns-query</a>,
+                    Google DNS <a href="https://8.8.8.8/dns-query" target="_blank">https://8.8.8.8/dns-query</a>, Ali
+                    DNS tls://223.6.6.6</p>
+                <p class="mb-3"><strong>Трафик через Proxy: :</strong> Cloudflare DNS <a
+                        href="https://1.0.0.1/dns-query" target="_blank">https://1.0.0.1/dns-query</a>, Google DNS <a
+                        href="https://8.8.8.8/dns-query" target="_blank">https://8.8.8.8/dns-query</a>, Ali DNS
+                    tls://223.6.6.6</p>
+
+                <p class="mb-3">Качество настройки в данном месте можно проверить с помощью встроенного <strong>теста
+                    утечек DNS, находящемся в </strong>главном меню. Утечек быть не должно. Утечкой будет считаться,
+                    если среди списка DNS-серверов на экране вы увидите DNS вашего провайдера, или сервера своей страны.
+                    Утечка не говорит о том, что ваши данные уже слиты, а только о такой вероятности. Но если результат
+                    теста неудовлетворителен – проверьте и устраните ошибки в своих настройках DNS.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/android/Karing-DNSleaks.png" alt="Тест утечек DNS"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Тест утечек DNS</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Если вы запутались с настройками DNS и получили неработоспособную конфигурацию -
+                    используйте пункт <strong>Сбросить сервер</strong>. Это вернёт настройки к начальным. Можно также
+                    использовать пункт <strong>Автоматически настроить сервер</strong>, хотя самостоятельная настройка
+                    получается лучше.</p>
+            </div>
+
+            <h2 id="dns-providers" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Популярные DNS-провайдеры</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Выбор DNS-провайдера может существенно повлиять на скорость, безопасность и возможность
+                    обхода ограничений. Вот список популярных DNS-сервисов:</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6 mb-6">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Cloudflare (1.1.1.1)</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="font-medium mb-1">Обычный DNS:</p>
+                            <p>1.1.1.1</p>
+                            <p>1.0.0.1</p>
+                        </div>
+                        <div>
+                            <p class="font-medium mb-1">Зашифрованный DNS:</p>
+                            <p>https://cloudflare-dns.com/dns-query</p>
+                            <p>tls://1.1.1.1</p>
+                        </div>
+                    </div>
+                    <p class="mt-2 text-gray-700">Высокая скорость, хорошая приватность. Не блокирует контент.</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Google Public DNS</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="font-medium mb-1">Обычный DNS:</p>
+                            <p>8.8.8.8</p>
+                            <p>8.8.4.4</p>
+                        </div>
+                        <div>
+                            <p class="font-medium mb-1">Зашифрованный DNS:</p>
+                            <p>https://dns.google/dns-query</p>
+                            <p>tls://dns.google</p>
+                        </div>
+                    </div>
+                    <p class="mt-2 text-gray-700">Высокая надежность, но Google может собирать данные.</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">AdGuard DNS</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="font-medium mb-1">Обычный DNS (с блокировкой рекламы):</p>
+                            <p>94.140.14.14</p>
+                            <p>94.140.15.15</p>
+                        </div>
+                        <div>
+                            <p class="font-medium mb-1">Зашифрованный DNS:</p>
+                            <p>https://dns.adguard.com/dns-query</p>
+                            <p>tls://dns.adguard.com</p>
+                        </div>
+                    </div>
+                    <p class="mt-2 text-gray-700">Блокирует рекламу и вредоносные домены.</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">OpenDNS</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="font-medium mb-1">Обычный DNS:</p>
+                            <p>208.67.222.222</p>
+                            <p>208.67.220.220</p>
+                        </div>
+                        <div>
+                            <p class="font-medium mb-1">Зашифрованный DNS:</p>
+                            <p>https://doh.opendns.com/dns-query</p>
+                        </div>
+                    </div>
+                    <p class="mt-2 text-gray-700">Хорошая фильтрация контента, но собирает данные.</p>
+                </div>
+            </div>
+
+            <h2 id="dns-test" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Тестирование DNS</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">По окончании настройки DNS, полезно выполнить тест <strong>Диагностика сети (Net
+                    Check)</strong>. Тест запускается с главной страницы приложения, значок в верхней строке. Тестовый
+                    сервер в строке вы можете выбрать любой. По умолчанию там стоит <strong>google.com</strong>. Имя
+                    сервера надо набирать маленькими буквами, и без указания типа протокола впереди. После выполненного
+                    вами теста, имя вашего тестового сервера запомнится. Здесь понимаются и названия серверов на
+                    национальных языках. Пример успешного завершения теста:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/android/Karing-testnet.png" alt="Диагностика сети"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Диагностика сети</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Все строки должны быть зелеными, красных строк быть не должно. Если часть строк красная
+                    – по тесту можно понять, что пошло не так. Если красного нет – всё хорошо, можно пользоваться.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Тест утечки DNS</h3>
+                <p class="mb-3">Этот тест проверяет, правильно ли настроен DNS и нет ли утечек:</p>
+
+                <p>Как выполнить тест:</p>
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>Откройте настройки Karing</li>
+                    <li>Перейдите в раздел "Инструменты" или "Диагностика"</li>
+                    <li>Выберите "Тест утечки DNS"</li>
+                    <li>Дождитесь завершения теста</li>
+                    <li>Проверьте результаты</li>
+                </ol>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Ручное тестирование</h3>
+                <p class="mb-3">Вы также можете вручную проверить DNS-настройки:</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-3 rounded">
+                        <h4 class="font-semibold mb-2">Windows (командная строка):</h4>
+                        <p>nslookup google.com</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded">
+                        <h4 class="font-semibold mb-2">Linux/macOS (терминал):</h4>
+                        <p>dig google.com</p>
+                        <p>или</p>
+                        <p>nslookup google.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Рекомендации по настройке DNS:</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Используйте зашифрованный DNS (DoH или DoT) для максимальной безопасности</li>
+                    <li>Выбирайте DNS-провайдера с хорошей репутацией и прозрачной политикой конфиденциальности</li>
+                    <li>Регулярно проверяйте наличие DNS-утечек</li>
+                    <li>Для обхода цензуры используйте DNS через VPN-туннель</li>
+                    <li>Рассмотрите использование DNS с фильтрацией рекламы для повышения безопасности</li>
+                </ul>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        // Плавная прокрутка при переходе по якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
+                        behavior: 'smooth'
+                    });
+
+                    // Закрываем меню после перехода
+                    closeMenu();
+                }
+            });
         });
-    });
-</script>
+    </script>
 {% endblock %}
