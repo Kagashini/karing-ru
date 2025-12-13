@@ -157,16 +157,16 @@ async def quick_setup_ios_html(request: Request):
     return templates.TemplateResponse("quick_setup_ios.html", context)
 
 
-@app.get("/detailed_settings.html", response_class=HTMLResponse)
-async def detailed_settings_html(request: Request):
-    context = get_template_context(request)
-    return templates.TemplateResponse("detailed_settings.html", context)
-
-
 @app.get("/windows_features.html", response_class=HTMLResponse)
 async def windows_features_html(request: Request):
     context = get_template_context(request)
     return templates.TemplateResponse("windows_features.html", context)
+
+
+@app.get("/detailed_settings.html", response_class=HTMLResponse)
+async def detailed_settings_html(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("detailed_settings.html", context)
 
 
 @app.get("/routing_rules.html", response_class=HTMLResponse)
