@@ -7,55 +7,67 @@
 {% endblock %}
 
 {% block content %}
-<!-- Основной контент -->
-<main class="max-w-4xl mx-auto p-4 pt-6">
-    <div class="tab-content">
-        <h1 class="text-3xl font-bold text-gray-900 mb-6">Добро пожаловать в руководство по Karing</h1>
-        
-        <figure class="mb-4 text-center">
-            <img src="./static/images/karing/logo.png" alt="Логотип Karing" class="block mx-auto">
-        </figure>
+    <!-- Основной контент -->
+    <main class="max-w-4xl mx-auto p-4 pt-6">
+        <div class="tab-content">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">Добро пожаловать в руководство по Karing</h1>
 
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r">
-            <p class="text-gray-700"><strong>Karing</strong> - бесплатная мультиплатформенная программа, представляющая собой мощный и простой набор инструментов <strong>proxy</strong></p>
-            <br>
-            <p class="text-gray-700">Программа в основном предназначена для работы с <strong>подписками</strong> <strong>VPN</strong> или <strong>"аэропортами"</strong> - (динамически обновляемый по специальной ссылке список серверов и правил маршрутизации). Поддерживает следующие форматы подписок и файлов конфигурации - <strong>Clash, V2ray (с пакетом поддержки), Stash, Karing, Sing-box, Shadowsocks, Sub, Github</strong>.<strong> </strong></p>
-            <br>
-            <p class="text-gray-700"><strong>Karing</strong> также может работать с вашим собственным списком прокси-серверов.</p>
-            <br>
-            <p class="text-gray-700">Приложение построено на <strong>модифицированном ядре sing-boх</strong>, поддерживает все современные протоколы - <strong>VMess, Vless, Trojan и Shadowsocks, ShadowsocksR, TUIC, Socks, Http, Hysteria, Hysteria2, WireGuard</strong> и др. Интерфейс английский / китайский / русский / фарси / арабский.</p>
-            <br>
-            <p><strong>Совместимость - Android &gt;=8, Windows &gt;=10 x64, iOS &gt;=15 MacOS &gt;=12</strong></p>
+            <figure class="mb-4 text-center">
+                <img src="/static/images/karing/logo.png" alt="Логотип Karing" class="block mx-auto">
+            </figure>
 
-        </div>
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r">
-            <p class="text-gray-700">В этом руководстве вы найдете подробные инструкции по настройке и использованию всех функций Karing.</p>
-        </div>
-        <div class="mt-10">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-200">Разделы руководства</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {% for link in nav_links %}
-                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                        <a href="{{ link.path }}.html" class="text-blue-600 hover:text-blue-800 hover:underline">
-                            {{ link.title }}
-                        </a>
-                    </h3>
-                    <p class="text-gray-600 text-sm">{{ link.description }}</p>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r">
+                <p class="text-gray-700"><strong>Karing</strong> - бесплатная мультиплатформенная программа,
+                    представляющая собой мощный и простой набор инструментов <strong>proxy</strong></p>
+                <br>
+                <p class="text-gray-700">Программа в основном предназначена для работы с <strong>подписками</strong>
+                    <strong>proxy</strong> или <strong>"аэропортами"</strong> - (динамически обновляемый по специальной
+                    ссылке список серверов и правил маршрутизации). Поддерживает следующие форматы подписок и файлов
+                    конфигурации - <strong>Clash, V2ray (с пакетом поддержки), Stash, Karing, Sing-box, Shadowsocks,
+                        Sub, Github</strong>.<strong> </strong></p>
+                <br>
+                <p class="text-gray-700"><strong>Karing</strong> также может работать с вашим собственным списком
+                    прокси-серверов.</p>
+                <br>
+                <p class="text-gray-700">Приложение построено на <strong>модифицированном ядре sing-boх</strong>,
+                    поддерживает все современные протоколы - <strong>VMess, Vless, Trojan и Shadowsocks, ShadowsocksR,
+                        TUIC, Socks, Http, Hysteria, Hysteria2, WireGuard</strong> и др. Интерфейс английский /
+                    китайский / русский / фарси / арабский.</p>
+                <br>
+                <p><strong>Совместимость - Android &gt;=8, Windows &gt;=10 x64, iOS &gt;=15 MacOS &gt;=12</strong></p>
+
+            </div>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r">
+                <p class="text-gray-700">В этом руководстве вы найдете подробные инструкции по настройке и использованию
+                    всех функций Karing.</p>
+            </div>
+            <div class="mt-10">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-200">Разделы руководства</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {% for link in nav_links %}
+                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                                <a href="{{ link.path }}.html"
+                                   class="text-blue-600 hover:text-blue-800 hover:underline">
+                                    {{ link.title }}
+                                </a>
+                            </h3>
+                            <p class="text-gray-600 text-sm">{{ link.description }}</p>
+                        </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+            </div>
+
+            <div class="mt-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Благодарности</h2>
+                <p class="text-gray-700 mb-4">
+                <p>Материал использованный при написании этой документации:</p>
+                <a href="https://telegra.ph/Karing---part1-04-06"
+                   class="text-blue-600 hover:text-blue-800 hover:underline">Karing – Quick Start (Часть 1)</a>
+                <p>Спасибо авторам за перевод и написание.</p>
+                </p>
             </div>
         </div>
-        
-        <div class="mt-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Благодарности</h2>
-            <p class="text-gray-700 mb-4">
-                <p>Материал использованный при написании этой документации:</p>
-                <a href="https://telegra.ph/Karing---part1-04-06" class="text-blue-600 hover:text-blue-800 hover:underline">Karing – Quick Start (Часть 1)</a>
-                <p>Спасибо авторам за перевод и написание.</p>
-            </p>
-        </div>
-    </div>
-</main>
+    </main>
 {% endblock %}
