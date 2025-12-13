@@ -134,17 +134,17 @@
                 </a>
                 
             
-                <a href="./detailed_settings.html"
-                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
-                           hover:bg-gray-100 ">
-                    Подробнее о настройках
-                </a>
-                
-            
                 <a href="./windows_features.html"
                    class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
                            hover:bg-gray-100 ">
                     Особенности Karing в Windows
+                </a>
+                
+            
+                <a href="./detailed_settings.html"
+                   class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
+                           hover:bg-gray-100 ">
+                    Подробнее о настройках
                 </a>
                 
             
@@ -158,12 +158,16 @@
                         
     <!-- Навигация по текущей странице -->
     <div class="font-bold text-gray-900 py-2">На этой странице</div>
-    <a href="#introduction" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Введение в маршрутизацию</a>
-    <a href="#rule-types" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Типы правил</a>
-    <a href="#creating-rules" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Создание правил</a>
-    <a href="#rule-priority" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Приоритет правил</a>
-    <a href="#predefined-rules" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Предопределенные правила</a>
-    <a href="#advanced-features" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Расширенные возможности</a>
+    <a href="#introduction" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Введение</a>
+    <a href="#redirect-rules" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Правила
+        перенаправления</a>
+    <a href="#general-order" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Общий порядок
+        работы правил</a>
+    <a href="#traffic-rules" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Правила
+        (выделение трафика)</a>
+    <a href="#rule-test" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Тест правил
+        перенаправления</a>
+    <a href="#blacklist" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Чёрный список</a>
 
                     </div>
                 
@@ -183,256 +187,572 @@
 
     <div class="flex-grow">
         
-<!-- Основной контент -->
-<main class="max-w-4xl mx-auto p-4 pt-6">
-    <article class="prose prose-lg max-w-none">
+    <!-- Основной контент -->
+    <main class="max-w-4xl mx-auto p-4 pt-6">
+        <article class="prose prose-lg max-w-none">
 
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-            <p class="text-gray-700">Маршрутизация трафика - одна из самых мощных возможностей Karing. С помощью правил маршрутизации вы можете точно определить, какой трафик должен идти через VPN, какой напрямую, а какой блокировать. Эта статья подробно расскажет о принципах работы маршрутизации и настройке правил.</p>
-        </div>
-        
-        <h2 id="introduction" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Введение в маршрутизацию</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">Маршрутизация в Karing позволяет гибко управлять направлением сетевого трафика. Вместо того чтобы направлять весь трафик через VPN (как в режиме "Глобально"), вы можете создать правила, которые определяют, как обрабатывать трафик к определенным сайтам, приложениям или сетям.</p>
-            
-            <p>Основные преимущества маршрутизации:</p>
-        </div>
-        
-        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
-            <ul class="list-disc list-inside space-y-2">
-                <li>Экономия трафика VPN - только нужный трафик идет через прокси</li>
-                <li>Повышение скорости - локальный трафик идет напрямую</li>
-                <li>Обход ограничений - заблокированные сайты идут через VPN</li>
-                <li>Безопасность - нежелательный трафик можно блокировать</li>
-                <li>Гибкость - точная настройка под свои нужды</li>
-            </ul>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p>Для включения маршрутизации:</p>
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Откройте главное окно Karing</li>
-                <li>Убедитесь, что у вас есть активный профиль</li>
-                <li>Включите переключатель "Правила" (рядом с переключателем "Глобально")</li>
-            </ol>
-        </div>
-        
-        <h2 id="rule-types" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Типы правил</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">В Karing доступны различные типы правил маршрутизации. Каждое правило имеет тип, параметры и действие. Рассмотрим основные типы:</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Domain (Домен)</h3>
-                <p class="text-gray-700">Правило применяется к определенным доменам и их поддоменам. Например, google.com или *.google.com</p>
-            </div>
-            
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">IP</h3>
-                <p class="text-gray-700">Правило применяется к определенным IP-адресам или диапазонам. Например, 8.8.8.8 или 192.168.1.0/24</p>
-            </div>
-            
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Process (Процесс)</h3>
-                <p class="text-gray-700">Правило применяется к трафику от определенных процессов/приложений. Например, chrome.exe или firefox</p>
-            </div>
-            
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Port (Порт)</h3>
-                <p class="text-gray-700">Правило применяется к трафику на определенных портах. Например, 80 (HTTP) или 443 (HTTPS)</p>
-            </div>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Действия правил</h3>
-            <p class="mb-3">Каждое правило может выполнять одно из следующих действий:</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-blue-50 p-3 rounded">
-                    <h4 class="font-semibold text-gray-900">Proxy (Прокси)</h4>
-                    <p class="text-gray-700 text-sm">Трафик идет через VPN</p>
-                </div>
-                
-                <div class="bg-green-50 p-3 rounded">
-                    <h4 class="font-semibold text-gray-900">Direct (Напрямую)</h4>
-                    <p class="text-gray-700 text-sm">Трафик идет напрямую</p>
-                </div>
-                
-                <div class="bg-red-50 p-3 rounded">
-                    <h4 class="font-semibold text-gray-900">Block (Блокировать)</h4>
-                    <p class="text-gray-700 text-sm">Трафик блокируется</p>
-                </div>
-            </div>
-        </div>
-        
-        <h2 id="creating-rules" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Создание правил</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">Чтобы создать новое правило:</p>
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Откройте настройки Karing</li>
-                <li>Перейдите в раздел "Правила" → "Личные правила"</li>
-                <li>Нажмите кнопку "+" или "Добавить правило"</li>
-                <li>Выберите тип правила</li>
-                <li>Введите параметры правила</li>
-                <li>Выберите действие (Proxy/Direct/Block)</li>
-                <li>Сохраните правило</li>
-            </ol>
-        </div>
-        
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Примеры правил</h3>
-            
-            <div class="space-y-4">
-                <div class="bg-white border border-gray-200 rounded p-3">
-                    <p class="font-semibold">Блокировка рекламы:</p>
-                    <p>Тип: Domain</p>
-                    <p>Параметр: ads.google.com</p>
-                    <p>Действие: Block</p>
-                </div>
-                
-                <div class="bg-white border border-gray-200 rounded p-3">
-                    <p class="font-semibold">Обход блокировки YouTube:</p>
-                    <p>Тип: Domain</p>
-                    <p>Параметр: youtube.com</p>
-                    <p>Действие: Proxy</p>
-                </div>
-                
-                <div class="bg-white border border-gray-200 rounded p-3">
-                    <p class="font-semibold">Локальный трафик напрямую:</p>
-                    <p>Тип: IP</p>
-                    <p>Параметр: 192.168.0.0/16</p>
-                    <p>Действие: Direct</p>
-                </div>
-            </div>
-        </div>
-        
-        <h2 id="rule-priority" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Приоритет правил</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">Правила в Karing обрабатываются в порядке их следования в списке. Первое правило, которое подходит для данного трафика, будет применено. Поэтому порядок правил очень важен.</p>
-            
-            <p>Рекомендуемый порядок правил (сверху вниз):</p>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Правила блокировки (самые специфичные)</li>
-                <li>Правила для конкретных доменов/приложений</li>
-                <li>Правила для категорий трафика</li>
-                <li>Общие правила (например, GFW)</li>
-                <li>Правило по умолчанию (обычно Direct)</li>
-            </ol>
-        </div>
-        
-        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
-            <p class="text-gray-700"><strong>Совет:</strong> Вы можете перетаскивать правила в списке, чтобы изменить их порядок. Правила с более высоким приоритетом должны находиться выше.</p>
-        </div>
-        
-        <h2 id="predefined-rules" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Предопределенные правила</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">Karing предоставляет набор предопределенных правил, которые можно легко добавить в свои настройки. Эти правила содержат списки доменов и IP-адресов для различных категорий:</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">GFW</h3>
-                <p class="text-gray-700">Список заблокированных ресурсов в Китае. Содержит тысячи доменов и IP-адресов.</p>
-            </div>
-            
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Private Network</h3>
-                <p class="text-gray-700">Правила для локальных сетей (192.168.x.x, 10.x.x.x и т.д.)</p>
-            </div>
-            
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Advertising</h3>
-                <p class="text-gray-700">Списки рекламных доменов для блокировки</p>
-            </div>
-            
-            <div class="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">GeoIP</h3>
-                <p class="text-gray-700">Правила на основе географического положения IP-адресов</p>
-            </div>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p>Чтобы добавить предопределенное правило:</p>
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Откройте настройки Karing</li>
-                <li>Перейдите в раздел "Правила" → "Шаблоны личных правил"</li>
-                <li>Выберите нужное правило из списка</li>
-                <li>Нажмите "Добавить" или переключатель</li>
-                <li>Настройте действие по умолчанию (Proxy/Direct/Block)</li>
-            </ol>
-        </div>
-        
-        <h2 id="advanced-features" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Расширенные возможности</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Группы правил</h3>
-            <p class="mb-3">Вы можете объединять правила в группы для удобного управления. Это особенно полезно при большом количестве правил.</p>
-            
-            <p>Чтобы создать группу правил:</p>
-            <ol class="list-decimal list-inside space-y-2">
-                <li>В разделе "Личные правила" нажмите "Добавить группу"</li>
-                <li>Введите название группы</li>
-                <li>Добавьте правила в группу</li>
-                <li>Группу можно включать/отключать целиком</li>
-            </ol>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Импорт/экспорт правил</h3>
-            <p class="mb-3">Вы можете импортировать и экспортировать правила в формате JSON. Это удобно для резервного копирования или переноса настроек между устройствами.</p>
-            
-            <p>Для экспорта правил:</p>
-            <ol class="list-decimal list-inside space-y-2 mb-3">
-                <li>Откройте настройки Karing</li>
-                <li>Перейдите в раздел "Резервное копирование и синхронизация"</li>
-                <li>Выберите экспорт только правил</li>
-            </ol>
-            
-            <p>Для импорта правил:</p>
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Откройте настройки Karing</li>
-                <li>Перейдите в раздел "Резервное копирование и синхронизация"</li>
-                <li>Выберите импорт из файла</li>
-                <li>Выберите нужные компоненты для импорта</li>
-            </ol>
-        </div>
-        
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
-            <p class="text-gray-700">Более подробную информацию о настройках Karing вы можете найти в статье <a href="./detailed_settings.html" class="text-blue-600 hover:underline">Karing – подробнее о настройках (Часть II)</a>.</p>
-        </div>
-    </article>
-</main>
+            <h2 id="introduction" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Введение</h2>
 
-<script>
-    // Плавная прокрутка при переходе по якорям
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
-                    behavior: 'smooth'
-                });
-                
-                // Закрываем меню после перехода
-                closeMenu();
-            }
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>Правила перенаправления (отклонения, маршрутизации) в Karing</strong> (<strong>Diversion
+                    rules</strong>) <strong>– </strong>мощный и гибкий инструмент управления трафиком. Если вы можете по
+                    каким-то критериям – например, по месту назначения, или по приложению, или как-то ещё выделить
+                    какую-то часть трафика, то в дальнейшем вы можете выбрать – что делать с этой частью дальше. Вы
+                    можете очень тонко настроить для себя - что блокировать (например, часть рекламы), что направить
+                    напрямую, а что направить и через какой конкретно прокси (соединение). Именно так, как вы хотите.
+                </p>
+
+                <p class="mb-3">Тема правил большая, сложная и очень важная. В том или ином виде маршрутизация и правила
+                    встречаются практически во всех программах-клиентах VPN. Как правило, это текстовый файл, написанный
+                    в внутрипрограммном синтаксисе. Достоинство <strong>Karing</strong> – в нём есть графический
+                    интерфейс для создания и управления правилами, что сильно упрощает понимание и применение этого
+                    механизма.</p>
+
+                <p class="mb-3">Для вашего удобства, в программу включены шаблоны часто используемых правил, и вы с
+                    этими шаблонами встречались при начальной настройке программы.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Вам не нужно набирать или выяснять все относящиеся к делу адреса, а можно использовать
+                    <strong>специальные имена</strong>, каждое из которых соответствует списку с многими именами сайтов.
+                    Это стало возможным благодаря созданию динамических списков имён и адресов, предоставляемых <a
+                            href="https://github.com/v2fly/domain-list-community" target="_blank"
+                            class="text-blue-600 hover:underline"><strong>domain-list-community</strong></a>. В Karing
+                    используются созданные из файлов в формате <strong>.srs </strong>сборники <strong>geoip , geosite
+                        и</strong> <strong>ACL, </strong>которые могут обновляться онлайн. Когда при начальной настройке
+                    <strong>Karing</strong> вы выбираете страну - то вы и включаете определения (правила)
+                    перенаправления для зоны <strong>ru</strong>. Это правила <strong>geoip:ru -> direct</strong>,
+                    <strong>geosite:ru -> direct</strong>.</p>
+
+                <p class="mb-3">Не надо думать, что это просто все имена, заканчивающиеся на <strong>.ru</strong> - всё
+                    значительно хитрее. При включении этого определения, все включенные в список сайты (домены) зоны
+                    <strong>.ru</strong>, или российские IP-адреса из списка, идут напрямую, что ускоряет работу, а
+                    часть запрещенных и все зарубежные - через<strong> прокси</strong>, что обеспечивает их доступность.
+                    Как минимальной настройки - этого достаточно. Однако её можно бесконечно улучшать и
+                    усовершенствовать, задавая личные правила - как на основе предоставляемых программой списков имён,
+                    так и на основе имен сайтов. Например - имя <strong>amazon</strong> в списках
+                    <strong>geosite</strong> и <strong>ACL</strong> позволяет выделить правилом все имена, используемые
+                    <strong>Амазоном</strong>. Вы можете решить для себя - как с ними поступить. Например, пустить
+                    напрямую, или заблокировать. Есть такие списки имен и для рекламных сервисов, что позволяет
+                    блокировать рекламу. Можно написать свои правила, например, чтобы через прокси шли все обращения к
+                    известным нейросетям, и так далее. В программе есть три сборника списков (имён) для построения
+                    правил – <strong>GeoIP,</strong> <strong>GeoSite</strong> и <strong>ACL</strong>.</p>
+
+                <p class="mb-3">Вообще, правила нужны, чтобы разделить запросы и трафик по каким-либо критериям, и эти
+                    части обработать по-разному.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong><em>Важно:</em></strong><em> есть два противоположных подхода для настройки
+                    правил перенаправления – </em><strong><em>Белый список</em></strong><em> и </em><strong><em>Чёрный
+                    список</em></strong><em>.</em></p>
+
+                <p class="mb-3">По умолчанию, <strong>Karing </strong>работает в режиме <strong>Белого
+                    списка</strong>.<strong><br class="inline">Белый список</strong> – разрешённый в регионе и
+                    выделенный правилами трафик, например обращение к конкретному сайту, пересылается напрямую (direct),
+                    а всё остальное (по умолчанию) идёт через прокси. Нет никакого смысла пропускать разрешенное через
+                    VPN, тем более что часть российских сайтов не отвечают на запросы из-за рубежа. <strong><br
+                            class="inline">Чёрный список</strong> – наоборот. Это то, что заблокировано в регионе, и
+                    работает только через VPN . Выделенный правилами трафик идёт через прокси, а всё остальное напрямую.<br
+                            class="inline">Никакого отдельного переключения режима нет, всё определяется расстановкой
+                    назначений для отдельных правил. Применение <strong>Черного списка</strong> рассмотрим в конце.<br
+                            class="inline">Прежде чем создавать и настраивать правила – надо определиться, по какой
+                    стратегии вы работаете. Далее настройка правил рассматривается в режиме <strong>Белого
+                        списка</strong>, как их по умолчанию настраивает <strong>Karing</strong>.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">В режим настройки правил входим или через значок в виде раздвоенной на конце стрелки на
+                    главном экране, или из меню Настройки.</p>
+            </div>
+
+            <h2 id="redirect-rules" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Правила перенаправления</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+
+                <p class="mb-3">Рассмотрим сначала <strong>Правила перенаправления</strong> – это не правила выделения
+                    трафика, а действия - что с выделенным трафиком делать и в каком порядке. Доступ к этому экрану –
+                    <strong>Настройки, Правила, Правила перенаправления.</strong> Здесь мы видим, а также настраиваем
+                    маршрутизацию (перенаправление) всех созданных нами личных правил, а также правил системы:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-rules4.png" alt="Правила перенаправления"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Правила перенаправления</figcaption>
+                </figure>
+            </div>
+
+            <h2 id="general-order" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Общий порядок работы правил
+                перенаправления (маршрутизации)</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+
+                <p class="mb-3">Правила работают сверху вниз, <strong>поэтому порядок расстановки правил имеет решающее
+                    значение.</strong> Трафик сравнивается поочередно со всеми правилами. Если его часть соответствует
+                    какому-либо правилу, выполняется действие, указанное справа – например, пропустить в обход остальных
+                    правил – <strong>Напрямую (Direct)</strong>. Это иногда называется шунтированием. Или передать на
+                    конкретный прокси-сервер – <strong>Текущий сервер (Current Selection)</strong>. Если назначение не
+                    указано – правило не работает. Если элемент трафика соответствует нескольким правилам – то сработает
+                    только верхнее. Можно направлять отдельные правила не на общий выходной прокси-сервер, а на
+                    выбранный вами конкретный, например нужной страны. Это всё может работать параллельно, то есть вы
+                    можете использовать <strong>одновременно несколько соединений</strong> с прокси-серверами по
+                    нескольким правилам.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-routing.png" alt="Маршрутизация"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Маршрутизация</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Сначала срабатывают правила – <strong>Выбор проксируемых приложений</strong>, если у вас
+                    такие правила есть. Все приложения, которые не помечены как <strong>проксируемые</strong> в режиме
+                    <strong>Белого списка</strong> <strong>приложений, </strong>идут напрямую.
+                    <strong>Исключение</strong> - если вы не пометили ни одного приложения, <strong>всё пойдёт через
+                        прокси. </strong></p>
+
+                <p class="mb-3">С целью экономии процессорного времени и памяти, правила желательно располагать в
+                    следующем порядке:</p>
+
+                <p class="mb-3"><strong>Блокирующие правила</strong> – дальше этот трафик не обрабатывается.</p>
+
+                <p class="mb-3"><strong>Прямое подключение</strong> – иногда его называют шунт – этот трафик сразу
+                    пробрасывается насквозь и дальше не обрабатывается.</p>
+
+                <p class="mb-3">После прохождения всех <strong>личных правил</strong>, обрабатываются системные группы
+                    правил – <strong>GeoSite, GeoIP</strong> и <strong>ACL</strong>. Эти правила впрямую не
+                    редактируются, даже их назначение.</p>
+
+                <p class="mb-3">В режиме <strong>Черного списка</strong> есть способ отключения этих системных групп
+                    правил.</p>
+
+                <p class="mb-3">И наконец, встроенное правило <strong>final</strong> – куда должны пойти все соединения,
+                    не совпавшие с критериями ни одного из правил. По умолчанию – это значение <strong>Текущий сервер
+                        (Current Selection)</strong>, что и определяет режим <strong>Белого
+                        списка<em>.</em></strong><em> (Это назначение можно изменить на Напрямую (Direct) – это режим
+                        Черного списка. Но включение этого режима полностью изменит логику работы всей системы правил
+                        перенаправления, и её нужно будет перестраивать).</em></p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Порядок и само количество установленных правил важны и с точки зрения экономии системных
+                    ресурсов. Выше должны располагаться правила с относительно простыми условиями, ориентированные на
+                    определенные ресурсы, которые уменьшают количество обрабатываемого далее трафика. А ниже — более
+                    сложные и ресурсоёмкие правила.</p>
+
+                <p class="mb-3">Дальше идёт правило <strong>GFW</strong> (Greate Firewall). Его задача – переадресация
+                    на прокси заблокированных ресурсов. Оно построено на основе ряда онлайн списков, регулярно
+                    обновляющихся, с блокированными сайтами. Так что это относительно громоздкое и ресурсоёмкое правило
+                    – и хорошо, что часть трафика мы уже выделили и перенаправили выше. Если трафик соответствует этому
+                    правилу – он немедленно направляется через прокси-сервер.</p>
+
+                <p class="mb-3">Дальше идёт <strong>системная группа правил</strong>, задача которых – выделить трафик
+                    на российские ресурсы и пустить его напрямую.</p>
+
+                <p class="mb-3">И, наконец, встроенное правило <strong>final</strong>, которое обрабатывает всё, не
+                    отсеянное правилами ранее. Благодаря этой системе правил, обычно нам не нужно добавлять личные
+                    правила для конкретных ресурсов – например, <strong>youtube</strong> – поскольку оно и так будет
+                    обработано и переадресовано правилом <strong>GFW</strong> или <strong>final</strong>. Вот так
+                    настраивается назначение каждого правила:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-GFW.png" alt="GFW"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">GFW</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">В целом, число правил лучше минимизировать. Однако, очередность правил настраивается не
+                    здесь.</p>
+            </div>
+
+            <h2 id="traffic-rules" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Правила (выделение трафика)</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-rules5.png" alt="Правила"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Правила</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">В верхней части скриншота мы видим промежуточное меню. Вверху <strong>выбор
+                    региона</strong>. Вы его выбрали при первоначальной настройке. Здесь его можно поменять, и правильно
+                    выставить регион надо до настройки правил – поскольку даже шаблоны правил зависят от страны. По
+                    сути, регион это выбор правил <strong>geoip:ru, geosite:ru и шаблона правила GFW.</strong></p>
+
+                <p class="mb-3">Затем идет подменю <strong>Rule Set</strong> – это возможность включить, отключить или
+                    загружать с удаленного ресурса три предустановленных сборника списков имён и адресов для
+                    маршрутизации – <strong>Geoip</strong>, <strong>Geosite</strong> и <strong>ACL</strong>. <strong>Автоматически
+                        прикреплять основные правила</strong> – это добавить и включить правила <strong>geosite,
+                        geoip</strong> c встроенными в программу значениями и перенаправлением. Когда у вас всё хорошо
+                    заработало — можно включить <strong>Использовать удаленные ресурсы</strong>. Тогда вы, при любых
+                    изменениях на серверах <strong>Karing,</strong> будете иметь самую свежую версию этих правил.</p>
+
+                <p class="mb-3">Также здесь включается безусловный <strong>Прямой доступ</strong> к некоторым ресурсам.
+                    Список этих ресурсов программа определяет сама.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>Фронтальный/цепной прокси.</strong> Эта настройка позволяет определить, через
+                    какое конкретно соединение вы связываетесь с прокси-серверами. Если здесь добавить в список сервер –
+                    это режим фронт-сервера – то соединение пойдёт сначала на фронт-сервер, а через него к выходному
+                    серверу, который вы назначили в правиле перенаправления. Добавление делается выбором из серверов,
+                    известных системе, нажатием плюса:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-selectserver.png" alt="Выбор сервера"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Выбор сервера</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Это может пригодиться при жестких блокировках – допустим, у вас есть доступ к быстрому
+                    серверу страны<strong> А</strong>, но нет доступа к серверу страны <strong>Б.</strong> Но у самого
+                    сервера <strong>А</strong> есть доступ к <strong>Б.</strong> Тогда вы назначаете сервер
+                    <strong>А</strong> фронт-сервером, а выходным сервером сервер <strong>Б</strong>. И получаете доступ
+                    к ресурсам страны <strong>Б.</strong></p>
+
+                <p class="mb-3">Можно такие промежуточные сервера объединить в цепочку – <strong>цепной прокси</strong>.
+                    Тогда вам надо в меню <strong>Фронтальный/цепной сервер</strong> добавить несколько серверов, и ваш
+                    запрос пойдёт по цепочке, сверху вниз – сервер <strong>А</strong>, сервер <strong>Б</strong> и т.д.
+                    и выйдет "наружу" через последний сервер, указанный в правилах перенаправления.</p>
+
+                <p class="mb-3">Конечно, есть подводные камни. Доступ к различным узлам (серверам) может измениться
+                    после назначения <strong>фронт-прокси</strong> – не забудьте это перетестировать в
+                    <strong>Профилях</strong>. Для построения всей конструкции может потребоваться как подбор узлов, так
+                    и подбор протоколов этих узлов. Так что это не "ежедневная" технология, а скорее технология
+                    "последнего шанса" – либо вам нужно добраться туда, куда иначе вы попасть не можете, либо вас не
+                    устраивает обычный уровень скрытности.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>Пользовательский автоматический выбор. </strong>Это возможность создавать
+                    <strong>виртуальные группы</strong> прокси-серверов, объединенных по какому-либо признаку, например
+                    стране. Причем, серверы могут принадлежать разным профилям, и даже разным подпискам. В дальнейшем,
+                    такую группу можно использовать как назначение перенаправления для какого-либо правила. Допустим, я
+                    хочу создать такую виртуальную группу для серверов в США.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-userselect.png"
+                         alt="Пользовательский автоматический выбор"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Пользовательский автоматический выбор
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Создаем новую группу, нажав плюс. <strong>«Примечание»</strong> – здесь надо дать
+                    название новой виртуальной группы, например <strong>USA</strong>. Когда группа создана – добавляем в
+                    нее нужные серверы. Их можно выбрать напрямую, а можно, если серверов очень много – воспользоваться
+                    поиском с помощью регулярных выражений. Простейший пример – <strong>US|USA</strong>. Это выражение
+                    отберет все сервера с такими буквосочетаниями. Вертикальная черта – знак разделения, имеет смысл
+                    "или". Сами серверы с исходного профиля никуда не деваются – по сути, здесь создаются только ссылки
+                    на сервер в профиле.</p>
+
+                <p class="mb-3">Но если у вас ключей немного, то сервера в виртуальную пользовательскую группу можно
+                    добавить вручную, поставив галочки. Такая виртуальная группа даст возможность перенаправить ваше
+                    правило не на один сервер, а на несколько (группу) – причем выбранных из разных профилей. Внутри
+                    такой виртуальной группы будет действовать автовыбор сервера.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-userselect1.png" alt="Выбор сервера"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Выбор сервера</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>Тест правил перенаправления</strong> будет описан ниже.</p>
+
+                <p class="mb-3">На экране <strong>Правила перенаправления (Diversion Rules) (Screen 2.1) нажмем
+                    карандашик в левом верхнем углу, и попадем в сборник Личные правила:</strong></p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-userrules.png" alt="Личные правила"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Личные правила</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Это полностью ваш сборник. Здесь можно удалять и создавать правила, как полностью
+                    вручную, так и на основе шаблонов. Можно сортировать их перетаскиванием. Три точки справа вверху
+                    откроют подменю, а стрелка напротив правила позволяет его просмотреть или отредактировать.</p>
+
+                <p class="mb-3">Просто <strong>плюс в подменю</strong> позволяет добавить единичное правило, а <strong>плюс
+                    с полосками</strong> откроет вам <strong>Шаблоны личных правил</strong>, которые вы видели при
+                    первом запуске программы.</p>
+
+                <p class="mb-3">Шаблоны вам помогут использовать чужие наработки. Если вы выберете в шаблонах какое-то
+                    отсутствующее у вас правило и подтвердите выбор галочкой вверху справа, то правило добавится вам в
+                    сборник <strong>Личные правила</strong>. И вы сможете его посмотреть, отредактировать и передвинуть
+                    на нужное место, а при возвращении в <strong>Правила перенаправления</strong> выбрать для него
+                    нужное действие (перенаправление).</p>
+
+                <p class="mb-3">Теперь посмотрим на примерах, что у этих правил внутри. Нажимаем стрелочку напротив
+                    правила, и смотрим. Несколько примеров я приведу ниже.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-edituserrules.png" alt="Пример личных правил"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Пример личных правил</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Эти правила созданы на основе шаблонов. С использованием встроенных наборов списков
+                    <strong>geoip, geosite, ACL и имен пакетов из системы. Использование встроенных наборов </strong>списков<strong> </strong>позволяет
+                    сделать правила компактными, и избавляет от необходимости знать все сетевые ресурсы, необходимые,
+                    например, для работы Youtube – потому что<strong> </strong>одно имя списка<strong>
+                        geosite:youtube </strong>может соответствовать<strong> сотням конкретных ip-адресов. </strong>
+                </p>
+
+                <p class="mb-3">Ещё примеры:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-edituserrules1.png" alt="Пример личных правил"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Пример личных правил</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Эти правила созданы вручную. Первое с использованием ещё одного сборника списков ACL,
+                    второе с помощью расположенного онлайн <strong>списка</strong>, а третье с использованием <strong>доменных
+                        суффиксов</strong>. Применение суффиксов вместо имени домена позволяет выделить не только
+                    конкретный домен, но и его поддомены. Обратите внимание – если вы указываете доменный суффикс, то он
+                    должен обязательно начинаться с точки. Тогда под критерий попадут все сайты, например типа
+                    www.[суффикс] или например www.mail.[суффикс]. А если точки не будет – запись будет истолкована как
+                    точное совпадение, и поддомены рассматриваться не будут. Впрочем, при заполнении полей вы увидите
+                    подсказки.</p>
+
+                <p class="mb-3">Второй и третий скриншот показывают, как сделать из <strong>Karing</strong> бесплатный
+                    блокировщик рекламы.</p>
+
+                <p class="mb-3">В шаблонах есть три правила – <strong>Adblock, Adblock Plus</strong> и
+                    <strong>Malware</strong> c выходным значением <strong>Блокировать, </strong>которые стоит добавить в
+                    список<strong> Личных правил. </strong>Это блокировщики рекламных добавлений и вредоносного ПО.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Не мечтайте о блокировке рекламы встроенной в видео на Youtube, любыми правилами
+                    <strong>Karing. </strong>Программа только передает данные, например видеопоток со встроенной
+                    рекламой, но не умеет вмешиваться в сам поток.</p>
+
+                <p class="mb-3">Видно, что возможны разные способы выделения целевого трафика. Поскольку правила
+                    объединены функцией <strong>ИЛИ</strong> – то внутри правила достаточно соответствия хотя бы одному
+                    из приведенных условий. Это также позволяет сделать правила более компактными.</p>
+
+                <p class="mb-3">Вы можете настроить с помощью правил обращение к разным нужным вам сервисам через
+                    различные сервера доступа.</p>
+
+                <p class="mb-3">Это позволяет организовать параллельную работу через несколько подключений одновременно,
+                    например <strong>Youtube через одну группу серверов</strong>, а <strong>нейросетей через другой
+                        конкретный сервер</strong>. Единственно чего не хватает – так это балансировки нагрузки, но она,
+                    к сожалению, отсутствует на уровне ядра <strong>sing-box</strong>.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>Теперь создадим правило вручную.</strong> Нажмем плюс, и дадим имя создаваемому
+                    правилу. Имя правила в дальнейшем изменить нельзя.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-newuserrules.png" alt="Создание личного правила"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Создание личного правила</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Нажав стрелочку около созданного правила, войдём в режим редактирования. На следующем
+                    синтетическом скриншоте будут показаны все способы задания правил.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-userruletest.png" alt="Пример создания правила test"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Пример создания правила test</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Если справа от заполняемого поля есть стрелочка – значит, по ней есть список с выбором и
+                    с поиском по имени. При создании правила, лучше начать с поиска во встроенных наборах <strong>Rule
+                        Set (built-in) </strong>– может, уже есть полезные вам имена (списки) в сборниках <strong>geosite,
+                        geoip</strong> или <strong>ACL</strong>:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-ruleset.png" alt="Встроенный набор правил"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Встроенный набор правил</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Даже если вы не нашли подходящих записей в предустановленных списках, можно
+                    воспользоваться различными другими предлагаемыми способами выделения трафика – от списка доменных
+                    суффиксов до списка ip-адресов.</p>
+
+                <p class="mb-3">Когда вы создадите необходимое вам правило, вы снова вернетесь в окно <strong>Личных
+                    правил</strong>. Там можно поставить правило на нужное место по порядку. Затем в окне <strong>Правил
+                    перенаправления </strong>вновь созданному правилу нужно указать соответствующее действие. Если вы
+                    действие не укажете – правило работать не будет.</p>
+
+                <p class="mb-3">После настройки перенаправления для вновь созданного правила, необходимо проверить – всё
+                    ли работает так, как вы запланировали. Для этого со страницы <strong>Правила </strong>запускаете
+                    <strong>Тест правил перенаправления</strong>. Введя в окошке тестовый адрес и нажав
+                    <strong>Тест</strong>, вы увидите – куда реально перенаправится ваш запрос и по какому правилу.</p>
+            </div>
+
+            <h2 id="rule-test" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Тест правил перенаправления</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-testrules1.png" alt="Тест правил перенаправления"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Тест правил перенаправления</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>Первый</strong> пример – это срабатывание правила <strong>geoip:ru ->
+                    напрямую</strong>.</p>
+
+                <p class="mb-3"><strong>Второй</strong> – самостоятельно созданное правило для сайта по его имени,
+                    поскольку адрес находится в списке имён <strong>ru, </strong>и без этого нового правила трафик шёл
+                    напрямую.</p>
+
+                <p class="mb-3"><strong>Третий</strong> – поскольку соответствие какому-либо правилу не обнаружено, то
+                    работает последнее правило <strong>final -> Текущий сервер</strong>. Здесь показано использование
+                    неанглийских символов. Программа их преобразует в код (желтая строка), и тест выполняется для этого
+                    кода.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-testrules2.png" alt="Тест правил перенаправления"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Тест правил перенаправления</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Ещё примеры. Первый и второй скрины - это пример отладки правил с помощью теста. На
+                    первом скрине трафик идет напрямую, а должен идти через прокси. Оказалось, что для правила <strong>GFW</strong>
+                    было указано неправильное направление — <strong>Напрямую</strong>. Направление было изменено на
+                    <strong>Текущий сервер</strong>, и второй скрин показывает, что всё заработало правильно.</p>
+
+                <p class="mb-3">Третий пример – правило на основе шаблона <strong>Youtube -> Личная группа
+                    проки-серверов</strong> ->USA, в которую включено несколько серверов USA, и правило выбрало из них
+                    сервер по лучшему времени тестирования в личной группе.</p>
+            </div>
+
+            <h2 id="blacklist" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Чёрный список</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+
+                <p class="mb-3">Существует другой способ распределения и фильтрации трафика — <strong>Черный
+                    список</strong>. Он работает так — по умолчанию <strong>весь трафик идет напрямую (Direct)</strong>,
+                    и только выделенный правилами трафик направляется на прокси. Смысл такой настройки — минимизировать
+                    использование прокси, чтобы сделать его применение максимально незаметным, ускорить вашу работу, за
+                    счет снижения ненужного трафика через VPN, и снизить вероятность блокировки вашего доступа к
+                    серверам VPN у провайдеров.</p>
+
+                <p class="mb-3">Это делается так — переключаем правило <strong>final -> Напрямую</strong>. Системные
+                    правила <strong>geosite</strong> и <strong>geoip</strong> можно отключить — они в этом режиме
+                    бессмысленны, поскольку их выходом является <strong>Напрямую</strong>. Отключаем их в <strong>Правила
+                        - Rule Set, </strong>сняв галочки <strong>Автоматически прикреплять основные правила</strong>.
+                    Тогда в правилах перенаправления они тоже пропадут. Также вам будут не нужны правила шунтирования —
+                    всё и так по умолчанию идёт напрямую. У вас остается <strong>Проксирование приложений,</strong>
+                    правила блокировки, <strong>GFW</strong>, который направляет через прокси большинство
+                    заблокированных в России и для России ресурсов.</p>
+
+                <p class="mb-3">Возможно, вам потребуется набор личных правил, направляющих трафик на <strong>Текущий
+                    сервер (Current Selected)</strong> или на <strong>отдельный прокси</strong>. Большую часть
+                    работы<strong> </strong>возьмет на себя <strong>GFW</strong> (он перенаправит на прокси
+                    заблокированные в России ресурсы).<strong> </strong>Например, <strong>youtube, facebook,
+                        tiktock </strong>выделяются и перенаправляются на прокси автоматически. Добавлять правила
+                    придётся для тех зарубежных ресурсов, которые работают <strong>не так, как вы хотите. </strong>Например,
+                    вам нужно направить трафик <strong>youtube</strong> на определенный сервер или группу, не так как
+                    это делает набор правил. Тогда вы создаете правило, можно на основе шаблона, располагаете выше
+                    правила <strong>GFW</strong>, и указываете нужное перенаправление трафика.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Пример настройки правил по<strong> Черному списку</strong>:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="./static/images/karing/android/Karing-rulesresult.png" alt="Пример настройки правил"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Пример настройки правил</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Выделены те элементы, которые собственно и определяют тип Черного списка. Все личные
+                    правила для нужных назначений перенаправляются на прокси-сервер. Ненужные здесь системные правила
+                    <strong>geoip</strong> и <strong>geosite</strong> отключены, а правило <strong>final</strong>
+                    направлено напрямую.</p>
+
+                <p class="mb-3">Основное отличие от <strong>Белого списка</strong> — системные правила и правило
+                    <strong>final</strong> не направляют <strong>по умолчанию </strong>запросы к зарубежным и российским
+                    ресурсам через прокси-сервер, запросы (и ответный трафик) идут напрямую.</p>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        // Плавная прокрутка при переходе по якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
+                        behavior: 'smooth'
+                    });
+
+                    // Закрываем меню после перехода
+                    closeMenu();
+                }
+            });
         });
-    });
-</script>
+    </script>
 
     </div>
 

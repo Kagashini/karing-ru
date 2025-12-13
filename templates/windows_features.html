@@ -5,198 +5,538 @@
 {% block sidebar_nav %}
     <!-- Навигация по текущей странице -->
     <div class="font-bold text-gray-900 py-2">На этой странице</div>
-    <a href="#system-proxy" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Системный прокси</a>
+    <a href="#installation" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Установка</a>
+    <a href="#interface" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Интерфейс</a>
+    <a href="#proxy-vs-tun" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Proxy vs TUN</a>
+    <a href="#system-proxy" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">System Proxy</a>
     <a href="#tun-mode" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Режим TUN</a>
-    <a href="#app-proxy" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Проксирование приложений</a>
-    <a href="#system-tray" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Интеграция с системным треем</a>
-    <a href="#autostart" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Автозапуск</a>
+    <a href="#modes-comparison" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Сравнение
+        режимов</a>
+    <a href="#rules-mode" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Режим правил</a>
+    <a href="#network-stack" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Сетевой стек</a>
+    <a href="#uwp-isolation" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Исключение из
+        изоляции UWP</a>
+    <a href="#web-panel" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Веб-панель</a>
+    <a href="#issues" class="block ml-4 px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100">Проблемы и решения</a>
 {% endblock %}
 
 {% block content %}
-<!-- Основной контент -->
-<main class="max-w-4xl mx-auto p-4 pt-6">
-    <article class="prose prose-lg max-w-none">
+    <!-- Основной контент -->
+    <main class="max-w-4xl mx-auto p-4 pt-6">
+        <article class="prose prose-lg max-w-none">
 
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-            <p class="text-gray-700">Karing для Windows имеет ряд особенностей по сравнению с мобильными версиями. В этой статье рассмотрены основные отличия и специфические настройки для операционной системы Windows.</p>
-        </div>
-        
-        <h2 id="system-proxy" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Системный прокси</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">В Windows Karing по умолчанию работает в режиме системного прокси. Это означает, что программа автоматически настраивает системные параметры прокси в Windows, и все приложения, поддерживающие системные настройки прокси, будут использовать Karing для доступа в интернет.</p>
-            
-            <p>Этот режим имеет как преимущества, так и недостатки:</p>
-        </div>
-        
-        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Преимущества системного прокси:</h3>
-            <ul class="list-disc list-inside space-y-2">
-                <li>Простота настройки - не требует дополнительных действий от пользователя</li>
-                <li>Автоматическая настройка для большинства приложений</li>
-                <li>Низкое энергопотребление</li>
-                <li>Минимальная нагрузка на систему</li>
-            </ul>
-        </div>
-        
-        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Недостатки системного прокси:</h3>
-            <ul class="list-disc list-inside space-y-2">
-                <li>Не все приложения используют системные настройки прокси</li>
-                <li>Невозможность тонкой настройки маршрутизации для отдельных приложений</li>
-                <li>Ограниченные возможности по сравнению с режимом TUN</li>
-            </ul>
-        </div>
-        
-        <h2 id="tun-mode" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Режим TUN</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">Для более полного контроля над трафиком в Karing для Windows доступен режим TUN (Tunnel). Этот режим работает аналогично мобильным версиям Karing и перехватывает весь трафик системы через виртуальный сетевой адаптер.</p>
-            
-            <p>Чтобы включить режим TUN:</p>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Откройте настройки Karing</li>
-                <li>Перейдите в раздел "Основные настройки"</li>
-                <li>Найдите параметр "Режим TUN" и включите его</li>
-                <li>При первом включении может потребоваться установка драйвера TUN</li>
-            </ol>
-        </div>
-        
-        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Преимущества режима TUN:</h3>
-            <ul class="list-disc list-inside space-y-2">
-                <li>Перехват всего трафика системы без исключений</li>
-                <li>Возможность тонкой настройки маршрутизации</li>
-                <li>Полная совместимость с мобильными версиями</li>
-                <li>Работа с приложениями, игнорирующими системные настройки прокси</li>
-            </ul>
-        </div>
-        
-        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Особенности режима TUN:</h3>
-            <ul class="list-disc list-inside space-y-2">
-                <li>Требует установки драйвера виртуального адаптера</li>
-                <li>Повышенное энергопотребление</li>
-                <li>Более высокая нагрузка на систему</li>
-                <li>Может конфликтовать с антивирусами и брандмауэрами</li>
-            </ul>
-        </div>
-        
-        <h2 id="app-proxy" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Проксирование приложений</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">В отличие от мобильных версий Karing, в Windows нет встроенной функции выбора приложений для проксирования. Однако эту задачу можно решить с помощью правил маршрутизации.</p>
-            
-            <p>Для настройки проксирования отдельных приложений:</p>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Откройте настройки Karing</li>
-                <li>Перейдите в раздел "Правила" → "Личные правила"</li>
-                <li>Создайте новое правило</li>
-                <li>Выберите тип правила "Процесс"</li>
-                <li>Укажите имя процесса (например, chrome.exe)</li>
-                <li>Настройте действие (прокси/напрямую/блокировать)</li>
-            </ol>
-        </div>
-        
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-            <p class="text-gray-700">Более подробную информацию о настройке правил маршрутизации вы можете найти в статье <a href="/routing_rules" class="text-blue-600 hover:underline">Karing - маршрутизация и правила</a>.</p>
-        </div>
-        
-        <h2 id="system-tray" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Интеграция с системным треем</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">Karing для Windows полностью интегрирован с системным треем Windows. При сворачивании окно программы исчезает, а значок появляется в системном трее.</p>
-            
-            <p>Через контекстное меню системного трея можно:</p>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <ul class="list-disc list-inside space-y-2">
-                <li>Быстро включать/отключать подключение</li>
-                <li>Переключаться между профилями</li>
-                <li>Открывать главное окно программы</li>
-                <li>Переходить к настройкам</li>
-                <li>Выходить из программы</li>
-            </ul>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p>Для настройки поведения в системном трее:</p>
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Откройте настройки Karing</li>
-                <li>Перейдите в раздел "Основные настройки"</li>
-                <li>Найдите параметры "Сворачивать в трей" и "Закрывать в трей"</li>
-                <li>Настройте по своему усмотрению</li>
-            </ol>
-        </div>
-        
-        <h2 id="autostart" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Автозапуск</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p class="mb-3">Karing может автоматически запускаться при старте системы Windows. Это удобно, если вы постоянно используете программу и хотите, чтобы она была готова к работе сразу после включения компьютера.</p>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <p>Для настройки автозапуска:</p>
-            <ol class="list-decimal list-inside space-y-2">
-                <li>Откройте настройки Karing</li>
-                <li>Перейдите в раздел "Основные настройки"</li>
-                <li>Найдите параметр "Автозапуск" и включите его</li>
-            </ol>
-        </div>
-        
-        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
-            <p class="text-gray-700"><strong>Важно:</strong> При включении автозапуска Karing будет запускаться в свернутом виде в системном трее. Если вы хотите, чтобы программа автоматически подключалась при запуске, включите соответствующую опцию в настройках подключения.</p>
-        </div>
-        
-        <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Дополнительные возможности Windows</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Работа с несколькими мониторами</h3>
-            <p class="mb-3">Karing корректно работает с конфигурациями с несколькими мониторами. Все всплывающие окна и уведомления отображаются на основном мониторе.</p>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Поддержка высокого DPI</h3>
-            <p class="mb-3">Интерфейс Karing корректно масштабируется на экранах с высоким DPI, обеспечивая четкое отображение элементов управления.</p>
-        </div>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Интеграция с Windows Defender</h3>
-            <p>В некоторых случаях Windows Defender может блокировать установку драйвера TUN. Если это произошло, добавьте папку установки Karing в исключения антивируса.</p>
-        </div>
-        
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
-            <p class="text-gray-700">Более подробную информацию о настройках Karing вы можете найти в статье <a href="/detailed_settings" class="text-blue-600 hover:underline">Karing – подробнее о настройках (Часть II)</a>.</p>
-        </div>
-    </article>
-</main>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-gray-700">Karing для Windows имеет ряд особенностей по сравнению с мобильными версиями.
+                    Минимальная версия Windows 10 х64. Предыдущие версии ОС не поддерживаются и не будут
+                    поддерживаться.</p>
+            </div>
 
-<script>
-    // Плавная прокрутка при переходе по якорям
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
-                    behavior: 'smooth'
-                });
-                
-                // Закрываем меню после перехода
-                closeMenu();
-            }
+            <h2 id="installation" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Установка</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">При установке на Windows 10 процесс установки блокируется Защитником Windows, так как
+                    программа
+                    не имеет цифровой подписи (как и большинство программ на GitHub). Нажмите "Подробнее" - "Выполнить в
+                    любом случае" для установки программы.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-exe.png" alt="Точка входа не найдена"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Точка входа не найдена</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
+                    <p>При установке на <strong>Windows 10</strong> процесс установки блокируется
+                        <strong>Защитником Windows</strong>, так как программа не имеет цифровой подписи (как и
+                        большинство
+                        программ на GitHub). Нажмите <strong>"Подробнее"</strong> - <strong>"Выполнить в любом
+                            случае"</strong> для установки программы.</p>
+                </blockquote>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <figure>
+                        <img src="/static/images/karing/windows/Karing-windows10-1.png"
+                             alt="Защита при запуске на Windows 10"
+                             class="w-3/5 mx-auto content-image">
+                        <figcaption class="text-center text-gray-600 mt-2">Защита при запуске на Windows 10</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/static/images/karing/windows/Karing-windows10-2.png"
+                             alt="Выполнить в любом случае"
+                             class="w-3/5 mx-auto content-image">
+                        <figcaption class="text-center text-gray-600 mt-2">Выполнить
+                            в любом случае
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
+                    <p>При установке на Windows 11 предупреждение будет другим</p>
+                </blockquote>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-windows11.png" alt="Screen 4"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Screen 4</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Дальше установка пойдёт аналогично, как у любых других программ. На стадии выбора страны
+                    использования, если вы не видите колонки с флагами и названиями стран – введите в строку поиска
+                    сочетание <strong>ru</strong>:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-langru.png" alt="Страна или регион"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Страна или регион</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Все настройки и свои логи программа хранит в профиле текущего пользователя по пути
+                    C:\[USERS]\ [USER]\AppData\Roaming\karing\karing\:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-mainsettings.png" alt="Местонахождение настроек"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Местонахождение настроек</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+                <p class="text-gray-700"><strong>Важно:</strong> Этот каталог сохранится при удалении программы – учтите
+                    это, если вам надо удалить программу полностью. После удаления программы, например, для понижения
+                    версии – новая установка подхватит эти настройки. Хотя в подобном случае для надежности стоит
+                    сделать бекап настроек вручную средствами Karing.</p>
+            </div>
+
+            <h2 id="interface" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Интерфейс</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Вот так выглядит главное окно Karing в Windows:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-mainscreen.png" alt="Главное окно"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Главное окно</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">В отличие от Karing на телефоне, здесь есть дополнительный переключатель System Proxy
+                    (Системное прокси).
+                    Это то, чего не умеет телефон – система с proxy на Windows построена более гибко и сложно, чем на
+                    Android или iOS.</p>
+            </div>
+
+            <h2 id="proxy-vs-tun" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Режимы работы: Proxy и TUN</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">На Windows Karing может работать в разных режимах – Proxy, при котором через соединение
+                    отправляются только нужная часть трафика программ, и TUN – туннель, то, что раньше называли VPN. При
+                    этом через соединение отправляется весь трафик в Интернет и обратно. Этот режим более капризен, но
+                    иногда полезен, если задачу пересылки нужного трафика не получается решить по-другому.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">На самом деле, разница между режимами не так уж велика. Прокси-сервер запускается в
+                    любом случае, но в TUN дополнительно создается виртуальный адаптер с максимальным приоритетом среди
+                    маршрутов. Он и перенаправляет трафик. Это нужно, если прикладная программа не понимает настроек
+                    прокси-сервера.</p>
+            </div>
+
+            <h2 id="system-proxy" class="text-2xl font-bold text-gray-900 mt-8 mb-4">System Proxy</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Когда режим TUN выключен, а включен режим System Proxy – система в целом знает о
+                    прокси-сервере и его настройках, и, например, ваш браузер может использовать эти настройки
+                    автоматически.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Если этот переключатель отключен – система о настройках прокси не знает, но в браузере
+                    или другой программе можно указать прокси вручную – так: тип Socks5, адрес 127.0.0.1 порт 3067. Это
+                    удобно, если вам нужно через соединение направить одну или несколько программ (которым вы указали
+                    настройки прокси вручную), а остальное (например, торрент - клиент) должно идти напрямую, минуя
+                    прокси.</p>
+            </div>
+
+            <h2 id="tun-mode" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Режим TUN</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Режим TUN у Karing в Windows по умолчанию выключен, но может быть включен через меню.
+                    При этом вам потребуется запустить программу от имени администратора. Если при запуске от имени
+                    администратора программа всё равно требует повышения прав – значит, вам надо предварительно снять
+                    через диспетчер задач процесс karingservice.exe.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-infotun.png" alt="Информацию о TUN"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Информацию о TUN</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+                <p class="text-gray-700"><strong>Обратите внимание</strong> – все изменения настроек надо делать при
+                    выключенном соединении!</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-tun.png" alt="TUN"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">TUN</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">При этом, когда вы включаете соединение (главный переключатель), в системе создается
+                    дополнительная виртуальная сетевая карта - Karing TUN Network Adapter – для которой устанавливается
+                    своя сеть 10.20.0.0/30. Через неё в дальнейшем и направляется весь трафик компьютера, кроме трафика
+                    в локальную сеть.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-netadapter.png" alt="Сетевой адаптер в Windows"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Сетевой адаптер в Windows</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">(в Win11 Центр управления сетями находится по пути Пуск - Все программы - Инструменты
+                    Windows - Панель управления - Центр управления сетями и общим доступом).</p>
+            </div>
+
+            <h2 id="modes-comparison" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Сравнение режимов работы</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Переключатель Системный прокси при этом может быть как включен, так и выключен – смотря
+                    по
+                    вашим целям и задачам. Таким образом, в отличие от Андроида, возможно четыре режима (при
+                    установленном соединении):</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>Системный прокси включен, TUN выключен. Система знает о настройках прокси, и эти настройки
+                        автоматом могут использовать разные программы, в том числе браузеры.
+                    </li>
+                    <li>Системный прокси выключен, TUN выключен. Сам прокси-сервер при этом работает, просто система об
+                        этом
+                        не знает. Прокси-сервер в целевой программе можно указать вручную.
+                    </li>
+                    <li>Системный прокси выключен, TUN включен – всё, что направлялось в Интернет – идет через
+                        соединение с
+                        сервером доступа (VPN).
+                    </li>
+                    <li>Системный прокси включен, TUN включен. Это смешанный режим TUN + Proxy. Для некоторых программ,
+                        очень требовательных к качеству соединения (игры с системой античитов) годится только он.
+                    </li>
+                </ol>
+            </div>
+
+            <h2 id="rules-mode" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Режим правил</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Кроме того, на работу влияет и положение переключателя Правила – Глобально. В режиме
+                    Глобально никакие правила не действуют, весь трафик пойдёт через подключенный сервер. В режиме
+                    Правила – трафик обрабатывается по правилам в Karing.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Применять разные режимы следует в зависимости от решаемых вами задач. При этом
+                    конкретных решений вашей задачи может быть много.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Наиболее простой и понятный режим – TUN отключен, работает только System Proxy. Именно в
+                    этом режиме работает большинство других прокси-клиентов для Windows, и именно в этом режиме работает
+                    Karing на телефонах. В этом режиме:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <ul class="list-disc list-inside space-y-2">
+                    <li>не создаётся виртуальный адаптер;</li>
+                    <li>не требуется установка драйверов;</li>
+                    <li>не требуется запуск от имени администратора;</li>
+                    <li>не требуется дополнительных настроек системы;</li>
+                    <li>не создаётся дополнительных маршрутов;</li>
+                    <li>не возникает конфликтов с антивирусами;</li>
+                    <li>не возникает проблем с правами;</li>
+                    <li>не возникает проблем с обновлениями Windows.</li>
+                </ul>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">В этом режиме через прокси пойдут только те приложения, которые умеют читать системные
+                    настройки прокси. В остальном – трафик идёт напрямую.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Можно настроить работу браузера ещё точнее, не только до сайта, но с точностью до
+                    элемента страницы – используя расширения браузеров типа ZeroOmega или FoxyProxy.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">В сложных ситуациях, если вам не удается направить нужную вам программу через
+                    прокси-сервер – можно попробовать режим TUN. Требуется повышение прав – виртуальный адаптер можно
+                    создавать только с правами администратора. Виртуальный адаптер создается при установке соединения, а
+                    при его разрыве удаляется.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Сначала можно попробовать в режиме Глобально, когда в соединение заворачивается вообще
+                    всё – а потом постараться создать нужные правила, чтобы через соединение в режиме Правила шло только
+                    то, что нужно.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Особенность режима TUN в Windows – нет выбора проксирования отдельных приложений, как в
+                    Андроиде. Тем не менее, возможно создать правила, ориентирующиеся на имя исполняемого файла, и
+                    применить к этому правилу нужные вам действия.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-rules5.png"
+                         alt="Новое правило перенаправление - Test"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Новое правило перенаправление - Test</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Для анализа, что у вас происходит в данный момент, помимо Диагностики сети и Теста
+                    правил перенаправления (маршрутизации), полезно нажать зеленый значок монитора на главном экране,
+                    чтобы увидеть текущие соединения:</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-connections.png" alt="Соединения"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Соединения</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">(соединения можно смотреть и в Web-панели – скриншот будет ниже)</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Настройки из главного меню несколько отличаются в версии для Android и Windows. Отличия
+                    выделены на скриншоте.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-windowssettings.png"
+                         alt="Отличия настроек для Windows"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Отличия настроек для Windows</figcaption>
+                </figure>
+            </div>
+
+            <p class="mb-3"><strong>Запуск при включении</strong> – с автоматической установкой соединения – будет
+                работать только в режиме System Proxy. В режиме TUN для запуска создается виртуальный адаптер,
+                что требует повышения прав до административных. При автозапуске это обеспечить не удается.</p>
+
+            <p class="mb-3"><strong>Схемы системного вызова</strong> – способ выполнить некоторые команды для Karing
+                из командной строки.</p>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-systemcall.png"
+                         alt="Схемы системного вызова"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Схемы системного вызова</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>Стек</strong> (имеется ввиду сетевой стек). Переключатель доступен, если режим
+                    TUN включен.
+                    Значение по умолчанию в Win 10 – mixed, Win 11 - gvisor.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-stack.png" alt="TUN стек"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">TUN стек</figcaption>
+                </figure>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Различия между стеками протоколов:</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong>System</strong> - использует системный стек протоколов, который может обеспечить более
+                        стабильный/гибкий способ настройки. Он занимает меньше места, чем другие стеки.
+                    </li>
+                    <li><strong>Gvisor</strong> - Реализует стек сетевых протоколов в пользовательском пространстве,
+                        поэтому может обеспечить более высокую безопасность и изоляцию, избегая при этом переключения
+                        между ядром операционной системы и пользовательским пространством. Тем самым достигается более
+                        высокая производительность сетевой обработки в определенных ситуациях.
+                    </li>
+                    <li><strong>Mixed</strong> - смешанный стек, TCP использует System стек, UDP использует стек gvisor.
+                        Это может оказаться удобнее.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Как правило, это место трогать не надо. Но если программа работает неустойчиво – можно
+                    попробовать сменить стек.</p>
+            </div>
+
+            <h2 id="uwp-isolation" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Исключение из изоляции UWP</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Исключение из изоляции сети UWP (UWP Network Isolation Exemptions) - ещё одно отличие
+                    версии для Windows.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Universal Windows Platform (UWP) - приложения из магазина приложений Microsoft Store
+                    (ранее приложения Windows Store, Metro-стиль приложения или Modern-приложения). В целях повышения
+                    безопасности системы они в сетевой изоляции - им запрещен доступ к сетевому интерфейсу замыкания на
+                    себя (loopback), т.е. к 127.0.0.1 (localhost). Поэтому по умолчанию эти приложения (и само
+                    приложение Microsoft Store) не могут использовать локальный прокси-сервер, поднятый ВПН-клиентом. Но
+                    Karing позволяет исключить из этой изоляции отдельные приложения (или все), используя эту
+                    настройку.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Без исключения из изоляции не будут работать Microsoft Store (Магазин приложений) и
+                    Яндекс.Музыка, при установленном ВПН-соединении. Whatsapp, установленный из Магазина, не использует
+                    прокси и будет работать напрямую, но без исключения из изоляции не может передавать файлы.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Если вы пользуетесь подобными программами, и возникли проблемы с сетью – загляните сюда
+                    и исключите их из изоляции. На скрине – часть списка приложений UWP.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-isolation.png" alt="Исключение из изоляции UWP"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Исключение из изоляции UWP</figcaption>
+                </figure>
+            </div>
+
+            <h2 id="web-panel" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Веб-панель</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3">Очень удобная вещь при работе Karing под Windows – Веб-панель. Попробуйте. Это доступ
+                    браузером к мониторингу многих настроек и текущих соединений программы.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <figure class="mb-4">
+                    <img src="/static/images/karing/windows/Karing-dashboard.png" alt="Веб-панель"
+                         class="w-3/5 mx-auto content-image">
+                    <figcaption class="text-center text-gray-600 mt-2">Веб-панель</figcaption>
+                </figure>
+            </div>
+
+            <h2 id="issues" class="text-2xl font-bold text-gray-900 mt-8 mb-4">Проблемы и решения</h2>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>При первом запуске Karing в некоторых случаях появляется сообщение об
+                    ошибке</strong> – "Сheck port failed: SocketException: Failed to create server socket (OS Error: An
+                    attempt was made to access a socket in a way forbidden by its access permition." "Сделана попытка
+                    доступа к сокету методом, запрещенным правами доступа"</p>
+                <p class="mb-3"><strong>Решение</strong> описано в статье.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>После выключения компьютера и нового включения нет Интернета</strong> –
+                    возможно, у вас Karing работал в режиме System Proxy, и соединение не было выключено перед
+                    выключением компьютера. При этом в системе остается запись о настроенном System Proxy, но сам
+                    прокси-сервер или не запущен, или не соединен. Но программы пытаются обратиться к незапущенному
+                    прокси-серверу.</p>
+                <p class="mb-3"><strong>Решение</strong> – или применяйте автозапуск, и автосоединение – или разрывайте
+                    соединение перед выключением компьютера. При разрыве соединения отключается и System Proxy в Karing.
+                </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>Автозапуск программы в режиме TUN не работает</strong> – и не будет. Поскольку
+                    создание виртуального адаптера требует повышения прав до административных. А автоматически запустить
+                    программу с административными правами нельзя – это ограничение Windows.</p>
+                <p class="mb-3"><strong>Решение</strong> – не применяйте автозапуск с включенным режимом TUN.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <p class="mb-3"><strong>При старте программы вы получаете сообщение о невозможности загрузить
+                    профиль.</strong></p>
+                <p class="mb-3">Это может быть связано как с использованием сетевых ресурсов правил, так и с попыткой
+                    загрузить подписку через ещё не установившееся соединение.</p>
+                <p class="mb-3"><strong>Решение</strong> – выключите главный переключатель в Karing и перезапустите
+                    программу.</p>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-gray-700">Более подробную информацию о настройке правил маршрутизации вы можете найти в
+                    статье <a href="/routing_rules" class="text-blue-600 hover:underline">Karing - маршрутизация и
+                        правила</a>.</p>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-gray-700">Более подробную информацию о настройках DNS вы можете найти в статье <a
+                        href="/dns_explained" class="text-blue-600 hover:underline">Karing - что такое DNS и как с ним
+                    бороться</a>.</p>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                <p class="text-gray-700">Более подробную информацию о настройках Karing вы можете найти в статье <a
+                        href="/detailed_settings" class="text-blue-600 hover:underline">Karing – подробнее о
+                    настройках</a>.</p>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        // Плавная прокрутка при переходе по якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
+                        behavior: 'smooth'
+                    });
+
+                    // Закрываем меню после перехода
+                    closeMenu();
+                }
+            });
         });
-    });
-</script>
+    </script>
 {% endblock %}
