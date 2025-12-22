@@ -49,6 +49,11 @@ navigation_links = [
         "title": "Karing - что такое DNS и как с ним бороться",
         "description": "Настройка и оптимизация DNS-серверов",
     },
+    {
+        "path": "/faq",
+        "title": "Часто задаваемые вопросы",
+        "description": "Часто задаваемые вопросы о Karing и решения проблем",
+    },
 ]
 
 
@@ -179,3 +184,15 @@ async def routing_rules_html(request: Request):
 async def dns_explained_html(request: Request):
     context = get_template_context(request)
     return templates.TemplateResponse("dns_explained.html", context)
+
+
+@app.get("/faq", response_class=HTMLResponse)
+async def faq(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("faq.html", context)
+
+
+@app.get("/faq.html", response_class=HTMLResponse)
+async def faq_html(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("faq.html", context)

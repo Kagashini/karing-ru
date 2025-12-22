@@ -73,6 +73,47 @@
             padding: 0.125rem 0.25rem;
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         }
+
+        /* Стили для стрелок в меню */
+        .menu-arrow {
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .menu-arrow.rotated {
+            transform: rotate(90deg);
+        }
+
+        /* Стили для вложенного меню */
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .submenu.expanded {
+            max-height: 1000px; /* Достаточно большое значение для раскрытия меню */
+        }
+        
+        /* Стили для ссылок в меню */
+        .menu-link {
+            display: block;
+            width: 100%;
+        }
+        
+        /* Стили для элементов подменю */
+        .submenu-item {
+            display: block;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem 0;
+            border-radius: 0.5rem;
+            color: #4b5563;
+            text-decoration: none;
+        }
+        
+        .submenu-item:hover {
+            background-color: #f3f4f6;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
@@ -120,54 +161,157 @@
             Главная страница
         </a>
         
-            <a href="./quick_setup_windows.html"
-               class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
-                           hover:bg-gray-100 ">
-                Karing - Быстрая настройка Windows
-            </a>
-            
+            <div class="menu-item">
+                <div class="menu-header flex justify-between items-center font-bold text-gray-900 py-2 mt-2 rounded-lg px-4
+                     hover:bg-gray-100 "
+                    data-menu-index="1" data-path="/quick_setup_windows">
+                    <a href="./quick_setup_windows.html" class="menu-link flex-grow">Karing - Быстрая настройка Windows</a>
+                    <svg class="menu-arrow w-4 h-4 ml-2 " 
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                <div class="submenu  ml-4" 
+                     data-path="/quick_setup_windows">
+                    
+                        <!-- Content will be loaded dynamically -->
+                        <div class="submenu-content"></div>
+                    
+                </div>
+            </div>
         
-            <a href="./quick_setup_android.html"
-               class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
-                           hover:bg-gray-100 ">
-                Karing - Быстрая настройка Android
-            </a>
-            
+            <div class="menu-item">
+                <div class="menu-header flex justify-between items-center font-bold text-gray-900 py-2 mt-2 rounded-lg px-4
+                     hover:bg-gray-100 "
+                    data-menu-index="2" data-path="/quick_setup_android">
+                    <a href="./quick_setup_android.html" class="menu-link flex-grow">Karing - Быстрая настройка Android</a>
+                    <svg class="menu-arrow w-4 h-4 ml-2 " 
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                <div class="submenu  ml-4" 
+                     data-path="/quick_setup_android">
+                    
+                        <!-- Content will be loaded dynamically -->
+                        <div class="submenu-content"></div>
+                    
+                </div>
+            </div>
         
-            <a href="./quick_setup_ios.html"
-               class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
-                           hover:bg-gray-100 ">
-                Karing - Быстрая настройка iOS
-            </a>
-            
+            <div class="menu-item">
+                <div class="menu-header flex justify-between items-center font-bold text-gray-900 py-2 mt-2 rounded-lg px-4
+                     hover:bg-gray-100 "
+                    data-menu-index="3" data-path="/quick_setup_ios">
+                    <a href="./quick_setup_ios.html" class="menu-link flex-grow">Karing - Быстрая настройка iOS</a>
+                    <svg class="menu-arrow w-4 h-4 ml-2 " 
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                <div class="submenu  ml-4" 
+                     data-path="/quick_setup_ios">
+                    
+                        <!-- Content will be loaded dynamically -->
+                        <div class="submenu-content"></div>
+                    
+                </div>
+            </div>
         
-            <a href="./windows_features.html"
-               class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
-                           hover:bg-gray-100 ">
-                Особенности Karing в Windows
-            </a>
-            
+            <div class="menu-item">
+                <div class="menu-header flex justify-between items-center font-bold text-gray-900 py-2 mt-2 rounded-lg px-4
+                     hover:bg-gray-100 "
+                    data-menu-index="4" data-path="/windows_features">
+                    <a href="./windows_features.html" class="menu-link flex-grow">Особенности Karing в Windows</a>
+                    <svg class="menu-arrow w-4 h-4 ml-2 " 
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                <div class="submenu  ml-4" 
+                     data-path="/windows_features">
+                    
+                        <!-- Content will be loaded dynamically -->
+                        <div class="submenu-content"></div>
+                    
+                </div>
+            </div>
         
-            <a href="./detailed_settings.html"
-               class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
-                           hover:bg-gray-100 ">
-                Подробнее о настройках
-            </a>
-            
+            <div class="menu-item">
+                <div class="menu-header flex justify-between items-center font-bold text-gray-900 py-2 mt-2 rounded-lg px-4
+                     hover:bg-gray-100 "
+                    data-menu-index="5" data-path="/detailed_settings">
+                    <a href="./detailed_settings.html" class="menu-link flex-grow">Подробнее о настройках</a>
+                    <svg class="menu-arrow w-4 h-4 ml-2 " 
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                <div class="submenu  ml-4" 
+                     data-path="/detailed_settings">
+                    
+                        <!-- Content will be loaded dynamically -->
+                        <div class="submenu-content"></div>
+                    
+                </div>
+            </div>
         
-            <a href="./routing_rules.html"
-               class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
-                           hover:bg-gray-100 ">
-                Karing - маршрутизация и правила
-            </a>
-            
+            <div class="menu-item">
+                <div class="menu-header flex justify-between items-center font-bold text-gray-900 py-2 mt-2 rounded-lg px-4
+                     hover:bg-gray-100 "
+                    data-menu-index="6" data-path="/routing_rules">
+                    <a href="./routing_rules.html" class="menu-link flex-grow">Karing - маршрутизация и правила</a>
+                    <svg class="menu-arrow w-4 h-4 ml-2 " 
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                <div class="submenu  ml-4" 
+                     data-path="/routing_rules">
+                    
+                        <!-- Content will be loaded dynamically -->
+                        <div class="submenu-content"></div>
+                    
+                </div>
+            </div>
         
-            <a href="./dns_explained.html"
-               class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
-                           hover:bg-gray-100 ">
-                Karing - что такое DNS и как с ним бороться
-            </a>
-            
+            <div class="menu-item">
+                <div class="menu-header flex justify-between items-center font-bold text-gray-900 py-2 mt-2 rounded-lg px-4
+                     hover:bg-gray-100 "
+                    data-menu-index="7" data-path="/dns_explained">
+                    <a href="./dns_explained.html" class="menu-link flex-grow">Karing - что такое DNS и как с ним бороться</a>
+                    <svg class="menu-arrow w-4 h-4 ml-2 " 
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                <div class="submenu  ml-4" 
+                     data-path="/dns_explained">
+                    
+                        <!-- Content will be loaded dynamically -->
+                        <div class="submenu-content"></div>
+                    
+                </div>
+            </div>
+        
+            <div class="menu-item">
+                <div class="menu-header flex justify-between items-center font-bold text-gray-900 py-2 mt-2 rounded-lg px-4
+                     hover:bg-gray-100 "
+                    data-menu-index="8" data-path="/faq">
+                    <a href="./faq.html" class="menu-link flex-grow">Часто задаваемые вопросы</a>
+                    <svg class="menu-arrow w-4 h-4 ml-2 " 
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                <div class="submenu  ml-4" 
+                     data-path="/faq">
+                    
+                        <!-- Content will be loaded dynamically -->
+                        <div class="submenu-content"></div>
+                    
+                </div>
+            </div>
         
     </nav>
 </div>
@@ -286,6 +430,16 @@
                             <p class="text-gray-600 text-sm">Настройка и оптимизация DNS-серверов</p>
                         </div>
                     
+                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                                <a href="./faq.html"
+                                   class="text-blue-600 hover:text-blue-800 hover:underline">
+                                    Часто задаваемые вопросы
+                                </a>
+                            </h3>
+                            <p class="text-gray-600 text-sm">Часто задаваемые вопросы о Karing и решения проблем</p>
+                        </div>
+                    
                 </div>
             </div>
 
@@ -349,6 +503,99 @@
             closeMenu();
         }
     });
+
+    // Обработка кликов по стрелкам меню для раскрытия/скрытия подменю
+    document.querySelectorAll('.menu-arrow').forEach(arrow => {
+        arrow.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const menuItem = this.closest('.menu-item');
+            const submenu = menuItem.querySelector('.submenu');
+            const arrowIcon = this;
+            const path = menuItem.querySelector('.menu-header').dataset.path;
+            
+            // Переключаем состояние подменю
+            submenu.classList.toggle('expanded');
+            arrowIcon.classList.toggle('rotated');
+            
+            // Если меню раскрывается и контент еще не загружен, загружаем его
+            if (submenu.classList.contains('expanded') && !submenu.dataset.loaded) {
+                loadSubmenuContent(submenu, path);
+            }
+        });
+    });
+    
+    // Функция для загрузки содержания подменю
+    function loadSubmenuContent(submenu, path) {
+        const contentContainer = submenu.querySelector('.submenu-content');
+        if (!contentContainer) return;
+        
+        // Показываем индикатор загрузки
+        contentContainer.innerHTML = '<div class="py-2 text-gray-500 italic">Загрузка...</div>';
+        
+        // Здесь должна быть логика загрузки содержимого меню
+        // Поскольку у нас статический сайт, мы будем использовать заранее определенные данные
+        const menuContents = {
+            '/quick_setup_windows': [
+                { text: 'Установка', href: '#installation' },
+                { text: 'Первый запуск', href: '#first-run' },
+                { text: 'Добавление профиля', href: '#adding-profile' },
+                { text: 'Подключение', href: '#connection' }
+            ],
+            '/quick_setup_android': [
+                { text: 'Установка', href: '#installation' },
+                { text: 'Настройка', href: '#configuration' },
+                { text: 'Подключение', href: '#connection' }
+            ],
+            '/quick_setup_ios': [
+                { text: 'Установка', href: '#installation' },
+                { text: 'Настройка', href: '#configuration' },
+                { text: 'Подключение', href: '#connection' }
+            ],
+            '/windows_features': [
+                { text: 'Основные функции', href: '#features' },
+                { text: 'Настройки', href: '#settings' },
+                { text: 'Расширения', href: '#extensions' }
+            ],
+            '/detailed_settings': [
+                { text: 'Общие настройки', href: '#general' },
+                { text: 'Профили', href: '#profiles' },
+                { text: 'Правила', href: '#rules' },
+                { text: 'DNS', href: '#dns' }
+            ],
+            '/routing_rules': [
+                { text: 'Основы маршрутизации', href: '#basics' },
+                { text: 'Личные правила', href: '#personal-rules' },
+                { text: 'Глобальные правила', href: '#global-rules' }
+            ],
+            '/dns_explained': [
+                { text: 'Что такое DNS', href: '#what-is-dns' },
+                { text: 'Настройка DNS', href: '#dns-setup' },
+                { text: 'Проблемы с DNS', href: '#dns-issues' }
+            ],
+            '/faq': [
+                { text: 'Приложение Karing', href: '#karing-app' },
+                { text: 'Проблемы при работе', href: '#runtime-problems' }
+            ]
+        };
+        
+        // Имитация задержки для демонстрации загрузки
+        setTimeout(() => {
+            if (menuContents[path]) {
+                let contentHtml = '<div class="font-medium text-gray-700 py-1">На этой странице</div>';
+                menuContents[path].forEach(item => {
+                    contentHtml += `<a href="${path}${item.href}" class="submenu-item">${item.text}</a>`;
+                });
+                contentContainer.innerHTML = contentHtml;
+            } else {
+                contentContainer.innerHTML = '<div class="py-2 text-gray-500 italic">Содержание недоступно</div>';
+            }
+            
+            // Помечаем меню как загруженное
+            submenu.dataset.loaded = 'true';
+        }, 300);
+    }
 </script>
 </body>
 </html>

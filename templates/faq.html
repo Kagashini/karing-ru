@@ -1,0 +1,392 @@
+{% extends "base.html" %}
+
+{% block title %}Karing – Часто задаваемые вопросы{% endblock %}
+
+{% block header_title %}Часто задаваемые вопросы{% endblock %}
+
+{% block sidebar_nav %}
+    <!-- Навигация по текущей странице -->
+    <div class="font-medium text-gray-700 py-1">На этой странице</div>
+    <a href="#karing-app" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Приложение Karing</a>
+    <a href="#runtime-problems" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Проблемы при
+        работе</a>
+{% endblock %}
+
+{% block content %}
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">Часто задаваемые вопросы о Karing</h1>
+
+            <!-- Приложение Karing -->
+            <section id="karing-app" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Приложение Karing</h2>
+
+                <!-- Вопрос 1 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бесплатно ли приложение Karing? Сколько оно
+                        стоит?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Полностью бесплатно</li>
+                        <li>Для пользователей Apple: все аккаунты Apple вне материкового Китая могут скачать
+                            приложение
+                        </li>
+                        <li>Для Windows-версии, пожалуйста, перейдите на Github для скачивания (возможно потребуется
+                            открыть прокси для загрузки)
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Вопрос 2 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Какие платформы поддерживаются?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Уже поддерживаются: IOS, MacOS, TvOS, Windows, Android</li>
+                        <li>В разработке: Linux</li>
+                    </ul>
+                </div>
+
+                <!-- Вопрос 3 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Какие типы конфигураций подписки
+                        поддерживаются?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Clash, V2ray (поддерживает пакетную обработку), Stash, Karing, Sing-box, Shadowsocks, Sub,
+                            Github
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Вопрос 4 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Какие протоколы поддерживаются?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Shadowsocks, ShadowsocksR, VMess, Vless, Trojan, Tuic, Socks, Http, Hysteria, Hysteria2,
+                            Wireguard, AnyTLS, Mieru и другие протоколы
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Вопрос 5 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Какую версию следует скачивать пользователям
+                        Apple?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Если вы хотите стабильного использования, рекомендуется скачать версию из AppStore</li>
+                        <li>Если вы хотите попробовать новые функции, можно скачать бета-версию из TestFlight</li>
+                    </ul>
+                </div>
+
+                <!-- Вопрос 6 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Как использовать приложение?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Для новых пользователей, которые хотят быстро начать работу, рекомендуется обратиться к
+                            руководству быстрого запуска на этом сайте
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Вопрос 7 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Как обновить приложение?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Для пользователей Apple: используйте системное обновление</li>
+                        <li>Для пользователей Windows/Android: Karing будет подсказывать после автоматического
+                            обновления, просто скачайте или перезапустите приложение согласно подсказке
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Вопрос 8 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Это безопасно?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Приложения проходят проверку Apple перед размещением в AppStore, и версия Apple может быть
+                            скачана только из AppStore или TestFlight (пожалуйста, не скачивайте приложения из
+                            неофициальных источников)
+                        </li>
+                        <li>Мы также соблюдаем те же правила безопасности и конфиденциальности, что и платформы Apple,
+                            для обеспечения того, чтобы ваша информация не была раскрыта
+                        </li>
+                        <li>Пользователям не-Apple платформ рекомендуется скачивать с Github</li>
+                        <li>Официальные источники загрузки Karing: только AppStore и
+                            <a href="https://github.com/KaringX/karing/releases" target="_blank"
+                               class="text-blue-600 hover:underline"><strong>GitHub</strong></a>, пожалуйста, не
+                            скачивайте
+                            и не устанавливайте из
+                            других источников
+                        </li>
+                        <li>Karing не размещён в Google Play, пожалуйста, не скачивайте и не устанавливайте из Google
+                            Play
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Вопрос 9 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">В чём разница между прокси и глобальным
+                        режимом?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Примечание: Правила/Глобально относятся к правилам для трафика, проходящего через
+                            прокси-софt
+                            (исходящий трафик).
+                        </li>
+                        <li>Правила: распределяет трафик в соответствии с правилами маршрутизации.
+                        </li>
+                        <li>Глобально: весь трафик перенаправляется/проксируется через текущий выбор.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Вопрос 10 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">В чём разница между системным прокси и
+                        TUN?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Примечание: Системный прокси и TUN - это оба способа входа в прокси-программное обеспечение,
+                            они не имеют никакого отношения к правилам/глобальному режиму
+                        </li>
+                        <li>Примечание: Системный прокси: только для системных настроек прокси на ПК устройствах</li>
+                        <li>Системный прокси относится к настройкам прокси в вашей системе, что требует адаптации других
+                            программ. Программы без адаптации не будут использовать системный прокси
+                        </li>
+                        <li>TUN: виртуальная сетевая карта, прокси-программа создаёт виртуальную сетевую карту через
+                            драйвер, и практически все запросы программ в системе будут автоматически перенаправлены на
+                            виртуальную сетевую карту (разные операционные системы немного отличаются, например,
+                            UWP-приложения в Windows), без необходимости адаптации других программ
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Список проблем при работе -->
+            <section id="runtime-problems">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Список проблем при
+                    работе</h2>
+
+                <!-- Примечание -->
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Примечание: Если возникла проблема, сначала
+                        обновите до последней версии</h3>
+                </div>
+
+                <!-- Проблема 1 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Ошибка добавления конфигурации/обновления
+                        конфигурации</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Connection reset by peer или Connection refused: Чаще всего причина в том, что запрос
+                            подписки заблокирован, попробуйте снова после открытия VPN/прокси
+                        </li>
+                        <li>http statusCode:404: Подписка не существует, попробуйте снова после изменения ссылки
+                            подписки или изменения UserAgent (провайдер может отправлять разные типы конфигураций
+                            подписки на основе UserAgent)
+                        </li>
+                        <li>http statusCode:403: Запрос отклонён провайдером, попробуйте другую ссылку подписки</li>
+                        <li>Failed host lookup: Разрешение доменного имени ссылки подписки не удалось, попробуйте снова
+                            после открытия VPN/прокси
+                        </li>
+                        <li>http response is empty: Пустой ответ провайдера, попробуйте другую ссылку подписки или
+                            измените UserAgent
+                        </li>
+                        <li>No server available: Если вы можете добавить её с помощью других приложений, попробуйте
+                            изменить UserAgent и повторите попытку
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 2 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Как проверить, поддерживает ли моя текущая сеть
+                        IPv6?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Отключите Karing</li>
+                        <li>Нажмите на тест скорости на главном экране (это должен быть тест скорости, который идет с
+                            приложением. Если вы установили пользовательский тест скорости, обратитесь к Google за
+                            использованием)
+                        </li>
+                        <li>Найдите страницу с надписью "Подключено через XXX", если XXX - это IPv6, это означает, что
+                            ваша текущая сеть поддерживает IPv6
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 3 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Почему узел CF может не подключаться должным
+                        образом в Karing?</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Узлы CF не могут использовать DNS Cloudflare. Снимите флажок "Cloudflare DNS" в настройках
+                            DNS или переключитесь на другого провайдера DNS.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 4 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Некоторые приложения не могут подключиться или
+                        возникают ошибки подключения</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Сначала обновите до последней версии</li>
+                        <li>Сначала необходимо подтвердить, что используемый прокси-узел может быть подключен, и
+                            настройки страны и региона в [Перенаправлении] правильны
+                        </li>
+                        <li>Откройте [Главный экран]-[Обнаружение сети], чтобы проверить, может ли доменное имя
+                            нормально получить доступ, и измените соответствующие настройки в соответствии с сообщением
+                            об ошибке
+                        </li>
+                        <li>Если вы не знаете, как установить доменное имя на предыдущем шаге, вы можете перейти в
+                            [Главный экран]-[Состояние подключения], чтобы проверить, есть ли запрос соответствующего
+                            доменного имени (вам нужно сначала переключить проблемное приложение и обновить приложение)
+                        </li>
+                        <li>Если на шаге 4 нет запроса связанного доменного имени, это, по сути, проблема с разрешением
+                            DNS. Перейдите в [Главный экран]-[DNS]-[Сервер]-выберите настройку сервера-определите
+                            задержку сервера-установите соответствующий DNS-сервер в соответствии с задержкой
+                        </li>
+                        <li>Если на шаге 4 есть запрос связанного доменного имени, проверьте, правильно ли выполнено
+                            перенаправление. При ошибке перенаправления измените соответствующие правила перенаправления
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 5 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">MacOS: Нажмите для подключения, и оно
+                        автоматически отключится после успешного подключения</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Проверьте 'Консоль' - 'Отчеты о сбоях' на наличие файлов, связанных с 'karingServiceSE'.
+                            Если да, это указывает на сбой процесса VPN. Отправьте файл сбоя разработчику для анализа.
+                        </li>
+                        <li>Перейдите в Настройки - Конфиденциальность и безопасность - Полный доступ к диску - Включите
+                            разрешения для 'karingServiceSE'.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 6 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">На телефоне Android Xiaomi нельзя установить,
+                        появляется предупреждение о высокорисковом приложении</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Эта проблема не связана с версией Karing. В настоящее время все версии Karing будут иметь
+                            эту проблему на телефонах Xiaomi, потому что Karing занесен в черный список бэкенда Xiaomi
+                        </li>
+                        <li>Решение: Выйдите из установщика, отключите все сети (переключитесь в режим полета) и
+                            повторите попытку установки
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 7 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Система Android, часто сбои при открытии
+                        соединения</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Измените Настройки-TUN-Сетевой стек на другое значение (например, gvisor) и попробуйте снова
+                            подключиться
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 8 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Ошибка Android: panic: invalid page type</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Отключите соединение - Настройки - Очистите кэш и попробуйте снова</li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 9 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Система Android, ошибка при открытии
+                        соединения</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Ошибка: android.content.ActivityNotFoundException: Unable to find explicit activity class
+                            {com.android.vpndialogs/com.android.vpndialogs.ConfirmDialog}
+                            <br>Причина: Система Android удалила/упростила модуль VPN, что привело к невозможности
+                            правильного подключения VPN
+                            <br>Решение: Переключитесь на другое устройство Android
+                        </li>
+                        <li>Ошибка: process is bad
+                            <br>Решение: Начните подключение из центра управления
+                        </li>
+                        <li>Ошибка: configure tun interface: com.bly.chaos.plugin.stub.VpnServiceStub does not require
+                            android.permission.BIND_VPN_SERVICE
+                            <br>Решение: Не включайте клонирование для VPN-приложений
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 10 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Android отключается после подключения на
+                        некоторое время или при переходе в фоновый режим</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Измените политику энергосбережения Karing на "Неограниченную"</li>
+                        <li>Если ваш процессор MediaTek, вам также может потребоваться отключить переключатель
+                            оптимизации Karing в "Dura Speed"
+                        </li>
+                        <li>Включите переключатель "Постоянный VPN" для Karing в системных настройках VPN</li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 11 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Пульт дистанционного управления Android TV не
+                        может переключать фокус (главный экран)</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Настройки - Включите 'Поворачивать с экраном'</li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 12 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Невозможно скачать приложения из Google Play на
+                        Android</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Смотрите решение проблемы с неудачными загрузками Google Play</li>
+                    </ul>
+                </div>
+
+                <!-- Проблема 13 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Устройство не может подключиться к Интернету
+                        после отключения режима TUN на iOS/macOS</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                        <li>Из-за ограничений системы и различий в архитектуре программного обеспечения между iOS/macOS
+                            и Android/Windows, даже если режим TUN отключен, процесс сетевого расширения VPN всё равно
+                            будет запущен на iOS/macOS. Однако, поскольку процесс сетевого расширения VPN не включает
+                            режим TUN, он не будет считывать или пересылать данные из системы, тем самым препятствуя
+                            сетевому подключению.
+                        </li>
+                        <li>Решения: 1. Включите режим TUN. 2. Вручную установите прокси в других приложениях на адрес
+                            прокси Karing (для ...
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Плавная прокрутка при переходе по якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
+                        behavior: 'smooth'
+                    });
+
+                    // Закрываем меню после перехода
+                    closeMenu();
+                }
+            });
+        });
+    </script>
+{% endblock %}
