@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Karing – Руководство по настройке</title>
+    <title>Karing – Скачать</title>
     <link rel="icon" href="./static/images/favicon.ico">
     <link rel="stylesheet" href="./static/css/images.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -137,7 +137,7 @@
             <!-- Наслучай, если SVG не загрузится -->
             <span aria-hidden="true" style="font-size: 24px; line-height: 1; display: none;">☰</span>
         </button>
-        <h1 class="text-xl font-bold text-gray-900">Инструкция по настройке Karing</h1>
+        <h1 class="text-xl font-bold text-gray-900">Скачать Karing</h1>
     </div>
 </header>
 
@@ -157,7 +157,7 @@
         <!-- Link to homepage -->
         <a href="./index.html"
 class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
-                       bg-blue-100 text-blue-700 ">
+                       hover:bg-gray-100 ">
             Главная страница
         </a>
         
@@ -315,19 +315,28 @@ class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
         
             <div class="menu-item">
                 <div class="menu-header flex justify-between items-center font-bold text-gray-900 py-2 mt-2 rounded-lg px-4
- hover:bg-gray-100 "
+ bg-blue-100 text-blue-700 "
                     data-menu-index="9" data-path="/download">
                     <a href="./download.html" class="menu-link flex-grow">Скачать Karing</a>
-                    <svg class="menu-arrow w-4 h-4 ml-2 " 
+                    <svg class="menu-arrow w-4 h-4 ml-2 rotated" 
                          fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
                 </div>
-                <div class="submenu  ml-4" 
+                <div class="submenu expanded ml-4" 
                      data-path="/download">
                     
-                        <!-- Content will be loaded dynamically -->
-                        <div class="submenu-content"></div>
+                        
+    <!-- Навигация по текущей странице -->
+    <div class="font-medium text-gray-700 py-1">На этой странице</div>
+    <a href="#system-requirements" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Системные требования</a>
+    <a href="#ios" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">iOS (iPhone/iPad)/tvOS (Apple TV)</a>
+    <a href="#macos" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">MacOS</a>
+    <a href="#android" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Android/Harmony</a>
+    <a href="#windows" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Windows</a>
+    <a href="#linux" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Linux</a>
+    <a href="#notifications" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Уведомления о новых версиях</a>
+
                     
                 </div>
             </div>
@@ -340,155 +349,283 @@ class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
 
 <div class="flex-grow">
     
-    <!-- Основной контент -->
-    <main class="max-w-4xl mx-auto p-4 pt-6">
-        <div class="tab-content">
-            <h1 class="text-3xl font-bold text-gray-900 mb-6">Добро пожаловать в руководство по Karing</h1>
-
-            <figure class="mb-4 text-center">
-                <img src="./static/images/karing/logo.png" alt="Логотип Karing" class="block mx-auto">
-            </figure>
-
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r">
-                <p class="text-gray-700"><strong>Karing</strong> - бесплатная мультиплатформенная программа,
-                    представляющая собой мощный и простой набор инструментов <strong>proxy</strong></p>
-                <br>
-                <p class="text-gray-700">Программа в основном предназначена для работы с <strong>подписками</strong>
-                    <strong>proxy</strong> или <strong>"аэропортами"</strong> - (динамически обновляемый по специальной
-                    ссылке список серверов и правил маршрутизации). Поддерживает следующие форматы подписок и файлов
-                    конфигурации - <strong>Clash, V2ray (с пакетом поддержки), Stash, Karing, Sing-box, Shadowsocks,
-                        Sub, Github</strong>.<strong> </strong></p>
-                <br>
-                <p class="text-gray-700"><strong>Karing</strong> также может работать с вашим собственным списком
-                    прокси-серверов.</p>
-                <br>
-                <p class="text-gray-700">Приложение построено на <strong>модифицированном ядре sing-boх</strong>,
-                    поддерживает все современные протоколы - <strong>VMess, Vless, Trojan и Shadowsocks, ShadowsocksR,
-                        TUIC, Socks, Http, Hysteria, Hysteria2, WireGuard</strong> и др. Интерфейс английский /
-                    китайский / русский / фарси / арабский.</p>
-                <br>
-                <p><strong>Совместимость - Android &gt;=8, Windows &gt;=10 x64, iOS &gt;=15 MacOS &gt;=12</strong></p>
-
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">Скачать Karing</h1>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <p class="text-gray-700">Karing - это мощная утилита прокси, совместимая с Clash. Вы можете скачать приложение для различных платформ ниже.</p>
+        </div>
+        
+        <!-- Системные требования -->
+        <section id="system-requirements" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Системные требования</h2>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                    <li>IOS >= 15</li>
+                    <li>MacOS >= 12</li>
+                    <li>TvOS >= 17</li>
+                    <li>Android >= 8</li>
+                    <li>Windows >= 10</li>
+                </ul>
             </div>
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r">
-                <p class="text-gray-700">В этом руководстве вы найдете подробные инструкции по настройке и использованию
-                    всех функций Karing.</p>
-            </div>
-            <div class="mt-10">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-200">Разделы руководства</h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                                <a href="./quick_setup_windows.html"
-                                   class="text-blue-600 hover:text-blue-800 hover:underline">
-                                    Karing - Быстрая настройка Windows
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 text-sm">Пошаговая инструкция по настройке Karing на Windows</p>
-                        </div>
-                    
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                                <a href="./quick_setup_android.html"
-                                   class="text-blue-600 hover:text-blue-800 hover:underline">
-                                    Karing - Быстрая настройка Android
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 text-sm">Пошаговая инструкция по настройке Karing на Android</p>
-                        </div>
-                    
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                                <a href="./quick_setup_ios.html"
-                                   class="text-blue-600 hover:text-blue-800 hover:underline">
-                                    Karing - Быстрая настройка iOS
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 text-sm">Пошаговая инструкция по настройке Karing на iOS</p>
-                        </div>
-                    
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                                <a href="./windows_features.html"
-                                   class="text-blue-600 hover:text-blue-800 hover:underline">
-                                    Особенности Karing в Windows
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 text-sm">Специфические настройки для операционной системы Windows</p>
-                        </div>
-                    
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                                <a href="./detailed_settings.html"
-                                   class="text-blue-600 hover:text-blue-800 hover:underline">
-                                    Подробнее о настройках
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 text-sm">Расширенные настройки и возможности программы</p>
-                        </div>
-                    
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                                <a href="./routing_rules.html"
-                                   class="text-blue-600 hover:text-blue-800 hover:underline">
-                                    Karing - маршрутизация и правила
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 text-sm">Настройка правил маршрутизации трафика</p>
-                        </div>
-                    
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                                <a href="./dns_explained.html"
-                                   class="text-blue-600 hover:text-blue-800 hover:underline">
-                                    Karing - что такое DNS и как с ним бороться
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 text-sm">Настройка и оптимизация DNS-серверов</p>
-                        </div>
-                    
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                                <a href="./faq.html"
-                                   class="text-blue-600 hover:text-blue-800 hover:underline">
-                                    Часто задаваемые вопросы
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 text-sm">Часто задаваемые вопросы о Karing и решения проблем</p>
-                        </div>
-                    
-                        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                                <a href="./download.html"
-                                   class="text-blue-600 hover:text-blue-800 hover:underline">
-                                    Скачать Karing
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 text-sm">Ссылки для скачивания Karing для различных платформ</p>
-                        </div>
-                    
+        </section>
+        
+        <!-- iOS -->
+        <section id="ios" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">iOS (iPhone/iPad)/tvOS (Apple TV)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия</h3>
+                    <a href="https://apps.apple.com/app/karing/id6474245508" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать из AppStore
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия</h3>
+                    <a href="https://testflight.apple.com/join/eKUJ3ytn" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать из TestFlight
+                    </a>
                 </div>
             </div>
-
-            <div class="mt-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Благодарности</h2>
-                <p class="text-gray-700 mb-4">
-                <p>Материал использованный при написании этой документации:</p>
-                <a href="https://telegra.ph/Karing---part1-04-06"
-                   class="text-blue-600 hover:text-blue-800 hover:underline">Karing – Quick Start (Часть 1)</a>
-                <p>Спасибо авторам за перевод и написание.</p>
-                </p>
-                <p class="text-gray-700 mb-4">
-                <p>А также использован материал с официального сайта:</p>
-                <a href="https://karing.app/en/"
-                   class="text-blue-600 hover:text-blue-800 hover:underline">Karing - Clash compatible & Powerful proxy
-                    utility</a>
-                </p>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
+                <p class="text-gray-700">Примечание: Версии из AppStore и TestFlight не могут быть установлены одновременно. Пожалуйста, выберите версию для установки в соответствии с конкретной ситуацией.</p>
             </div>
-        </div>
-    </main>
+        </section>
+        
+        <!-- MacOS -->
+        <section id="macos" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">MacOS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия</h3>
+                    <a href="https://apps.apple.com/app/karing/id6474245508" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия</h3>
+                    <a href="https://testflight.apple.com/join/eKUJ3ytn" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Android -->
+        <section id="android" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Android/Harmony</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия для Android TV (armeabi-v7a)</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия для Android TV (armeabi-v7a)</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mt-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-3">Альтернативные варианты загрузки</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Стабильная версия - GitHub
+                    </a>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Бета-версия - GitHub
+                    </a>
+                    <a href="https://m.apkpure.com/karing-proxies-client/org.karing.karingvpn" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Стабильная версия - APKPure AppStore
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
+                <p class="text-gray-700 mb-2">Примечание для пользователей Xiaomi/MIUI: Если у вас не получается установить приложение, включите режим полета (офлайн) и отключите "Security Guardian - Enhanced Protection" перед установкой.</p>
+                <p class="text-gray-700">Для системы HarmonyOS, пожалуйста, обратитесь к: Установка Karing на HarmonyOS</p>
+            </div>
+        </section>
+        
+        <!-- Windows -->
+        <section id="windows" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Windows</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия (установщик)</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия (архив ZIP)</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия (установщик)</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия (архив ZIP)</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mt-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-3">Альтернативные варианты загрузки</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Стабильная версия - GitHub
+                    </a>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Бета-версия - GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
+                <p class="text-gray-700">Примечание: Если при установке защитник Windows блокирует установку, нажмите "Показать детали" - "Все равно запустить" для установки.</p>
+            </div>
+        </section>
+        
+        <!-- Linux -->
+        <section id="linux" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Linux</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия (пакет deb)</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия (пакет rpm)</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия (пакет deb)</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия (пакет rpm)</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mt-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-3">Альтернативные варианты загрузки</h3>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Бета-версия - GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Уведомления -->
+        <section id="notifications">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Уведомления о новых версиях</h2>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <p class="text-gray-700 mb-3">О новых выпусках будет сообщено в группе Telegram:</p>
+                <a href="https://t.me/karingvpn" target="_blank" 
+                   class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                    Перейти в Telegram группу
+                </a>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    // Плавная прокрутка при переходе по якорям
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
+                    behavior: 'smooth'
+                });
+
+                // Закрываем меню после перехода
+                closeMenu();
+            }
+        });
+    });
+</script>
 
 </div>
 

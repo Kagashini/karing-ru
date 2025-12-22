@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+
+{% block title %}Karing – Скачать{% endblock %}
+
+{% block header_title %}Скачать Karing{% endblock %}
+
+{% block sidebar_nav %}
+    <!-- Навигация по текущей странице -->
+    <div class="font-medium text-gray-700 py-1">На этой странице</div>
+    <a href="#system-requirements" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Системные требования</a>
+    <a href="#ios" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">iOS (iPhone/iPad)/tvOS (Apple TV)</a>
+    <a href="#macos" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">MacOS</a>
+    <a href="#android" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Android/Harmony</a>
+    <a href="#windows" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Windows</a>
+    <a href="#linux" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Linux</a>
+    <a href="#notifications" class="block ml-4 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Уведомления о новых версиях</a>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">Скачать Karing</h1>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <p class="text-gray-700">Karing - это мощная утилита прокси, совместимая с Clash. Вы можете скачать приложение для различных платформ ниже.</p>
+        </div>
+        
+        <!-- Системные требования -->
+        <section id="system-requirements" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Системные требования</h2>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <ul class="list-disc pl-6 space-y-2 text-gray-600">
+                    <li>IOS >= 15</li>
+                    <li>MacOS >= 12</li>
+                    <li>TvOS >= 17</li>
+                    <li>Android >= 8</li>
+                    <li>Windows >= 10</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- iOS -->
+        <section id="ios" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">iOS (iPhone/iPad)/tvOS (Apple TV)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия</h3>
+                    <a href="https://apps.apple.com/app/karing/id6474245508" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать из AppStore
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия</h3>
+                    <a href="https://testflight.apple.com/join/eKUJ3ytn" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать из TestFlight
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
+                <p class="text-gray-700">Примечание: Версии из AppStore и TestFlight не могут быть установлены одновременно. Пожалуйста, выберите версию для установки в соответствии с конкретной ситуацией.</p>
+            </div>
+        </section>
+        
+        <!-- MacOS -->
+        <section id="macos" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">MacOS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия</h3>
+                    <a href="https://apps.apple.com/app/karing/id6474245508" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия</h3>
+                    <a href="https://testflight.apple.com/join/eKUJ3ytn" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Android -->
+        <section id="android" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Android/Harmony</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия для Android TV (armeabi-v7a)</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия для Android TV (armeabi-v7a)</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mt-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-3">Альтернативные варианты загрузки</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Стабильная версия - GitHub
+                    </a>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Бета-версия - GitHub
+                    </a>
+                    <a href="https://m.apkpure.com/karing-proxies-client/org.karing.karingvpn" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Стабильная версия - APKPure AppStore
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
+                <p class="text-gray-700 mb-2">Примечание для пользователей Xiaomi/MIUI: Если у вас не получается установить приложение, включите режим полета (офлайн) и отключите "Security Guardian - Enhanced Protection" перед установкой.</p>
+                <p class="text-gray-700">Для системы HarmonyOS, пожалуйста, обратитесь к: Установка Karing на HarmonyOS</p>
+            </div>
+        </section>
+        
+        <!-- Windows -->
+        <section id="windows" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Windows</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия (установщик)</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия (архив ZIP)</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия (установщик)</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия (архив ZIP)</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mt-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-3">Альтернативные варианты загрузки</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Стабильная версия - GitHub
+                    </a>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Бета-версия - GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
+                <p class="text-gray-700">Примечание: Если при установке защитник Windows блокирует установку, нажмите "Показать детали" - "Все равно запустить" для установки.</p>
+            </div>
+        </section>
+        
+        <!-- Linux -->
+        <section id="linux" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Linux</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия (пакет deb)</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Стабильная версия (пакет rpm)</h3>
+                    <a href="https://github.com/KaringX/karing/releases/latest" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия (пакет deb)</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Бета-версия (пакет rpm)</h3>
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Скачать
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mt-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-3">Альтернативные варианты загрузки</h3>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+                    <a href="https://github.com/KaringX/karing/releases" target="_blank" 
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                        Бета-версия - GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Уведомления -->
+        <section id="notifications">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Уведомления о новых версиях</h2>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <p class="text-gray-700 mb-3">О новых выпусках будет сообщено в группе Telegram:</p>
+                <a href="https://t.me/karingvpn" target="_blank" 
+                   class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center transition-colors">
+                    Перейти в Telegram группу
+                </a>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    // Плавная прокрутка при переходе по якорям
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Учитываем фиксированную шапку
+                    behavior: 'smooth'
+                });
+
+                // Закрываем меню после перехода
+                closeMenu();
+            }
+        });
+    });
+</script>
+{% endblock %}

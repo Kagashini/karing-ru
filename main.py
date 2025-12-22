@@ -54,6 +54,11 @@ navigation_links = [
         "title": "Часто задаваемые вопросы",
         "description": "Часто задаваемые вопросы о Karing и решения проблем",
     },
+    {
+        "path": "/download",
+        "title": "Скачать Karing",
+        "description": "Ссылки для скачивания Karing для различных платформ",
+    },
 ]
 
 
@@ -196,3 +201,15 @@ async def faq(request: Request):
 async def faq_html(request: Request):
     context = get_template_context(request)
     return templates.TemplateResponse("faq.html", context)
+
+
+@app.get("/download", response_class=HTMLResponse)
+async def download(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("download.html", context)
+
+
+@app.get("/download.html", response_class=HTMLResponse)
+async def download_html(request: Request):
+    context = get_template_context(request)
+    return templates.TemplateResponse("download.html", context)
