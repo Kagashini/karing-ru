@@ -79,15 +79,11 @@ def get_last_commit_date():
 
 
 def get_template_context(request: Request):
-    is_embedded = request.query_params.get("embed") == "1"
-    embed_query = "?embed=1" if is_embedded else ""
     return {
         "request": request,
         "nav_links": navigation_links,
         "current_year": datetime.now().year,
         "last_updated": get_last_commit_date(),
-        "is_embedded": is_embedded,
-        "embed_query": embed_query,
     }
 
 
