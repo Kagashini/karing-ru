@@ -213,6 +213,7 @@ class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
 
 <script src="/static/js/image-gallery.js"></script>
 <script>
+    const EMBED_QUERY = "{{ embed_query|safe }}";
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
 
@@ -230,8 +231,12 @@ class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
         document.body.classList.remove('overflow-hidden');
     }
 
-    document.getElementById('menu-toggle').addEventListener('click', openMenu);
-document.getElementById('menu-close').addEventListener('click', closeMenu);
+    if (document.getElementById('menu-toggle')) {
+        document.getElementById('menu-toggle').addEventListener('click', openMenu);
+    }
+    if (document.getElementById('menu-close')) {
+        document.getElementById('menu-close').addEventListener('click', closeMenu);
+    }
     overlay.addEventListener('click', closeMenu);
 
     // Закрытие по Esc
@@ -331,7 +336,7 @@ document.getElementById('menu-close').addEventListener('click', closeMenu);
             if (menuContents[path]) {
                 let contentHtml = '<div class="font-medium text-gray-700 py-1">На этой странице</div>';
                 menuContents[path].forEach(item => {
-                    contentHtml += `<a href="${path}${item.href}" class="submenu-item">${item.text}</a>`;
+                    contentHtml += `<a href="${path}${EMBED_QUERY}${item.href}" class="submenu-item">${item.text}</a>`;
                 });
                 contentContainer.innerHTML = contentHtml;
             } else {
