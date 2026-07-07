@@ -55,7 +55,8 @@ uvicorn main:app --reload
 
 ## Благодарности
 
-Спасибо авторам за материал: https://telegra.ph/Karing---part1-04-06
+Спасибо авторам за материал: https://telegra.ph/Karing---part1-04-06   
+Также использовался материал с официального руководства: https://karing.app/en/quickstart/
 
 ## Лицензия
 
