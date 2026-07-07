@@ -119,6 +119,7 @@
 <body class="bg-gray-50 min-h-screen flex flex-col">
 
 <!-- Шапка с гамбургером -->
+{% if not is_embedded %}
 <header class="bg-white border-b border-gray-200 sticky top-0z-50">
     <div class="px-4 py-3 flex items-center">
         <!-- Гамбургер-кнопка -->
@@ -140,6 +141,7 @@
         <h1 class="text-xl font-bold text-gray-900">{% block header_title %}{% endblock %}</h1>
     </div>
 </header>
+{% endif %}
 
 <!-- Боковое меню (выдвижное) -->
 <div id="sidebar"
@@ -155,7 +157,7 @@
     </div>
     <nav class="space-y-1">
         <!-- Link to homepage -->
-        <a href="/"
+        <a href="/{{ embed_query }}"
 class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
                       {% if request.url.path == '/' or request.url.path == '/index.html' %} bg-blue-100 text-blue-700 {% else %} hover:bg-gray-100 {% endif %}">
             Главная страница
@@ -165,7 +167,7 @@ class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
                 <div class="menu-header flex justify-between items-center font-bold text-gray-900 py-2 mt-2 rounded-lg px-4
 {% if request.url.path == link.path or request.url.path == link.path + '.html' %} bg-blue-100 text-blue-700 {% else %} hover:bg-gray-100 {% endif %}"
                     data-menu-index="{{ loop.index }}" data-path="{{ link.path }}">
-                    <a href="{{ link.path }}" class="menu-link flex-grow">{{ link.title }}</a>
+                    <a href="{{ link.path }}{{ embed_query }}" class="menu-link flex-grow">{{ link.title }}</a>
                     <svg class="menu-arrow w-4 h-4 ml-2 {% if request.url.path == link.path or request.url.path == link.path + '.html' %}rotated{% endif %}" 
                          fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
