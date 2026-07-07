@@ -119,8 +119,7 @@
 <body class="bg-gray-50 min-h-screen flex flex-col">
 
 <!-- Шапка с гамбургером -->
-
-<header class="bg-white border-b border-gray-200 sticky top-0z-50">
+<header id="page-header" class="bg-white border-b border-gray-200 sticky top-0z-50">
     <div class="px-4 py-3 flex items-center">
         <!-- Гамбургер-кнопка -->
         <button id="menu-toggle"
@@ -141,7 +140,6 @@
         <h1 class="text-xl font-bold text-gray-900">Особенности Karing в Windows</h1>
     </div>
 </header>
-
 
 <!-- Боковое меню (выдвижное) -->
 <div id="sidebar"
@@ -897,7 +895,33 @@ class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
 
 <script src="./static/js/image-gallery.js"></script>
 <script>
-    const EMBED_QUERY = "";
+    document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const isEmbedded = urlParams.get('embed') === '1';
+
+        if (isEmbedded) {
+            const header = document.getElementById('page-header');
+            if (header) {
+                header.style.display = 'none';
+            }
+
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) {
+                const links = sidebar.querySelectorAll('a');
+                links.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && !href.startsWith('#') && !href.includes('?embed=1')) {
+                        if (href.includes('?')) {
+                            link.setAttribute('href', href + '&embed=1');
+                        } else {
+                            link.setAttribute('href', href + '?embed=1');
+                        }
+                    }
+                });
+            }
+        }
+    });
+
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
 
@@ -1020,7 +1044,12 @@ class="block font-bold text-gray-900 py-2 mt-2 cursor-pointer rounded-lg px-4
             if (menuContents[path]) {
                 let contentHtml = '<div class="font-medium text-gray-700 py-1">На этой странице</div>';
                 menuContents[path].forEach(item => {
-                    contentHtml += `<a href="${path}${EMBED_QUERY}${item.href}" class="submenu-item">${item.text}</a>`;
+                    let href = `${path}${item.href}`;
+                    const urlParams = new URLSearchParams(window.location.search);
+                    if (urlParams.get('embed') === '1') {
+                        href += '?embed=1';
+                    }
+                    contentHtml += `<a href="${href}" class="submenu-item">${item.text}</a>`;
                 });
                 contentContainer.innerHTML = contentHtml;
             } else {
